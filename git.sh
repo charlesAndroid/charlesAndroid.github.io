@@ -1,5 +1,6 @@
-cp -rf public/. charlesandroid
+#!/bin/sh 
+cp -rf /Users/tiandesheng/blog/public/. /Users/tiandesheng/blog/charlesandroid
 cd charlesandroid
 git add --all
-git commit
+git commit -m "commit"
 git push
