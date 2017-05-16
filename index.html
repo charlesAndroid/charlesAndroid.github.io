@@ -82,7 +82,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(四)里氏代换原则/" data-id="cj2r7fvey0005blfy7741nvx5" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(四)里氏代换原则/" data-id="cj2rbowi40005qafynyu0nqzo" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -113,7 +113,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(三)开闭原则/" data-id="cj2r7fvep0001blfywrucev0u" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(三)开闭原则/" data-id="cj2rbowhx0001qafygn89k7qp" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -144,7 +144,39 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(五)依赖倒转原则/" data-id="cj2r7fveu0003blfydptjapgf" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(五)依赖倒转原则/" data-id="cj2rbowi20003qafydww30f8s" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式(六)接口隔离原则" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/15/设计模式(六)接口隔离原则/" class="article-date">
+  <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">2017-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式笔记-六-接口隔离原则"><a href="#设计模式笔记-六-接口隔离原则" class="headerlink" title="设计模式笔记(六)接口隔离原则"></a>设计模式笔记(六)接口隔离原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口.</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/arraylist.png" alt=""><br>图中每一个接口都包含自己本类应该具备的职能,<code>ArrayList</code>实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个登录页面,实现登录成功后展示动画效果<br><img src="../img/Login.png" alt=""><br>产品上线后发现在修改密码页面,修改密码成功后也需要展示动画效果,那么如果新建一个<code>ModifyPage</code>,实现<code>ILogin</code>接口,必然要实现<code>login</code>方法,违背了接口隔离原则,现修改如下:  </p>
+<p><img src="../img/modify.png" alt="">  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最小接口的定义要遵从单一职责原则,不能过分拆分,导致后期维护成本上升</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(六)接口隔离原则/" data-id="cj2rbowi30004qafyv1gdvw47" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -175,7 +207,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(二)单一职责原则/" data-id="cj2r7fves0002blfytnihe4ds" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(二)单一职责原则/" data-id="cj2rbowi00002qafy4bxo8mit" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -212,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(一)概述/" data-id="cj2r7fvej0000blfywd8df5bu" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(一)概述/" data-id="cj2rbowhq0000qafyfv5003xo" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -239,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/11/hello_world/" data-id="cj2r7fvev0004blfysd7l1tpz" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/11/hello_world/" data-id="cj2rbowi80006qafyou1nsp7c" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -291,11 +323,11 @@
           </li>
         
           <li>
-            <a href="/2017/05/14/设计模式(二)单一职责原则/">(no title)</a>
+            <a href="/2017/05/15/设计模式(六)接口隔离原则/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/05/14/设计模式(一)概述/">(no title)</a>
+            <a href="/2017/05/14/设计模式(二)单一职责原则/">(no title)</a>
           </li>
         
       </ul>
