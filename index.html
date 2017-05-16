@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://charlesandroid.github.io"></form>
@@ -73,18 +73,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#设计模式笔记(四)里氏代换原则</p>
-<p>##概念<br>里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。</p>
-<p>##例子</p>
-<p>###生活中<br>可以用哺乳动物来表示的地方,也可以用人来表示,用人来表示的地方,可以用男人或女人来表示  </p>
-<p>###代码中<br><img src="../img/bufferreader.png" alt=""><br>在<code>BufferReader</code>的构造方法中需要传入<code>Reader</code>对象,这些地方可以传入<code>Reader</code>的子类,或者子类的子类.这里<code>BufferReader</code>也是<code>Reader</code>的子类,由子类继承父类,构造方法注入父类对象并提供额外的功能,这种设计模式为<code>包装设计模式</code>.</p>
-<p>###需求<br>实现一个计算两个数字和的方法<code>sum</code><br><img src="../img/math.png" alt=""><br>现在新需求,提供一个计算两个数和,并乘以100.程序员小Li发现<code>Math</code>类中已经提供了<code>sum</code>方法,所以用<code>Count</code>继承了<code>Math</code>类,重写<code>sum</code>方法,在原先的返回值上直接乘以100.此时已经违背了里氏代换原则,由于<code>Math</code>类是提供计算的方法,<code>Count</code>虽然具备计算的能力<code>sum</code>,但实际功能已经被修改,无法再代替父类出现的地方,所以再重写的时候,要注意此原则.</p>
-<p>##总结<br>里氏代换原则强调的是<code>代换</code>,单单考虑这一原则,即父类出现的地方子类必须可以代换,而不影响其功能.<br>1.在继承一个类重写其方法时,父类已经实现的功能可以扩展,尽量不要覆盖,以便不影响代换时的功能<br>2.某些方法需要子类去重写覆盖时,尽量用抽象方法来限制,如果本类也需要实现,那么可以在方法体加上注释文档,告诉子类不要完全覆盖父类的方法,(<code>Android</code>中可以使用<code>@CallSuper</code>,参考<code>Activity</code>生命周期方法)</p>
+        <h1 id="设计模式笔记-四-里氏代换原则"><a href="#设计模式笔记-四-里氏代换原则" class="headerlink" title="设计模式笔记(四)里氏代换原则"></a>设计模式笔记(四)里氏代换原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>可以用哺乳动物来表示的地方,也可以用人来表示,用人来表示的地方,可以用男人或女人来表示  </p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/bufferreader.png" alt=""><br>在<code>BufferReader</code>的构造方法中需要传入<code>Reader</code>对象,这些地方可以传入<code>Reader</code>的子类,或者子类的子类.这里<code>BufferReader</code>也是<code>Reader</code>的子类,由子类继承父类,构造方法注入父类对象并提供额外的功能,这种设计模式为<code>包装设计模式</code>.</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>实现一个计算两个数字和的方法<code>sum</code><br><img src="../img/math.png" alt=""><br>现在新需求,提供一个计算两个数和,并乘以100.程序员小Li发现<code>Math</code>类中已经提供了<code>sum</code>方法,所以用<code>Count</code>继承了<code>Math</code>类,重写<code>sum</code>方法,在原先的返回值上直接乘以100.此时已经违背了里氏代换原则,由于<code>Math</code>类是提供计算的方法,<code>Count</code>虽然具备计算的能力<code>sum</code>,但实际功能已经被修改,无法再代替父类出现的地方,所以再重写的时候,要注意此原则.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>里氏代换原则强调的是<code>代换</code>,单单考虑这一原则,即父类出现的地方子类必须可以代换,而不影响其功能.<br>1.在继承一个类重写其方法时,父类已经实现的功能可以扩展,尽量不要覆盖,以便不影响代换时的功能<br>2.某些方法需要子类去重写覆盖时,尽量用抽象方法来限制,如果本类也需要实现,那么可以在方法体加上注释文档,告诉子类不要完全覆盖父类的方法,(<code>Android</code>中可以使用<code>@CallSuper</code>,参考<code>Activity</code>生命周期方法)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(四)里氏代换原则/" data-id="cj2r7eush0005adfyuf00bhkl" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(四)里氏代换原则/" data-id="cj2r7fvey0005blfy7741nvx5" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -115,7 +113,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(三)开闭原则/" data-id="cj2r7eus70001adfyl7jqbtgy" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(三)开闭原则/" data-id="cj2r7fvep0001blfywrucev0u" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -146,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(五)依赖倒转原则/" data-id="cj2r7euse0004adfyupc1qj3o" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(五)依赖倒转原则/" data-id="cj2r7fveu0003blfydptjapgf" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -177,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(二)单一职责原则/" data-id="cj2r7eusa0002adfyb9lhdc1s" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(二)单一职责原则/" data-id="cj2r7fves0002blfytnihe4ds" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -214,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(一)概述/" data-id="cj2r7eus20000adfyl7cd1b8p" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(一)概述/" data-id="cj2r7fvej0000blfywd8df5bu" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -241,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/11/hello_world/" data-id="cj2r7eusd0003adfye569bpo6" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/11/hello_world/" data-id="cj2r7fvev0004blfysd7l1tpz" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -276,7 +274,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -313,7 +311,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Charles<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
