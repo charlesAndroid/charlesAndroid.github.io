@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://charlesandroid.github.io"></form>
@@ -82,38 +82,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(四)里氏代换原则/" data-id="cj2sm9vio0008mzfywdkk128v" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式(七)合成复用原则" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/15/设计模式(七)合成复用原则/" class="article-date">
-  <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">2017-05-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="设计模式笔记-七-合成复用原则"><a href="#设计模式笔记-七-合成复用原则" class="headerlink" title="设计模式笔记(七)合成复用原则"></a>设计模式笔记(七)合成复用原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is.</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>公司老板可以管理所有岗位的员工实现公司的正常运转,而没有必要去学习所有技能,这里把管理看做组合/聚合,把学习看做继承/实现</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/system.png" alt=""><br><code>System</code>类的<code>getProperty</code>方法,最终由成员变量<code>props</code>来实现</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个员工模型,要求携带办公工具<br><img src="../img/tool.png" alt=""><br>由于科技发展,部分员工使用原有的<code>File</code>办公,部分员工替换办公工具,使用<code>Computer</code>办公.无论修改<code>Tool</code>还是<code>Employee</code>,都违背了开闭原则,现需改如下:<br><img src="../img/tools.png" alt=""><br>只要在员工初始化的时候指定使用工具,对成员变量<code>tool</code>赋值就可以区分了.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这里的继承,也包括java中的实现接口,<code>JDK1.8</code>中接口可以默认实现方法,子类去继承,所以,无论单继承还是多继承语言,只要分析好子类与父类之间的关系是<code>Has</code>还是<code>Is</code>,就比较容易区分使用<code>组合/聚合</code>还是<code>继承/实现</code>.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(七)合成复用原则/" data-id="cj2sm9vi70002mzfy7ly35dvo" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(四)里氏代换原则/" data-id="cj2smbgvk0008offy5tx08rgk" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -144,7 +113,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(三)开闭原则/" data-id="cj2sm9via0003mzfy0u0rnuow" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(三)开闭原则/" data-id="cj2smbgv30001offyo41p4m6t" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -175,7 +144,38 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(五)依赖倒转原则/" data-id="cj2sm9vie0005mzfy565e9ztp" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(五)依赖倒转原则/" data-id="cj2smbgv50002offygeejbvsp" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式(七)合成复用原则" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/15/设计模式(七)合成复用原则/" class="article-date">
+  <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">2017-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式笔记-七-合成复用原则"><a href="#设计模式笔记-七-合成复用原则" class="headerlink" title="设计模式笔记(七)合成复用原则"></a>设计模式笔记(七)合成复用原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is.</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>公司老板可以管理所有岗位的员工实现公司的正常运转,而没有必要去学习所有技能,这里把管理看做组合/聚合,把学习看做继承/实现</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/system.png" alt=""><br><code>System</code>类的<code>getProperty</code>方法,最终由成员变量<code>props</code>来实现</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个员工模型,要求携带办公工具<br><img src="../img/tool.png" alt=""><br>由于科技发展,部分员工使用原有的<code>File</code>办公,部分员工替换办公工具,使用<code>Computer</code>办公.无论修改<code>Tool</code>还是<code>Employee</code>,都违背了开闭原则,现需改如下:<br><img src="../img/tools.png" alt=""><br>只要在员工初始化的时候指定使用工具,对成员变量<code>tool</code>赋值就可以区分了.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这里的继承,也包括java中的实现接口,<code>JDK1.8</code>中接口可以默认实现方法,子类去继承,所以,无论单继承还是多继承语言,只要分析好子类与父类之间的关系是<code>Has</code>还是<code>Is</code>,就比较容易区分使用<code>组合/聚合</code>还是<code>继承/实现</code>.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(七)合成复用原则/" data-id="cj2smbgv90004offy9t9ii8mx" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -197,7 +197,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="设计模式笔记-七-迪米特法则"><a href="#设计模式笔记-七-迪米特法则" class="headerlink" title="设计模式笔记(七)迪米特法则"></a>设计模式笔记(七)迪米特法则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>迪米特法则（Law of Demeter）一个软件实体应当尽可能少地与其他实体发生相互作用.它又叫作最少知道原则（Least Knowledge Principle 简写LKP），就是说一个对象应当对其他对象有尽可能少的了解,不和陌生人说话。</p>
+        <h1 id="设计模式笔记-八-迪米特法则"><a href="#设计模式笔记-八-迪米特法则" class="headerlink" title="设计模式笔记(八)迪米特法则"></a>设计模式笔记(八)迪米特法则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>迪米特法则（Law of Demeter）一个软件实体应当尽可能少地与其他实体发生相互作用.它又叫作最少知道原则（Least Knowledge Principle 简写LKP），就是说一个对象应当对其他对象有尽可能少的了解,不和陌生人说话。</p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>去银行存钱,我们也不知道钱存到哪里,怎么存的,只关心账户上的余额.</p>
 <h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p>我们和硬件,系统没有直接打交道,开辟线程通过<code>Thread</code>类来实现<br><img src="../img/thread.png" alt=""><br>所有代码的<code>API</code>具体实现我们都可以不知道,只关心它如何使用,对于<code>尽可能少的了解</code>:<br>1.对本类和父类<br>2.对本类持有的成员变量<br>3.对本类方法返回值为某一类的对象实例<br>本类除以上三点对于任何外部类,保持最少了解.</p>
 <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>因公司需要定位功能,现在引进第三方定位SDK,获取用户位置信息<br><img src="../img/location.png" alt=""><br>由于该第三方SDK改为收费项目,公司决定替换SDK,采用另一家免费公司,修改<code>main</code>方法显然违背了开闭原则,所以现修改如下:<br><img src="../img/locationadapter.png" alt=""><br>虽然替换SDK的工作仍然要修改原代码,但应用有可能在多个地方调用,改成只修改<code>LocationAdapter</code>一处代码,而且修改的类由<code>main</code>函数到<code>LocationAdapter</code>,减少了对业务逻辑的影响.</p>
@@ -206,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(八)迪米特法则/" data-id="cj2sm9vih0006mzfyrtjz7s1j" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(八)迪米特法则/" data-id="cj2smbgvd0006offyl3ne4znn" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -238,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(六)接口隔离原则/" data-id="cj2sm9vij0007mzfy6g3899xa" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(六)接口隔离原则/" data-id="cj2smbgvf0007offy4jtc4off" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -269,7 +269,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(二)单一职责原则/" data-id="cj2sm9vic0004mzfy4ybkgejv" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(二)单一职责原则/" data-id="cj2smbgv70003offyi2w1wome" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -306,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(一)概述/" data-id="cj2sm9vi30001mzfy2w3cd0qm" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(一)概述/" data-id="cj2smbgux0000offy94d6xh86" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -333,7 +333,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/11/hello_world/" data-id="cj2sm9vhy0000mzfyjv83c1dd" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/11/hello_world/" data-id="cj2smbgva0005offy3vh0h2h9" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -368,7 +368,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -377,15 +377,15 @@
           </li>
         
           <li>
-            <a href="/2017/05/15/设计模式(七)合成复用原则/">(no title)</a>
-          </li>
-        
-          <li>
             <a href="/2017/05/15/设计模式(三)开闭原则/">(no title)</a>
           </li>
         
           <li>
             <a href="/2017/05/15/设计模式(五)依赖倒转原则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/设计模式(七)合成复用原则/">(no title)</a>
           </li>
         
           <li>
@@ -405,7 +405,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Charles<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
