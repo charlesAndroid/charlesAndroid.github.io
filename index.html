@@ -59,13 +59,13 @@
 
   
     
-    <h3 class="article-title"><a href="/2017/05/18/设计模式八-迪米特法则/"><span>设计模式笔记(八)迪米特法则</span></a></h3>
+    <h3 class="article-title"><a href="/2017/05/18/设计模式笔记八-迪米特法则/"><span>设计模式笔记(八)迪米特法则</span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2017/05/18/设计模式八-迪米特法则/" rel="bookmark">
+      <a href="/2017/05/18/设计模式笔记八-迪米特法则/" rel="bookmark">
         <time class="entry-date published" datetime="2017-05-18T09:02:05.000Z">
           2017-05-18
         </time>
@@ -81,8 +81,8 @@
       
         <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>迪米特法则（Law of Demeter）一个软件实体应当尽可能少地与其他实体发生相互作用.它又叫作最少知道原则（Least Knowledge Principle 简写LKP），就是说一个对象应当对其他对象有尽可能少的了解,不和陌生人说话。</p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>去银行存钱,我们也不知道钱存到哪里,怎么存的,只关心账户上的余额.</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p>我们和硬件,系统没有直接打交道,开辟线程通过<code>Thread</code>类来实现<br><img src="/2017/05/18/设计模式八-迪米特法则/thread.png" alt=""><br>所有代码的<code>API</code>具体实现我们都可以不知道,只关心它如何使用,对于<code>尽可能少的了解</code>:<br>1.对本类和父类<br>2.对本类持有的成员变量<br>3.对本类方法返回值为某一类的对象实例<br>本类除以上三点对于任何外部类,保持最少了解.</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>因公司需要定位功能,现在引进第三方定位SDK,获取用户位置信息<br><img src="/2017/05/18/设计模式八-迪米特法则/img/location.png" alt=""><br>由于该第三方SDK改为收费项目,公司决定替换SDK,采用另一家免费公司,修改<code>main</code>方法显然违背了开闭原则,所以现修改如下:<br><img src="/2017/05/18/设计模式八-迪米特法则/img/locationadapter.png" alt=""><br>虽然替换SDK的工作仍然要修改原代码,但应用有可能在多个地方调用,改成只修改<code>LocationAdapter</code>一处代码,而且修改的类由<code>main</code>函数到<code>LocationAdapter</code>,减少了对业务逻辑的影响.</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p>我们和硬件,系统没有直接打交道,开辟线程通过<code>Thread</code>类来实现<br><img src="/2017/05/18/设计模式笔记八-迪米特法则/img/thread.png" alt=""><br>所有代码的<code>API</code>具体实现我们都可以不知道,只关心它如何使用,对于<code>尽可能少的了解</code>:<br>1.对本类和父类<br>2.对本类持有的成员变量<br>3.对本类方法返回值为某一类的对象实例<br>本类除以上三点对于任何外部类,保持最少了解.</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>因公司需要定位功能,现在引进第三方定位SDK,获取用户位置信息<br><img src="/2017/05/18/设计模式笔记八-迪米特法则/img/location.png" alt=""><br>由于该第三方SDK改为收费项目,公司决定替换SDK,采用另一家免费公司,修改<code>main</code>方法显然违背了开闭原则,所以现修改如下:<br><img src="/2017/05/18/设计模式笔记八-迪米特法则/img/locationadapter.png" alt=""><br>虽然替换SDK的工作仍然要修改原代码,但应用有可能在多个地方调用,改成只修改<code>LocationAdapter</code>一处代码,而且修改的类由<code>main</code>函数到<code>LocationAdapter</code>,减少了对业务逻辑的影响.</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>引用第三方SDK,显然属于<code>最少知道</code>的范畴,如果第三方的类成为了本类的成员变量,而本类只是用来操作位置相关信息,那么本类对于三方SDK又不属于<code>最少知道</code>的范畴,如<code>LocationAdapter</code>,如果本类还要处理另外的逻辑,如<code>Main</code>,虽然符合了迪米特法则,但是违背了单一职责原则.对于外部的引用,本应用最少了解,必然造成类数量的上升,合理安排哪些沟通需要中间类来搭建桥梁,哪些不需要,控制类的数量,减少代码体积.</p>
 
       
@@ -360,13 +360,13 @@
 
   
     
-    <h3 class="article-title"><a href="/2017/05/12/设计模式二-单一职责原则/"><span>设计模式笔记(二)单一职责原则</span></a></h3>
+    <h3 class="article-title"><a href="/2017/05/12/设计模式笔记二-单一职责原则/"><span>设计模式笔记(二)单一职责原则</span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2017/05/12/设计模式二-单一职责原则/" rel="bookmark">
+      <a href="/2017/05/12/设计模式笔记二-单一职责原则/" rel="bookmark">
         <time class="entry-date published" datetime="2017-05-12T08:57:05.000Z">
           2017-05-12
         </time>
@@ -382,8 +382,8 @@
       
         <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>单一职责原则（SRP：Single responsibility principle）又称单一功能原则,所谓职责是指类变化的原因,如果一个类有多于一个的动机被改变，那么这个类就具有多于一个的职责。而单一职责原则就是指一个类或者模块应该有且只有一个改变的原因。  </p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>1.使我修改这篇文章的唯一原因,只能是因为这篇文章有需要修改的地方<br>2.我每天只能去到一家公司上班,负责本职工作领域</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="/2017/05/12/设计模式二-单一职责原则/img/FileUtil1.png" alt=""><br>只负责操作File对象</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>作为操作File的工具类,只负责操作File对象,但有没有可能违背单一职责原则呢?答案是可能的.<br>如果现在需要提供方法,拷贝一个文件,并在目标文件末尾插入指定字符串.<br><img src="/2017/05/12/设计模式二-单一职责原则/img/FileUtil1.png" alt=""><br>如果再增加方法,拷贝一个文件,并在目标文件头部插入指定字符串.因此,FileUtil会增加更多不必要的方法,或者把<code>copyFileInsert</code>方法修改的过于庞大.应该重新把需求拆分.提供一个拷贝文件的方法<code>copyFile</code>,提供一个在文件插入字符串的方法<code>insertFile</code>,具体修改哪个文件,应该在头部添加还是尾部添加,由调用者决定,修改后结构如下:<br><img src="/2017/05/12/设计模式二-单一职责原则/img/FileUtil2.png" alt=""><br><code>insertFile</code>方法用<code>int</code>型变量来控制插入位置</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="/2017/05/12/设计模式笔记二-单一职责原则/img/FileUtil1.png" alt=""><br>只负责操作File对象</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>作为操作File的工具类,只负责操作File对象,但有没有可能违背单一职责原则呢?答案是可能的.<br>如果现在需要提供方法,拷贝一个文件,并在目标文件末尾插入指定字符串.<br><img src="/2017/05/12/设计模式笔记二-单一职责原则/img/FileUtil1.png" alt=""><br>如果再增加方法,拷贝一个文件,并在目标文件头部插入指定字符串.因此,FileUtil会增加更多不必要的方法,或者把<code>copyFileInsert</code>方法修改的过于庞大.应该重新把需求拆分.提供一个拷贝文件的方法<code>copyFile</code>,提供一个在文件插入字符串的方法<code>insertFile</code>,具体修改哪个文件,应该在头部添加还是尾部添加,由调用者决定,修改后结构如下:<br><img src="/2017/05/12/设计模式笔记二-单一职责原则/img/FileUtil2.png" alt=""><br><code>insertFile</code>方法用<code>int</code>型变量来控制插入位置</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>无论设计方法,类还是模块,无论代码体积大小,都要遵循单一职责原则,尽可能的避免多因素导致的代码修改.</p>
 
       
@@ -431,7 +431,7 @@
     <div class="entry">
       
         <h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><p>20世纪70年代,Christophr Alexander研究为了解决同一个问题而设计出不同的建筑结构.发现那些高质量设计中的<code>相似性</code>.用模式语言来指这种<code>相似性</code>.<br>    -A Pattern Language:Towns,Buildings,Construction(牛津大学出版社,1977年)<br>    -永久的建筑风格(牛津大学出版社,1979年)<br>由Alexander发现并记录的这些模式仅仅是涉及诸如建筑物,花园和道路之类的建筑学方面的模式.20世纪90年代逐渐的被软件工程所整合使用,由GoF归纳发表了23种在软件开发中使用频率较高的设计模式.</p>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>设计模式是指,<code>在某种特定的情况下,采取已经实践证明的最佳解决方案来实现需求.</code><br>程序的设计和实现来源于生活,而在特定的情况下,采取已知、最佳的方案,能更高效的实现需求.在GoF总结的23种设计模式中,包含5种创建型设计模式,7种结构型设计模式和11种行为型设计模式,根据某种设计模式的作用,又可分为类模式和对象模式<br><img src="/2017/05/11/设计模式笔记一-概述/设计模式.png" alt=""><br>设计模式是前人总结的经验,要想设计出高内聚、低耦合的程序,就要好好学习设计模式,并翻阅遵从这些设计模式设计的程序案例</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>设计模式是指,<code>在某种特定的情况下,采取已经实践证明的最佳解决方案来实现需求.</code><br>程序的设计和实现来源于生活,而在特定的情况下,采取已知、最佳的方案,能更高效的实现需求.在GoF总结的23种设计模式中,包含5种创建型设计模式,7种结构型设计模式和11种行为型设计模式,根据某种设计模式的作用,又可分为类模式和对象模式<br><img src="/2017/05/11/设计模式笔记一-概述/img/设计模式.png" alt=""><br>设计模式是前人总结的经验,要想设计出高内聚、低耦合的程序,就要好好学习设计模式,并翻阅遵从这些设计模式设计的程序案例</p>
 <h2 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h2><p>设计模式的总结,是按照一定的原则,主要分为以下7个原则  </p>
 <h4 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h4><p>一段代码,一个类,一个模块只负责自己领域的工作,尽可能不参与其他领域的工作</p>
 <h4 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h4><p>对外提供可修改的方法,对内避免代码修改,简称对外开放,对内关闭</p>
