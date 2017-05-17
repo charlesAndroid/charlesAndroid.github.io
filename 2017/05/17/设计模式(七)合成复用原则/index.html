@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>设计模式 | Charles</title>
+  <title>设计模式笔记(七)合成复用原则 | Charles</title>
 
   
   <meta name="author" content="Charles">
   
 
   
-  <meta name="description" content="设计模式笔记(七)合成复用原则概念合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is.
-例子生活中公司老板可以">
+  <meta name="description" content="概念合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is.
+例子生活中公司老板可以管理所有岗位的员工实现公司的正">
   
 
   
@@ -23,7 +23,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="设计模式"/>
+  <meta property="og:title" content="设计模式笔记(七)合成复用原则"/>
 
   <meta property="og:site_name" content="Charles"/>
 
@@ -64,7 +64,7 @@
 
   
     
-    <h3 class="article-title"><span>设计模式</span></h3>
+    <h3 class="article-title"><span>设计模式笔记(七)合成复用原则</span></h3>
     
   
 
@@ -84,7 +84,7 @@
   <div class="article-content">
     <div class="entry">
       
-        <h1 id="设计模式笔记-七-合成复用原则"><a href="#设计模式笔记-七-合成复用原则" class="headerlink" title="设计模式笔记(七)合成复用原则"></a>设计模式笔记(七)合成复用原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is.</p>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is.</p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>公司老板可以管理所有岗位的员工实现公司的正常运转,而没有必要去学习所有技能,这里把管理看做组合/聚合,把学习看做继承/实现</p>
 <h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/system.png" alt=""><br><code>System</code>类的<code>getProperty</code>方法,最终由成员变量<code>props</code>来实现</p>
 <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个员工模型,要求携带办公工具<br><img src="../img/tool.png" alt=""><br>由于科技发展,部分员工使用原有的<code>File</code>办公,部分员工替换办公工具,使用<code>Computer</code>办公.无论修改<code>Tool</code>还是<code>Employee</code>,都违背了开闭原则,现需改如下:<br><img src="../img/tools.png" alt=""><br>只要在员工初始化的时候指定使用工具,对成员变量<code>tool</code>赋值就可以区分了.</p>
