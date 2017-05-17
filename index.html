@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://charlesandroid.github.io"></form>
@@ -82,100 +82,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(四)里氏代换原则/" data-id="cj2sm8gdy0008lpfyyuanxrub" class="article-share-link">Delen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式(三)开闭原则" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/15/设计模式(三)开闭原则/" class="article-date">
-  <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">2017-05-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="设计模式笔记-三-开闭原则"><a href="#设计模式笔记-三-开闭原则" class="headerlink" title="设计模式笔记(三)开闭原则"></a>设计模式笔记(三)开闭原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>开闭原则（OCP）是面向对象设计中“可复用设计”的基石，是面向对象设计中最重要的原则之一，其它很多的设计原则都是实现开闭原则的一种手段。对于扩展是开放的，对于修改是关闭的，这意味着模块的行为是可以扩展的。当应用的需求改变时，我们可以对模块进行扩展，使其具有满足那些改变的新行为。</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>1.每台显示器都有电源开关,如果修改开关的位置,不应该影响开关这个功能,也不需要对内部进行改造.<br>2.每个软件,对外提供自身的功能,任何人使用,都不应该需要修改其内部实现.</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/Collections.png" alt=""><br>只要实现List接口的集合,都可以通过<code>Conllections.sort</code>排序</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个打印学生信息的功能<code>printStudent</code><br><img src="../img/printStudent.png" alt=""><br>如果再增加打印老师,学校信息,类必然增加重复代码,所以通过如下设计修改<br><img src="../img/printObject.png" alt=""><br>任何对象只要继承<code>Object</code>都可以实现<code>toString</code>方法,从而使用<code>Print.printObject</code>方法打印信息</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对于一个使用外部传入参数的方法,在使用参数的方法或属性的时候,尽量使传入参数具有方法内使用的共有特征,从而达到对外部提供修改的开放原则,减少或关闭对内部代码的修改.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(三)开闭原则/" data-id="cj2sm8gdf0002lpfykwpeq3wo" class="article-share-link">Delen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式(五)依赖倒转原则" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/15/设计模式(五)依赖倒转原则/" class="article-date">
-  <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">2017-05-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="设计模式笔记-五-依赖倒转原则"><a href="#设计模式笔记-五-依赖倒转原则" class="headerlink" title="设计模式笔记(五)依赖倒转原则"></a>设计模式笔记(五)依赖倒转原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程。</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>部门里的所有人,都具备完成一件工作的能力(实现方法<code>ganHuo()</code>),那么即便负责这件事的那个人离职了,也将有人可以去代替.</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/button.png" alt=""><br>对按钮设置点击事件,传入的是处理点击事件的接口对象,在方法中把传入对象赋值给成员变量<code>mOnClickListener</code>,在使用的时候只调用<code>mOnClickListener.onClick</code>方法来执行,具体执行的结果,依赖子类的实现.</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个可以从配置文件中读取配置信息字符串的转换类<code>FileConvertor</code><br><img src="../img/FileConvertor.png" alt=""><br>现在由于调整,之前读取<code>File</code>改成读取<code>XML</code>格式的配置文件,不光要增加一个<code>XMLConvertor</code>的类,还要修改<code>Main</code>的<code>getConfig</code>方法,所以修改如下<br><img src="../img/convertor.png" alt=""><br><code>Main</code>不在关心是谁来读取配置文件,只要需要传入具备读取配置文件功能的<code>Convertor</code>,调用<code>readSource</code>方法,拿到返回的<code>String</code>信息即可.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果一个类要用通过外部的对象来实现方法,那么这个时候方法传入的对象尽可能是抽象的.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(五)依赖倒转原则/" data-id="cj2sm8gdh0003lpfy5efc20g4" class="article-share-link">Delen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式(八)迪米特法则" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/15/设计模式(八)迪米特法则/" class="article-date">
-  <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">2017-05-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="设计模式笔记-七-迪米特法则"><a href="#设计模式笔记-七-迪米特法则" class="headerlink" title="设计模式笔记(七)迪米特法则"></a>设计模式笔记(七)迪米特法则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>迪米特法则（Law of Demeter）一个软件实体应当尽可能少地与其他实体发生相互作用.它又叫作最少知道原则（Least Knowledge Principle 简写LKP），就是说一个对象应当对其他对象有尽可能少的了解,不和陌生人说话。</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>去银行存钱,我们也不知道钱存到哪里,怎么存的,只关心账户上的余额.</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p>我们和硬件,系统没有直接打交道,开辟线程通过<code>Thread</code>类来实现<br><img src="../img/thread.png" alt=""><br>所有代码的<code>API</code>具体实现我们都可以不知道,只关心它如何使用,对于<code>尽可能少的了解</code>:<br>1.对本类和父类<br>2.对本类持有的成员变量<br>3.对本类方法返回值为某一类的对象实例<br>本类除以上三点对于任何外部类,保持最少了解.</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>因公司需要定位功能,现在引进第三方定位SDK,获取用户位置信息<br><img src="../img/location.png" alt=""><br>由于该第三方SDK改为收费项目,公司决定替换SDK,采用另一家免费公司,修改<code>main</code>方法显然违背了开闭原则,所以现修改如下:<br><img src="../img/locationadapter.png" alt=""><br>虽然替换SDK的工作仍然要修改原代码,但应用有可能在多个地方调用,改成只修改<code>LocationAdapter</code>一处代码,而且修改的类由<code>main</code>函数到<code>LocationAdapter</code>,减少了对业务逻辑的影响.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>引用第三方SDK,显然属于<code>最少知道</code>的范畴,如果第三方的类成为了本类的成员变量,而本类只是用来操作位置相关信息,那么本类对于三方SDK又不属于<code>最少知道</code>的范畴,如<code>LocationAdapter</code>,如果本类还要处理另外的逻辑,如<code>Main</code>,虽然符合了迪米特法则,但是违背了单一职责原则.对于外部的引用,本应用最少了解,必然造成类数量的上升,合理安排哪些沟通需要中间类来搭建桥梁,哪些不需要,控制类的数量,减少代码体积.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(八)迪米特法则/" data-id="cj2sm8gdl0004lpfyqrladpmt" class="article-share-link">Delen</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(四)里氏代换原则/" data-id="cj2sm9vio0008mzfywdkk128v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,7 +113,100 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(七)合成复用原则/" data-id="cj2sm8gdo0005lpfy7wtcnayh" class="article-share-link">Delen</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(七)合成复用原则/" data-id="cj2sm9vi70002mzfy7ly35dvo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式(三)开闭原则" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/15/设计模式(三)开闭原则/" class="article-date">
+  <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">2017-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式笔记-三-开闭原则"><a href="#设计模式笔记-三-开闭原则" class="headerlink" title="设计模式笔记(三)开闭原则"></a>设计模式笔记(三)开闭原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>开闭原则（OCP）是面向对象设计中“可复用设计”的基石，是面向对象设计中最重要的原则之一，其它很多的设计原则都是实现开闭原则的一种手段。对于扩展是开放的，对于修改是关闭的，这意味着模块的行为是可以扩展的。当应用的需求改变时，我们可以对模块进行扩展，使其具有满足那些改变的新行为。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>1.每台显示器都有电源开关,如果修改开关的位置,不应该影响开关这个功能,也不需要对内部进行改造.<br>2.每个软件,对外提供自身的功能,任何人使用,都不应该需要修改其内部实现.</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/Collections.png" alt=""><br>只要实现List接口的集合,都可以通过<code>Conllections.sort</code>排序</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个打印学生信息的功能<code>printStudent</code><br><img src="../img/printStudent.png" alt=""><br>如果再增加打印老师,学校信息,类必然增加重复代码,所以通过如下设计修改<br><img src="../img/printObject.png" alt=""><br>任何对象只要继承<code>Object</code>都可以实现<code>toString</code>方法,从而使用<code>Print.printObject</code>方法打印信息</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对于一个使用外部传入参数的方法,在使用参数的方法或属性的时候,尽量使传入参数具有方法内使用的共有特征,从而达到对外部提供修改的开放原则,减少或关闭对内部代码的修改.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(三)开闭原则/" data-id="cj2sm9via0003mzfy0u0rnuow" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式(五)依赖倒转原则" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/15/设计模式(五)依赖倒转原则/" class="article-date">
+  <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">2017-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式笔记-五-依赖倒转原则"><a href="#设计模式笔记-五-依赖倒转原则" class="headerlink" title="设计模式笔记(五)依赖倒转原则"></a>设计模式笔记(五)依赖倒转原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>部门里的所有人,都具备完成一件工作的能力(实现方法<code>ganHuo()</code>),那么即便负责这件事的那个人离职了,也将有人可以去代替.</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/button.png" alt=""><br>对按钮设置点击事件,传入的是处理点击事件的接口对象,在方法中把传入对象赋值给成员变量<code>mOnClickListener</code>,在使用的时候只调用<code>mOnClickListener.onClick</code>方法来执行,具体执行的结果,依赖子类的实现.</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个可以从配置文件中读取配置信息字符串的转换类<code>FileConvertor</code><br><img src="../img/FileConvertor.png" alt=""><br>现在由于调整,之前读取<code>File</code>改成读取<code>XML</code>格式的配置文件,不光要增加一个<code>XMLConvertor</code>的类,还要修改<code>Main</code>的<code>getConfig</code>方法,所以修改如下<br><img src="../img/convertor.png" alt=""><br><code>Main</code>不在关心是谁来读取配置文件,只要需要传入具备读取配置文件功能的<code>Convertor</code>,调用<code>readSource</code>方法,拿到返回的<code>String</code>信息即可.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果一个类要用通过外部的对象来实现方法,那么这个时候方法传入的对象尽可能是抽象的.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(五)依赖倒转原则/" data-id="cj2sm9vie0005mzfy565e9ztp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式(八)迪米特法则" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/15/设计模式(八)迪米特法则/" class="article-date">
+  <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">2017-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式笔记-七-迪米特法则"><a href="#设计模式笔记-七-迪米特法则" class="headerlink" title="设计模式笔记(七)迪米特法则"></a>设计模式笔记(七)迪米特法则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>迪米特法则（Law of Demeter）一个软件实体应当尽可能少地与其他实体发生相互作用.它又叫作最少知道原则（Least Knowledge Principle 简写LKP），就是说一个对象应当对其他对象有尽可能少的了解,不和陌生人说话。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>去银行存钱,我们也不知道钱存到哪里,怎么存的,只关心账户上的余额.</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p>我们和硬件,系统没有直接打交道,开辟线程通过<code>Thread</code>类来实现<br><img src="../img/thread.png" alt=""><br>所有代码的<code>API</code>具体实现我们都可以不知道,只关心它如何使用,对于<code>尽可能少的了解</code>:<br>1.对本类和父类<br>2.对本类持有的成员变量<br>3.对本类方法返回值为某一类的对象实例<br>本类除以上三点对于任何外部类,保持最少了解.</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>因公司需要定位功能,现在引进第三方定位SDK,获取用户位置信息<br><img src="../img/location.png" alt=""><br>由于该第三方SDK改为收费项目,公司决定替换SDK,采用另一家免费公司,修改<code>main</code>方法显然违背了开闭原则,所以现修改如下:<br><img src="../img/locationadapter.png" alt=""><br>虽然替换SDK的工作仍然要修改原代码,但应用有可能在多个地方调用,改成只修改<code>LocationAdapter</code>一处代码,而且修改的类由<code>main</code>函数到<code>LocationAdapter</code>,减少了对业务逻辑的影响.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>引用第三方SDK,显然属于<code>最少知道</code>的范畴,如果第三方的类成为了本类的成员变量,而本类只是用来操作位置相关信息,那么本类对于三方SDK又不属于<code>最少知道</code>的范畴,如<code>LocationAdapter</code>,如果本类还要处理另外的逻辑,如<code>Main</code>,虽然符合了迪米特法则,但是违背了单一职责原则.对于外部的引用,本应用最少了解,必然造成类数量的上升,合理安排哪些沟通需要中间类来搭建桥梁,哪些不需要,控制类的数量,减少代码体积.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(八)迪米特法则/" data-id="cj2sm9vih0006mzfyrtjz7s1j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -238,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(六)接口隔离原则/" data-id="cj2sm8gdw0007lpfy2dkzzvam" class="article-share-link">Delen</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(六)接口隔离原则/" data-id="cj2sm9vij0007mzfy6g3899xa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -269,7 +269,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(二)单一职责原则/" data-id="cj2sm8gdt0006lpfy9kwj61ee" class="article-share-link">Delen</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(二)单一职责原则/" data-id="cj2sm9vic0004mzfy4ybkgejv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -306,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(一)概述/" data-id="cj2sm8gd40000lpfy38iyrwwr" class="article-share-link">Delen</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(一)概述/" data-id="cj2sm9vi30001mzfy2w3cd0qm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -333,7 +333,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/11/hello_world/" data-id="cj2sm8gda0001lpfy1m4wtn2m" class="article-share-link">Delen</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/11/hello_world/" data-id="cj2sm9vhy0000mzfyjv83c1dd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -358,7 +358,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
     </div>
@@ -368,12 +368,16 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
             <a href="/2017/05/15/设计模式(四)里氏代换原则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/设计模式(七)合成复用原则/">(no title)</a>
           </li>
         
           <li>
@@ -386,10 +390,6 @@
         
           <li>
             <a href="/2017/05/15/设计模式(八)迪米特法则/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/15/设计模式(七)合成复用原则/">(no title)</a>
           </li>
         
       </ul>
