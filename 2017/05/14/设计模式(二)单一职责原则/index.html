@@ -1,20 +1,128 @@
-extends partial/layout
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Charles</title>
 
-block site_title
-    != page.title + " · " + config.title
+  
+  <meta name="author" content="Charles">
+  
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name="description", content=desc)
+  
+  <meta name="description" content="设计模式笔记(二)单一职责原则概念单一职责原则（SRP：Single responsibility principle）又称单一功能原则,所谓职责是指类变化的原因,如果一个类有多于一个的动机被改变，那么这个类就具有多于一个的职责。而单一职责原则就是指一个类或者模块应该有且只有一个改变的原因。  
+例">
+  
 
-block container
-    include mixins/post
-    +post(page)
+  
+  
+  <meta name="keywords" content="">
+  
 
-block pagination
-    include mixins/paginator
-    +post()
-    include partial/comment
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-block copyright
-    include partial/copyright
+  
+
+  <meta property="og:site_name" content="Charles"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Charles</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span></span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/14/设计模式(二)单一职责原则/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-14T07:17:35.000Z">
+          2017-05-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="设计模式笔记-二-单一职责原则"><a href="#设计模式笔记-二-单一职责原则" class="headerlink" title="设计模式笔记(二)单一职责原则"></a>设计模式笔记(二)单一职责原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>单一职责原则（SRP：Single responsibility principle）又称单一功能原则,所谓职责是指类变化的原因,如果一个类有多于一个的动机被改变，那么这个类就具有多于一个的职责。而单一职责原则就是指一个类或者模块应该有且只有一个改变的原因。  </p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>1.使我修改这篇文章的唯一原因,只能是因为这篇文章有需要修改的地方<br>2.我每天只能去到一家公司上班,负责本职工作领域</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/FileUtil1.png" alt=""><br>只负责操作File对象</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>作为操作File的工具类,只负责操作File对象,但有没有可能违背单一职责原则呢?答案是可能的.<br>如果现在需要提供方法,拷贝一个文件,并在目标文件末尾插入指定字符串.<br><img src="../img/FileUtil1.png" alt=""><br>如果再增加方法,拷贝一个文件,并在目标文件头部插入指定字符串.因此,FileUtil会增加更多不必要的方法,或者把<code>copyFileInsert</code>方法修改的过于庞大.应该重新把需求拆分.提供一个拷贝文件的方法<code>copyFile</code>,提供一个在文件插入字符串的方法<code>insertFile</code>,具体修改哪个文件,应该在头部添加还是尾部添加,由调用者决定,修改后结构如下:<br><img src="../img/FileUtil2.png" alt=""><br><code>insertFile</code>方法用<code>int</code>型变量来控制插入位置</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>无论设计方法,类还是模块,无论代码体积大小,都要遵循单一职责原则,尽可能的避免多因素导致的代码修改.</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 Charles
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
