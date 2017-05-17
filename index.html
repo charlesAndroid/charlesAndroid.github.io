@@ -45,9 +45,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">主页</a></li>
+        <li><a href="/">Home</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="/archives">Archives</a></li>
       
     </ul>
   </nav>
@@ -55,6 +55,57 @@
 
     <main class="site-main posts-loop">
     
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/17/设计模式(六)接口隔离原则/"><span>设计模式</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/17/设计模式(六)接口隔离原则/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-17T08:57:05.000Z">
+          2017-05-17
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="设计模式笔记-六-接口隔离原则"><a href="#设计模式笔记-六-接口隔离原则" class="headerlink" title="设计模式笔记(六)接口隔离原则"></a>设计模式笔记(六)接口隔离原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口.</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/arraylist.png" alt=""><br>图中每一个接口都包含自己本类应该具备的职能,<code>ArrayList</code>实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个登录页面,实现登录成功后展示动画效果<br><img src="../img/Login.png" alt=""><br>产品上线后发现在修改密码页面,修改密码成功后也需要展示动画效果,那么如果新建一个<code>ModifyPage</code>,实现<code>ILogin</code>接口,必然要实现<code>login</code>方法,违背了接口隔离原则,现修改如下:  </p>
+<p><img src="../img/modify.png" alt="">  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最小接口的定义要遵从单一职责原则,也不能过分拆分,导致后期维护成本上升</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
   <article>
 
   
@@ -209,13 +260,13 @@
 
   
     
-    <h3 class="article-title"><a href="/2017/05/15/设计模式(六)接口隔离原则/"><span></span></a></h3>
+    <h3 class="article-title"><a href="/2017/05/15/设计模式(七)合成复用原则/"><span></span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2017/05/15/设计模式(六)接口隔离原则/" rel="bookmark">
+      <a href="/2017/05/15/设计模式(七)合成复用原则/" rel="bookmark">
         <time class="entry-date published" datetime="2017-05-15T03:33:15.000Z">
           2017-05-15
         </time>
@@ -229,13 +280,11 @@
   <div class="article-content">
     <div class="entry">
       
-        <p>title: 设计模式<br>date: 2017-01-30 19:16:17</p>
-<h2 id="layout-“categories”"><a href="#layout-“categories”" class="headerlink" title="layout: “categories”"></a>layout: “categories”</h2><h1 id="设计模式笔记-六-接口隔离原则"><a href="#设计模式笔记-六-接口隔离原则" class="headerlink" title="设计模式笔记(六)接口隔离原则"></a>设计模式笔记(六)接口隔离原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口.</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/arraylist.png" alt=""><br>图中每一个接口都包含自己本类应该具备的职能,<code>ArrayList</code>实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个登录页面,实现登录成功后展示动画效果<br><img src="../img/Login.png" alt=""><br>产品上线后发现在修改密码页面,修改密码成功后也需要展示动画效果,那么如果新建一个<code>ModifyPage</code>,实现<code>ILogin</code>接口,必然要实现<code>login</code>方法,违背了接口隔离原则,现修改如下:  </p>
-<p><img src="../img/modify.png" alt="">  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最小接口的定义要遵从单一职责原则,也不能过分拆分,导致后期维护成本上升</p>
+        <h1 id="设计模式笔记-七-合成复用原则"><a href="#设计模式笔记-七-合成复用原则" class="headerlink" title="设计模式笔记(七)合成复用原则"></a>设计模式笔记(七)合成复用原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is.</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>公司老板可以管理所有岗位的员工实现公司的正常运转,而没有必要去学习所有技能,这里把管理看做组合/聚合,把学习看做继承/实现</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/system.png" alt=""><br><code>System</code>类的<code>getProperty</code>方法,最终由成员变量<code>props</code>来实现</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个员工模型,要求携带办公工具<br><img src="../img/tool.png" alt=""><br>由于科技发展,部分员工使用原有的<code>File</code>办公,部分员工替换办公工具,使用<code>Computer</code>办公.无论修改<code>Tool</code>还是<code>Employee</code>,都违背了开闭原则,现需改如下:<br><img src="../img/tools.png" alt=""><br>只要在员工初始化的时候指定使用工具,对成员变量<code>tool</code>赋值就可以区分了.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这里的继承,也包括java中的实现接口,<code>JDK1.8</code>中接口可以默认实现方法,子类去继承,所以,无论单继承还是多继承语言,只要分析好子类与父类之间的关系是<code>Has</code>还是<code>Is</code>,就比较容易区分使用<code>组合/聚合</code>还是<code>继承/实现</code>.</p>
 
       
     </div>
@@ -286,56 +335,6 @@
 <h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p>我们和硬件,系统没有直接打交道,开辟线程通过<code>Thread</code>类来实现<br><img src="../img/thread.png" alt=""><br>所有代码的<code>API</code>具体实现我们都可以不知道,只关心它如何使用,对于<code>尽可能少的了解</code>:<br>1.对本类和父类<br>2.对本类持有的成员变量<br>3.对本类方法返回值为某一类的对象实例<br>本类除以上三点对于任何外部类,保持最少了解.</p>
 <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>因公司需要定位功能,现在引进第三方定位SDK,获取用户位置信息<br><img src="../img/location.png" alt=""><br>由于该第三方SDK改为收费项目,公司决定替换SDK,采用另一家免费公司,修改<code>main</code>方法显然违背了开闭原则,所以现修改如下:<br><img src="../img/locationadapter.png" alt=""><br>虽然替换SDK的工作仍然要修改原代码,但应用有可能在多个地方调用,改成只修改<code>LocationAdapter</code>一处代码,而且修改的类由<code>main</code>函数到<code>LocationAdapter</code>,减少了对业务逻辑的影响.</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>引用第三方SDK,显然属于<code>最少知道</code>的范畴,如果第三方的类成为了本类的成员变量,而本类只是用来操作位置相关信息,那么本类对于三方SDK又不属于<code>最少知道</code>的范畴,如<code>LocationAdapter</code>,如果本类还要处理另外的逻辑,如<code>Main</code>,虽然符合了迪米特法则,但是违背了单一职责原则.对于外部的引用,本应用最少了解,必然造成类数量的上升,合理安排哪些沟通需要中间类来搭建桥梁,哪些不需要,控制类的数量,减少代码体积.</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/05/15/设计模式(七)合成复用原则/"><span></span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/05/15/设计模式(七)合成复用原则/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-05-15T03:33:15.000Z">
-          2017-05-15
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h1 id="设计模式笔记-七-合成复用原则"><a href="#设计模式笔记-七-合成复用原则" class="headerlink" title="设计模式笔记(七)合成复用原则"></a>设计模式笔记(七)合成复用原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is.</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>公司老板可以管理所有岗位的员工实现公司的正常运转,而没有必要去学习所有技能,这里把管理看做组合/聚合,把学习看做继承/实现</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/system.png" alt=""><br><code>System</code>类的<code>getProperty</code>方法,最终由成员变量<code>props</code>来实现</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个员工模型,要求携带办公工具<br><img src="../img/tool.png" alt=""><br>由于科技发展,部分员工使用原有的<code>File</code>办公,部分员工替换办公工具,使用<code>Computer</code>办公.无论修改<code>Tool</code>还是<code>Employee</code>,都违背了开闭原则,现需改如下:<br><img src="../img/tools.png" alt=""><br>只要在员工初始化的时候指定使用工具,对成员变量<code>tool</code>赋值就可以区分了.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这里的继承,也包括java中的实现接口,<code>JDK1.8</code>中接口可以默认实现方法,子类去继承,所以,无论单继承还是多继承语言,只要分析好子类与父类之间的关系是<code>Has</code>还是<code>Is</code>,就比较容易区分使用<code>组合/聚合</code>还是<code>继承/实现</code>.</p>
 
       
     </div>
