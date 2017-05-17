@@ -45,9 +45,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">主页</a></li>
+        <li><a href="/">Home</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="/archives">Archives</a></li>
       
     </ul>
   </nav>
@@ -100,14 +100,55 @@
     </div>
 
     
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/15/设计模式(四)里氏代换原则/#comment">评论</a>
-        </span>
-      </span>
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/15/设计模式(五)依赖倒转原则/"><span></span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/15/设计模式(五)依赖倒转原则/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-15T03:33:15.000Z">
+          2017-05-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="设计模式笔记-五-依赖倒转原则"><a href="#设计模式笔记-五-依赖倒转原则" class="headerlink" title="设计模式笔记(五)依赖倒转原则"></a>设计模式笔记(五)依赖倒转原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>部门里的所有人,都具备完成一件工作的能力(实现方法<code>ganHuo()</code>),那么即便负责这件事的那个人离职了,也将有人可以去代替.</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/button.png" alt=""><br>对按钮设置点击事件,传入的是处理点击事件的接口对象,在方法中把传入对象赋值给成员变量<code>mOnClickListener</code>,在使用的时候只调用<code>mOnClickListener.onClick</code>方法来执行,具体执行的结果,依赖子类的实现.</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个可以从配置文件中读取配置信息字符串的转换类<code>FileConvertor</code><br><img src="../img/FileConvertor.png" alt=""><br>现在由于调整,之前读取<code>File</code>改成读取<code>XML</code>格式的配置文件,不光要增加一个<code>XMLConvertor</code>的类,还要修改<code>Main</code>的<code>getConfig</code>方法,所以修改如下<br><img src="../img/convertor.png" alt=""><br><code>Main</code>不在关心是谁来读取配置文件,只要需要传入具备读取配置文件功能的<code>Convertor</code>,调用<code>readSource</code>方法,拿到返回的<code>String</code>信息即可.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果一个类要用通过外部的对象来实现方法,那么这个时候方法传入的对象尽可能是抽象的.</p>
+
+      
     </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
     
   </div>
 </article>
@@ -159,15 +200,6 @@
     </div>
 
     
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/15/设计模式(三)开闭原则/#comment">评论</a>
-        </span>
-      </span>
-    </div>
-    
   </div>
 </article>
 
@@ -177,13 +209,13 @@
 
   
     
-    <h3 class="article-title"><a href="/2017/05/15/设计模式(五)依赖倒转原则/"><span></span></a></h3>
+    <h3 class="article-title"><a href="/2017/05/15/设计模式(七)合成复用原则/"><span></span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2017/05/15/设计模式(五)依赖倒转原则/" rel="bookmark">
+      <a href="/2017/05/15/设计模式(七)合成复用原则/" rel="bookmark">
         <time class="entry-date published" datetime="2017-05-15T03:33:15.000Z">
           2017-05-15
         </time>
@@ -197,11 +229,11 @@
   <div class="article-content">
     <div class="entry">
       
-        <h1 id="设计模式笔记-五-依赖倒转原则"><a href="#设计模式笔记-五-依赖倒转原则" class="headerlink" title="设计模式笔记(五)依赖倒转原则"></a>设计模式笔记(五)依赖倒转原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程。</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>部门里的所有人,都具备完成一件工作的能力(实现方法<code>ganHuo()</code>),那么即便负责这件事的那个人离职了,也将有人可以去代替.</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/button.png" alt=""><br>对按钮设置点击事件,传入的是处理点击事件的接口对象,在方法中把传入对象赋值给成员变量<code>mOnClickListener</code>,在使用的时候只调用<code>mOnClickListener.onClick</code>方法来执行,具体执行的结果,依赖子类的实现.</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个可以从配置文件中读取配置信息字符串的转换类<code>FileConvertor</code><br><img src="../img/FileConvertor.png" alt=""><br>现在由于调整,之前读取<code>File</code>改成读取<code>XML</code>格式的配置文件,不光要增加一个<code>XMLConvertor</code>的类,还要修改<code>Main</code>的<code>getConfig</code>方法,所以修改如下<br><img src="../img/convertor.png" alt=""><br><code>Main</code>不在关心是谁来读取配置文件,只要需要传入具备读取配置文件功能的<code>Convertor</code>,调用<code>readSource</code>方法,拿到返回的<code>String</code>信息即可.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果一个类要用通过外部的对象来实现方法,那么这个时候方法传入的对象尽可能是抽象的.</p>
+        <h1 id="设计模式笔记-七-合成复用原则"><a href="#设计模式笔记-七-合成复用原则" class="headerlink" title="设计模式笔记(七)合成复用原则"></a>设计模式笔记(七)合成复用原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is.</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>公司老板可以管理所有岗位的员工实现公司的正常运转,而没有必要去学习所有技能,这里把管理看做组合/聚合,把学习看做继承/实现</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/system.png" alt=""><br><code>System</code>类的<code>getProperty</code>方法,最终由成员变量<code>props</code>来实现</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个员工模型,要求携带办公工具<br><img src="../img/tool.png" alt=""><br>由于科技发展,部分员工使用原有的<code>File</code>办公,部分员工替换办公工具,使用<code>Computer</code>办公.无论修改<code>Tool</code>还是<code>Employee</code>,都违背了开闭原则,现需改如下:<br><img src="../img/tools.png" alt=""><br>只要在员工初始化的时候指定使用工具,对成员变量<code>tool</code>赋值就可以区分了.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这里的继承,也包括java中的实现接口,<code>JDK1.8</code>中接口可以默认实现方法,子类去继承,所以,无论单继承还是多继承语言,只要分析好子类与父类之间的关系是<code>Has</code>还是<code>Is</code>,就比较容易区分使用<code>组合/聚合</code>还是<code>继承/实现</code>.</p>
 
       
     </div>
@@ -217,74 +249,6 @@
 
     </div>
 
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/15/设计模式(五)依赖倒转原则/#comment">评论</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/05/15/设计模式(八)迪米特法则/"><span></span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/05/15/设计模式(八)迪米特法则/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-05-15T03:33:15.000Z">
-          2017-05-15
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h1 id="设计模式笔记-八-迪米特法则"><a href="#设计模式笔记-八-迪米特法则" class="headerlink" title="设计模式笔记(八)迪米特法则"></a>设计模式笔记(八)迪米特法则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>迪米特法则（Law of Demeter）一个软件实体应当尽可能少地与其他实体发生相互作用.它又叫作最少知道原则（Least Knowledge Principle 简写LKP），就是说一个对象应当对其他对象有尽可能少的了解,不和陌生人说话。</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>去银行存钱,我们也不知道钱存到哪里,怎么存的,只关心账户上的余额.</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p>我们和硬件,系统没有直接打交道,开辟线程通过<code>Thread</code>类来实现<br><img src="../img/thread.png" alt=""><br>所有代码的<code>API</code>具体实现我们都可以不知道,只关心它如何使用,对于<code>尽可能少的了解</code>:<br>1.对本类和父类<br>2.对本类持有的成员变量<br>3.对本类方法返回值为某一类的对象实例<br>本类除以上三点对于任何外部类,保持最少了解.</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>因公司需要定位功能,现在引进第三方定位SDK,获取用户位置信息<br><img src="../img/location.png" alt=""><br>由于该第三方SDK改为收费项目,公司决定替换SDK,采用另一家免费公司,修改<code>main</code>方法显然违背了开闭原则,所以现修改如下:<br><img src="../img/locationadapter.png" alt=""><br>虽然替换SDK的工作仍然要修改原代码,但应用有可能在多个地方调用,改成只修改<code>LocationAdapter</code>一处代码,而且修改的类由<code>main</code>函数到<code>LocationAdapter</code>,减少了对业务逻辑的影响.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>引用第三方SDK,显然属于<code>最少知道</code>的范畴,如果第三方的类成为了本类的成员变量,而本类只是用来操作位置相关信息,那么本类对于三方SDK又不属于<code>最少知道</code>的范畴,如<code>LocationAdapter</code>,如果本类还要处理另外的逻辑,如<code>Main</code>,虽然符合了迪米特法则,但是违背了单一职责原则.对于外部的引用,本应用最少了解,必然造成类数量的上升,合理安排哪些沟通需要中间类来搭建桥梁,哪些不需要,控制类的数量,减少代码体积.</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/15/设计模式(八)迪米特法则/#comment">评论</a>
-        </span>
-      </span>
-    </div>
     
   </div>
 </article>
@@ -337,15 +301,6 @@
     </div>
 
     
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/15/设计模式(六)接口隔离原则/#comment">评论</a>
-        </span>
-      </span>
-    </div>
-    
   </div>
 </article>
 
@@ -355,13 +310,13 @@
 
   
     
-    <h3 class="article-title"><a href="/2017/05/15/设计模式(七)合成复用原则/"><span></span></a></h3>
+    <h3 class="article-title"><a href="/2017/05/15/设计模式(八)迪米特法则/"><span></span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2017/05/15/设计模式(七)合成复用原则/" rel="bookmark">
+      <a href="/2017/05/15/设计模式(八)迪米特法则/" rel="bookmark">
         <time class="entry-date published" datetime="2017-05-15T03:33:15.000Z">
           2017-05-15
         </time>
@@ -375,11 +330,11 @@
   <div class="article-content">
     <div class="entry">
       
-        <h1 id="设计模式笔记-七-合成复用原则"><a href="#设计模式笔记-七-合成复用原则" class="headerlink" title="设计模式笔记(七)合成复用原则"></a>设计模式笔记(七)合成复用原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is.</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>公司老板可以管理所有岗位的员工实现公司的正常运转,而没有必要去学习所有技能,这里把管理看做组合/聚合,把学习看做继承/实现</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/system.png" alt=""><br><code>System</code>类的<code>getProperty</code>方法,最终由成员变量<code>props</code>来实现</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个员工模型,要求携带办公工具<br><img src="../img/tool.png" alt=""><br>由于科技发展,部分员工使用原有的<code>File</code>办公,部分员工替换办公工具,使用<code>Computer</code>办公.无论修改<code>Tool</code>还是<code>Employee</code>,都违背了开闭原则,现需改如下:<br><img src="../img/tools.png" alt=""><br>只要在员工初始化的时候指定使用工具,对成员变量<code>tool</code>赋值就可以区分了.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这里的继承,也包括java中的实现接口,<code>JDK1.8</code>中接口可以默认实现方法,子类去继承,所以,无论单继承还是多继承语言,只要分析好子类与父类之间的关系是<code>Has</code>还是<code>Is</code>,就比较容易区分使用<code>组合/聚合</code>还是<code>继承/实现</code>.</p>
+        <h1 id="设计模式笔记-八-迪米特法则"><a href="#设计模式笔记-八-迪米特法则" class="headerlink" title="设计模式笔记(八)迪米特法则"></a>设计模式笔记(八)迪米特法则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>迪米特法则（Law of Demeter）一个软件实体应当尽可能少地与其他实体发生相互作用.它又叫作最少知道原则（Least Knowledge Principle 简写LKP），就是说一个对象应当对其他对象有尽可能少的了解,不和陌生人说话。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>去银行存钱,我们也不知道钱存到哪里,怎么存的,只关心账户上的余额.</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p>我们和硬件,系统没有直接打交道,开辟线程通过<code>Thread</code>类来实现<br><img src="../img/thread.png" alt=""><br>所有代码的<code>API</code>具体实现我们都可以不知道,只关心它如何使用,对于<code>尽可能少的了解</code>:<br>1.对本类和父类<br>2.对本类持有的成员变量<br>3.对本类方法返回值为某一类的对象实例<br>本类除以上三点对于任何外部类,保持最少了解.</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>因公司需要定位功能,现在引进第三方定位SDK,获取用户位置信息<br><img src="../img/location.png" alt=""><br>由于该第三方SDK改为收费项目,公司决定替换SDK,采用另一家免费公司,修改<code>main</code>方法显然违背了开闭原则,所以现修改如下:<br><img src="../img/locationadapter.png" alt=""><br>虽然替换SDK的工作仍然要修改原代码,但应用有可能在多个地方调用,改成只修改<code>LocationAdapter</code>一处代码,而且修改的类由<code>main</code>函数到<code>LocationAdapter</code>,减少了对业务逻辑的影响.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>引用第三方SDK,显然属于<code>最少知道</code>的范畴,如果第三方的类成为了本类的成员变量,而本类只是用来操作位置相关信息,那么本类对于三方SDK又不属于<code>最少知道</code>的范畴,如<code>LocationAdapter</code>,如果本类还要处理另外的逻辑,如<code>Main</code>,虽然符合了迪米特法则,但是违背了单一职责原则.对于外部的引用,本应用最少了解,必然造成类数量的上升,合理安排哪些沟通需要中间类来搭建桥梁,哪些不需要,控制类的数量,减少代码体积.</p>
 
       
     </div>
@@ -395,15 +350,6 @@
 
     </div>
 
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/15/设计模式(七)合成复用原则/#comment">评论</a>
-        </span>
-      </span>
-    </div>
     
   </div>
 </article>
@@ -454,15 +400,6 @@
 
     </div>
 
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/14/设计模式(二)单一职责原则/#comment">评论</a>
-        </span>
-      </span>
-    </div>
     
   </div>
 </article>
@@ -520,15 +457,6 @@
     </div>
 
     
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/14/设计模式(一)概述/#comment">评论</a>
-        </span>
-      </span>
-    </div>
-    
   </div>
 </article>
 
@@ -574,15 +502,6 @@
 
     </div>
 
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/11/hello_world/#comment">评论</a>
-        </span>
-      </span>
-    </div>
     
   </div>
 </article>
