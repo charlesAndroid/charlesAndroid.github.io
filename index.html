@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://charlesandroid.github.io"></form>
@@ -82,7 +82,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(四)里氏代换原则/" data-id="cj2sedvpd0007p1fygb1zj0q0" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(四)里氏代换原则/" data-id="cj2sekbmx0007t7fyej1qdfov" class="article-share-link">Share</a>
       
       
     </footer>
@@ -113,38 +113,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(三)开闭原则/" data-id="cj2sedvoo0001p1fynfqxukcr" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-设计模式(五)依赖倒转原则" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/15/设计模式(五)依赖倒转原则/" class="article-date">
-  <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">2017-05-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="设计模式笔记-五-依赖倒转原则"><a href="#设计模式笔记-五-依赖倒转原则" class="headerlink" title="设计模式笔记(五)依赖倒转原则"></a>设计模式笔记(五)依赖倒转原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程。</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>部门里的所有人,都具备完成一件工作的能力(实现方法<code>ganHuo()</code>),那么即便负责这件事的那个人离职了,也将有人可以去代替.</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/button.png" alt=""><br>对按钮设置点击事件,传入的是处理点击事件的接口对象,在方法中把传入对象赋值给成员变量<code>mOnClickListener</code>,在使用的时候只调用<code>mOnClickListener.onClick</code>方法来执行,具体执行的结果,依赖子类的实现.</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个可以从配置文件中读取配置信息字符串的转换类<code>FileConvertor</code><br><img src="../img/FileConvertor.png" alt=""><br>现在由于调整,之前读取<code>File</code>改成读取<code>XML</code>格式的配置文件,不光要增加一个<code>XMLConvertor</code>的类,还要修改<code>Main</code>的<code>getConfig</code>方法,所以修改如下<br><img src="../img/convertor.png" alt=""><br><code>Main</code>不在关心是谁来读取配置文件,只要需要传入具备读取配置文件功能的<code>Convertor</code>,调用<code>readSource</code>方法,拿到返回的<code>String</code>信息即可.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果一个类要用通过外部的对象来实现方法,那么这个时候方法传入的对象尽可能是抽象的.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(五)依赖倒转原则/" data-id="cj2sedvot0003p1fypg83cems" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(三)开闭原则/" data-id="cj2sekbmj0001t7fy0jkjgsf8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +144,38 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(七)合成复用原则/" data-id="cj2sedvou0004p1fy8rqa2t11" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(七)合成复用原则/" data-id="cj2sekbmo0003t7fynyal7ax3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式(五)依赖倒转原则" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/15/设计模式(五)依赖倒转原则/" class="article-date">
+  <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">2017-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式笔记-五-依赖倒转原则"><a href="#设计模式笔记-五-依赖倒转原则" class="headerlink" title="设计模式笔记(五)依赖倒转原则"></a>设计模式笔记(五)依赖倒转原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>部门里的所有人,都具备完成一件工作的能力(实现方法<code>ganHuo()</code>),那么即便负责这件事的那个人离职了,也将有人可以去代替.</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/button.png" alt=""><br>对按钮设置点击事件,传入的是处理点击事件的接口对象,在方法中把传入对象赋值给成员变量<code>mOnClickListener</code>,在使用的时候只调用<code>mOnClickListener.onClick</code>方法来执行,具体执行的结果,依赖子类的实现.</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个可以从配置文件中读取配置信息字符串的转换类<code>FileConvertor</code><br><img src="../img/FileConvertor.png" alt=""><br>现在由于调整,之前读取<code>File</code>改成读取<code>XML</code>格式的配置文件,不光要增加一个<code>XMLConvertor</code>的类,还要修改<code>Main</code>的<code>getConfig</code>方法,所以修改如下<br><img src="../img/convertor.png" alt=""><br><code>Main</code>不在关心是谁来读取配置文件,只要需要传入具备读取配置文件功能的<code>Convertor</code>,调用<code>readSource</code>方法,拿到返回的<code>String</code>信息即可.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果一个类要用通过外部的对象来实现方法,那么这个时候方法传入的对象尽可能是抽象的.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(五)依赖倒转原则/" data-id="cj2sekbmp0004t7fyousx1lym" class="article-share-link">Share</a>
       
       
     </footer>
@@ -207,7 +207,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(六)接口隔离原则/" data-id="cj2sedvov0005p1fy5avdbpxp" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(六)接口隔离原则/" data-id="cj2sekbmu0006t7fyicv0a4du" class="article-share-link">Share</a>
       
       
     </footer>
@@ -238,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(二)单一职责原则/" data-id="cj2sedvoy0006p1fy3dubyhd1" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(二)单一职责原则/" data-id="cj2sekbmq0005t7fy8hc3sn1p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -275,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(一)概述/" data-id="cj2sedvor0002p1fy8h9vtw73" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式(一)概述/" data-id="cj2sekbmd0000t7fy6bn8gois" class="article-share-link">Share</a>
       
       
     </footer>
@@ -302,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/11/hello_world/" data-id="cj2sedvoj0000p1fyfjl470x1" class="article-share-link">Partager</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/11/hello_world/" data-id="cj2sekbmm0002t7fy7e2y8z39" class="article-share-link">Share</a>
       
       
     </footer>
@@ -337,7 +337,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -350,11 +350,11 @@
           </li>
         
           <li>
-            <a href="/2017/05/15/设计模式(五)依赖倒转原则/">(no title)</a>
+            <a href="/2017/05/15/设计模式(七)合成复用原则/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/05/15/设计模式(七)合成复用原则/">(no title)</a>
+            <a href="/2017/05/15/设计模式(五)依赖倒转原则/">(no title)</a>
           </li>
         
           <li>
@@ -374,7 +374,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Charles<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
