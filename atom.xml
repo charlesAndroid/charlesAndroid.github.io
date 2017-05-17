@@ -178,26 +178,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://charlesandroid.github.io/2017/05/11/hello_world/"/>
-    <id>http://charlesandroid.github.io/2017/05/11/hello_world/</id>
-    <published>2017-05-11T09:29:32.000Z</published>
-    <updated>2017-05-16T03:12:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="创建blog"><a href="#创建blog" class="headerlink" title="创建blog"></a>创建blog</h1><p>Hello Charles</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;创建blog&quot;&gt;&lt;a href=&quot;#创建blog&quot; class=&quot;headerlink&quot; title=&quot;创建blog&quot;&gt;&lt;/a&gt;创建blog&lt;/h1&gt;&lt;p&gt;Hello Charles&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>设计模式笔记(一)概述</title>
     <link href="http://charlesandroid.github.io/2017/05/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%B8%80)%E6%A6%82%E8%BF%B0/"/>
     <id>http://charlesandroid.github.io/2017/05/11/设计模式(一)概述/</id>
