@@ -1,0 +1,531 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Charles</title>
+
+  
+  <meta name="author" content="Charles">
+  
+
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="Charles"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Charles</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/18/设计模式(八)迪米特法则/"><span>设计模式笔记(八)迪米特法则</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/18/设计模式(八)迪米特法则/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-18T09:02:05.000Z">
+          2017-05-18
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>迪米特法则（Law of Demeter）一个软件实体应当尽可能少地与其他实体发生相互作用.它又叫作最少知道原则（Least Knowledge Principle 简写LKP），就是说一个对象应当对其他对象有尽可能少的了解,不和陌生人说话。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>去银行存钱,我们也不知道钱存到哪里,怎么存的,只关心账户上的余额.</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p>我们和硬件,系统没有直接打交道,开辟线程通过<code>Thread</code>类来实现<br><img src="../img/thread.png" alt=""><br>所有代码的<code>API</code>具体实现我们都可以不知道,只关心它如何使用,对于<code>尽可能少的了解</code>:<br>1.对本类和父类<br>2.对本类持有的成员变量<br>3.对本类方法返回值为某一类的对象实例<br>本类除以上三点对于任何外部类,保持最少了解.</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>因公司需要定位功能,现在引进第三方定位SDK,获取用户位置信息<br><img src="../img/location.png" alt=""><br>由于该第三方SDK改为收费项目,公司决定替换SDK,采用另一家免费公司,修改<code>main</code>方法显然违背了开闭原则,所以现修改如下:<br><img src="../img/locationadapter.png" alt=""><br>虽然替换SDK的工作仍然要修改原代码,但应用有可能在多个地方调用,改成只修改<code>LocationAdapter</code>一处代码,而且修改的类由<code>main</code>函数到<code>LocationAdapter</code>,减少了对业务逻辑的影响.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>引用第三方SDK,显然属于<code>最少知道</code>的范畴,如果第三方的类成为了本类的成员变量,而本类只是用来操作位置相关信息,那么本类对于三方SDK又不属于<code>最少知道</code>的范畴,如<code>LocationAdapter</code>,如果本类还要处理另外的逻辑,如<code>Main</code>,虽然符合了迪米特法则,但是违背了单一职责原则.对于外部的引用,本应用最少了解,必然造成类数量的上升,合理安排哪些沟通需要中间类来搭建桥梁,哪些不需要,控制类的数量,减少代码体积.</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/17/设计模式(七)合成复用原则/"><span>设计模式笔记(七)合成复用原则</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/17/设计模式(七)合成复用原则/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-17T08:57:05.000Z">
+          2017-05-17
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is.</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>公司老板可以管理所有岗位的员工实现公司的正常运转,而没有必要去学习所有技能,这里把管理看做组合/聚合,把学习看做继承/实现</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/system.png" alt=""><br><code>System</code>类的<code>getProperty</code>方法,最终由成员变量<code>props</code>来实现</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个员工模型,要求携带办公工具<br><img src="../img/tool.png" alt=""><br>由于科技发展,部分员工使用原有的<code>File</code>办公,部分员工替换办公工具,使用<code>Computer</code>办公.无论修改<code>Tool</code>还是<code>Employee</code>,都违背了开闭原则,现需改如下:<br><img src="../img/tools.png" alt=""><br>只要在员工初始化的时候指定使用工具,对成员变量<code>tool</code>赋值就可以区分了.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这里的继承,也包括java中的实现接口,<code>JDK1.8</code>中接口可以默认实现方法,子类去继承,所以,无论单继承还是多继承语言,只要分析好子类与父类之间的关系是<code>Has</code>还是<code>Is</code>,就比较容易区分使用<code>组合/聚合</code>还是<code>继承/实现</code>.</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/16/设计模式(六)接口隔离原则/"><span>设计模式笔记(六)接口隔离原则</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/16/设计模式(六)接口隔离原则/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-16T08:57:05.000Z">
+          2017-05-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口.</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/arraylist.png" alt=""><br>图中每一个接口都包含自己本类应该具备的职能,<code>ArrayList</code>实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个登录页面,实现登录成功后展示动画效果<br><img src="../img/Login.png" alt=""><br>产品上线后发现在修改密码页面,修改密码成功后也需要展示动画效果,那么如果新建一个<code>ModifyPage</code>,实现<code>ILogin</code>接口,必然要实现<code>login</code>方法,违背了接口隔离原则,现修改如下:  </p>
+<p><img src="../img/modify.png" alt="">  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最小接口的定义要遵从单一职责原则,也不能过分拆分,导致后期维护成本上升</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/15/设计模式(五)依赖倒转原则/"><span>设计模式笔记(五)依赖倒转原则</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/15/设计模式(五)依赖倒转原则/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-15T08:57:05.000Z">
+          2017-05-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>部门里的所有人,都具备完成一件工作的能力(实现方法<code>ganHuo()</code>),那么即便负责这件事的那个人离职了,也将有人可以去代替.</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/button.png" alt=""><br>对按钮设置点击事件,传入的是处理点击事件的接口对象,在方法中把传入对象赋值给成员变量<code>mOnClickListener</code>,在使用的时候只调用<code>mOnClickListener.onClick</code>方法来执行,具体执行的结果,依赖子类的实现.</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个可以从配置文件中读取配置信息字符串的转换类<code>FileConvertor</code><br><img src="../img/FileConvertor.png" alt=""><br>现在由于调整,之前读取<code>File</code>改成读取<code>XML</code>格式的配置文件,不光要增加一个<code>XMLConvertor</code>的类,还要修改<code>Main</code>的<code>getConfig</code>方法,所以修改如下<br><img src="../img/convertor.png" alt=""><br><code>Main</code>不在关心是谁来读取配置文件,只要需要传入具备读取配置文件功能的<code>Convertor</code>,调用<code>readSource</code>方法,拿到返回的<code>String</code>信息即可.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果一个类要用通过外部的对象来实现方法,那么这个时候方法传入的对象尽可能是抽象的.</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/14/设计模式(四)里氏代换原则/"><span>设计模式笔记(四)里氏代换原则</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/14/设计模式(四)里氏代换原则/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-14T08:57:05.000Z">
+          2017-05-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>可以用哺乳动物来表示的地方,也可以用人来表示,用人来表示的地方,可以用男人或女人来表示  </p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/bufferreader.png" alt=""><br>在<code>BufferReader</code>的构造方法中需要传入<code>Reader</code>对象,这些地方可以传入<code>Reader</code>的子类,或者子类的子类.这里<code>BufferReader</code>也是<code>Reader</code>的子类,由子类继承父类,构造方法注入父类对象并提供额外的功能,这种设计模式为<code>包装设计模式</code>.</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>实现一个计算两个数字和的方法<code>sum</code><br><img src="../img/math.png" alt=""><br>现在新需求,提供一个计算两个数和,并乘以100.程序员小Li发现<code>Math</code>类中已经提供了<code>sum</code>方法,所以用<code>Count</code>继承了<code>Math</code>类,重写<code>sum</code>方法,在原先的返回值上直接乘以100.此时已经违背了里氏代换原则,由于<code>Math</code>类是提供计算的方法,<code>Count</code>虽然具备计算的能力<code>sum</code>,但实际功能已经被修改,无法再代替父类出现的地方,所以再重写的时候,要注意此原则.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>里氏代换原则强调的是<code>代换</code>,单单考虑这一原则,即父类出现的地方子类必须可以代换,而不影响其功能.<br>1.在继承一个类重写其方法时,父类已经实现的功能可以扩展,尽量不要覆盖,以便不影响代换时的功能<br>2.某些方法需要子类去重写覆盖时,尽量用抽象方法来限制,如果本类也需要实现,那么可以在方法体加上注释文档,告诉子类不要完全覆盖父类的方法,(<code>Android</code>中可以使用<code>@CallSuper</code>,参考<code>Activity</code>生命周期方法)</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/13/设计模式(三)开闭原则/"><span>设计模式笔记(三)开闭原则</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/13/设计模式(三)开闭原则/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-13T08:57:05.000Z">
+          2017-05-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>开闭原则（OCP）是面向对象设计中“可复用设计”的基石，是面向对象设计中最重要的原则之一，其它很多的设计原则都是实现开闭原则的一种手段。对于扩展是开放的，对于修改是关闭的，这意味着模块的行为是可以扩展的。当应用的需求改变时，我们可以对模块进行扩展，使其具有满足那些改变的新行为。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>1.每台显示器都有电源开关,如果修改开关的位置,不应该影响开关这个功能,也不需要对内部进行改造.<br>2.每个软件,对外提供自身的功能,任何人使用,都不应该需要修改其内部实现.</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/Collections.png" alt=""><br>只要实现List接口的集合,都可以通过<code>Conllections.sort</code>排序</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个打印学生信息的功能<code>printStudent</code><br><img src="../img/printStudent.png" alt=""><br>如果再增加打印老师,学校信息,类必然增加重复代码,所以通过如下设计修改<br><img src="../img/printObject.png" alt=""><br>任何对象只要继承<code>Object</code>都可以实现<code>toString</code>方法,从而使用<code>Print.printObject</code>方法打印信息</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对于一个使用外部传入参数的方法,在使用参数的方法或属性的时候,尽量使传入参数具有方法内使用的共有特征,从而达到对外部提供修改的开放原则,减少或关闭对内部代码的修改.</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/12/设计模式(二)单一职责原则/"><span>设计模式笔记(二)单一职责原则</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/12/设计模式(二)单一职责原则/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-12T08:57:05.000Z">
+          2017-05-12
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>单一职责原则（SRP：Single responsibility principle）又称单一功能原则,所谓职责是指类变化的原因,如果一个类有多于一个的动机被改变，那么这个类就具有多于一个的职责。而单一职责原则就是指一个类或者模块应该有且只有一个改变的原因。  </p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>1.使我修改这篇文章的唯一原因,只能是因为这篇文章有需要修改的地方<br>2.我每天只能去到一家公司上班,负责本职工作领域</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/FileUtil1.png" alt=""><br>只负责操作File对象</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>作为操作File的工具类,只负责操作File对象,但有没有可能违背单一职责原则呢?答案是可能的.<br>如果现在需要提供方法,拷贝一个文件,并在目标文件末尾插入指定字符串.<br><img src="../img/FileUtil1.png" alt=""><br>如果再增加方法,拷贝一个文件,并在目标文件头部插入指定字符串.因此,FileUtil会增加更多不必要的方法,或者把<code>copyFileInsert</code>方法修改的过于庞大.应该重新把需求拆分.提供一个拷贝文件的方法<code>copyFile</code>,提供一个在文件插入字符串的方法<code>insertFile</code>,具体修改哪个文件,应该在头部添加还是尾部添加,由调用者决定,修改后结构如下:<br><img src="../img/FileUtil2.png" alt=""><br><code>insertFile</code>方法用<code>int</code>型变量来控制插入位置</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>无论设计方法,类还是模块,无论代码体积大小,都要遵循单一职责原则,尽可能的避免多因素导致的代码修改.</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/11/设计模式(一)概述/"><span>设计模式笔记(一)概述</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/11/设计模式(一)概述/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-11T08:57:01.000Z">
+          2017-05-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><p>20世纪70年代,Christophr Alexander研究为了解决同一个问题而设计出不同的建筑结构.发现那些高质量设计中的<code>相似性</code>.用模式语言来指这种<code>相似性</code>.<br>    -A Pattern Language:Towns,Buildings,Construction(牛津大学出版社,1977年)<br>    -永久的建筑风格(牛津大学出版社,1979年)<br>由Alexander发现并记录的这些模式仅仅是涉及诸如建筑物,花园和道路之类的建筑学方面的模式.20世纪90年代逐渐的被软件工程所整合使用,由GoF归纳发表了23种在软件开发中使用频率较高的设计模式.</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>设计模式是指,<code>在某种特定的情况下,采取已经实践证明的最佳解决方案来实现需求.</code><br>程序的设计和实现来源于生活,而在特定的情况下,采取已知、最佳的方案,能更高效的实现需求.在GoF总结的23种设计模式中,包含5种创建型设计模式,7种结构型设计模式和11种行为型设计模式,根据某种设计模式的作用,又可分为类模式和对象模式<br><img src="../img/设计模式.png" alt=""><br>设计模式是前人总结的经验,要想设计出高内聚、低耦合的程序,就要好好学习设计模式,并翻阅遵从这些设计模式设计的程序案例</p>
+<h2 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h2><p>设计模式的总结,是按照一定的原则,主要分为以下7个原则  </p>
+<h4 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h4><p>一段代码,一个类,一个模块只负责自己领域的工作,尽可能不参与其他领域的工作</p>
+<h4 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h4><p>对外提供可修改的方法,对内避免代码修改,简称对外开放,对内关闭</p>
+<h4 id="里氏代换原则"><a href="#里氏代换原则" class="headerlink" title="里氏代换原则"></a>里氏代换原则</h4><p>一个可以用基类(父类)表示的地方,一定可以用衍生类(子类)来表示,并且替换后原程序不受到影响</p>
+<h4 id="依赖倒转原则"><a href="#依赖倒转原则" class="headerlink" title="依赖倒转原则"></a>依赖倒转原则</h4><p>基类(父类)不应该依赖衍生类(子类),抽象模块不应依赖具体实现</p>
+<h4 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h4><p>一系列多个方法的定义,不应该定义在同一接口中,针对不同功能,编写不同接口</p>
+<h4 id="合成复用原则"><a href="#合成复用原则" class="headerlink" title="合成复用原则"></a>合成复用原则</h4><p>使用组合,对象包含对象的关系,尽可能的少使用继承关系</p>
+<h4 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h4><p>又叫最少知道原则,意为一个对象对另一个对象尽可能少的了解  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>之所以每一种设计原则的概念解释,都用了尽可能和应该这样的词来描述,是因为设计模式虽然是建立在这些原则的基础之上总结出来的,但不代表每一种设计模式都绝对遵循这些设计原则,因此设计模式是在设计原则之上,合理的取舍总结出来的</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/10/hello_charles/"><span>Hello Charles</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/10/hello_charles/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-10T08:57:01.000Z">
+          2017-05-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h2>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+
+<nav class="pagination">
+  
+  
+</nav>
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 Charles
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
