@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>设计模式笔记(三)开闭原则 | Charles</title>
+
+  
+  <meta name="author" content="Charles">
+  
+
+  
+  <meta name="description" content="概念开闭原则（OCP）是面向对象设计中“可复用设计”的基石，是面向对象设计中最重要的原则之一，其它很多的设计原则都是实现开闭原则的一种手段。对于扩展是开放的，对于修改是关闭的，这意味着模块的行为是可以扩展的。当应用的需求改变时，我们可以对模块进行扩展，使其具有满足那些改变的新行为。
+例子生活中1.每">
+  
+
+  
+  
+  <meta name="keywords" content="">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="设计模式笔记(三)开闭原则"/>
+
+  <meta property="og:site_name" content="Charles"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Charles</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>设计模式笔记(三)开闭原则</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/13/设计模式笔记(三)开闭原则/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-13T08:57:05.000Z">
+          2017-05-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>开闭原则（OCP）是面向对象设计中“可复用设计”的基石，是面向对象设计中最重要的原则之一，其它很多的设计原则都是实现开闭原则的一种手段。对于扩展是开放的，对于修改是关闭的，这意味着模块的行为是可以扩展的。当应用的需求改变时，我们可以对模块进行扩展，使其具有满足那些改变的新行为。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>1.每台显示器都有电源开关,如果修改开关的位置,不应该影响开关这个功能,也不需要对内部进行改造.<br>2.每个软件,对外提供自身的功能,任何人使用,都不应该需要修改其内部实现.</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="/2017/05/13/设计模式笔记(三)开闭原则/img/Collections.png" alt=""><br>只要实现List接口的集合,都可以通过<code>Conllections.sort</code>排序</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个打印学生信息的功能<code>printStudent</code><br><img src="/2017/05/13/设计模式笔记(三)开闭原则/img/printStudent.png" alt=""><br>如果再增加打印老师,学校信息,类必然增加重复代码,所以通过如下设计修改<br><img src="/2017/05/13/设计模式笔记(三)开闭原则/img/printObject.png" alt=""><br>任何对象只要继承<code>Object</code>都可以实现<code>toString</code>方法,从而使用<code>Print.printObject</code>方法打印信息</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对于一个使用外部传入参数的方法,在使用参数的方法或属性的时候,尽量使传入参数具有方法内使用的共有特征,从而达到对外部提供修改的开放原则,减少或关闭对内部代码的修改.</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 Charles
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
