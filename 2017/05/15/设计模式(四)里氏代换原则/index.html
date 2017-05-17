@@ -1,94 +1,196 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="utf-8">
+  
   <title>Charles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="设计模式笔记(四)里氏代换原则概念里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。 例子生活中可以用哺乳动物来表示的地方,也可以用人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Charles">
+<meta property="og:url" content="http://charlesandroid.github.io/2017/05/15/设计模式(四)里氏代换原则/index.html">
+<meta property="og:site_name" content="Charles">
+<meta property="og:description" content="设计模式笔记(四)里氏代换原则概念里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。 例子生活中可以用哺乳动物来表示的地方,也可以用人">
+<meta property="og:image" content="http://charlesandroid.github.io/2017/05/15/img/bufferreader.png">
+<meta property="og:image" content="http://charlesandroid.github.io/2017/05/15/img/math.png">
+<meta property="og:updated_time" content="2017-05-16T06:55:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Charles">
+<meta name="twitter:description" content="设计模式笔记(四)里氏代换原则概念里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。 例子生活中可以用哺乳动物来表示的地方,也可以用人">
+<meta name="twitter:image" content="http://charlesandroid.github.io/2017/05/15/img/bufferreader.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml">
   
   
-  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
   <link rel="stylesheet" href="/css/style.css">
+  
+
 </head>
 
 <body>
-<div class="Shell">
-    <aside class='SideBar'>
-    <section class='avatar' style="background-image: url(undefined)">
-        <div class='av-pic' style="background-image: url(undefined)">
-        </div>
-    </section>
-    <section class='menu'>
-        <div>Charles</div>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Charles</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
-        <ul>
-          
-            <a href="/" class="Btn">
-              <li>Home</li>
-            </a>  
-          
-            <a href="/archives/" class="Btn">
-              <li>Archive</li>
-            </a>  
-          
-        </ul>
-    </section>
-    <section class="media">
+          <a class="main-nav-link" href="/">Home</a>
         
-    </section>
-</aside>
-
-    <div class="container">
-        <div data-pager-shell>
-            <div>
-  <article class='ContentView'>
-    <header class='PageTitle'>
-        <h1></h1>
-    </header>
-
-    <section>
-      <h1 id="设计模式笔记-四-里氏代换原则"><a href="#设计模式笔记-四-里氏代换原则" class="headerlink" title="设计模式笔记(四)里氏代换原则"></a>设计模式笔记(四)里氏代换原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。</p>
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://charlesandroid.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-设计模式(四)里氏代换原则" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/15/设计模式(四)里氏代换原则/" class="article-date">
+  <time datetime="2017-05-15T06:30:47.000Z" itemprop="datePublished">2017-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式笔记-四-里氏代换原则"><a href="#设计模式笔记-四-里氏代换原则" class="headerlink" title="设计模式笔记(四)里氏代换原则"></a>设计模式笔记(四)里氏代换原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。</p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>可以用哺乳动物来表示的地方,也可以用人来表示,用人来表示的地方,可以用男人或女人来表示  </p>
 <h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/bufferreader.png" alt=""><br>在<code>BufferReader</code>的构造方法中需要传入<code>Reader</code>对象,这些地方可以传入<code>Reader</code>的子类,或者子类的子类.这里<code>BufferReader</code>也是<code>Reader</code>的子类,由子类继承父类,构造方法注入父类对象并提供额外的功能,这种设计模式为<code>包装设计模式</code>.</p>
 <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>实现一个计算两个数字和的方法<code>sum</code><br><img src="../img/math.png" alt=""><br>现在新需求,提供一个计算两个数和,并乘以100.程序员小Li发现<code>Math</code>类中已经提供了<code>sum</code>方法,所以用<code>Count</code>继承了<code>Math</code>类,重写<code>sum</code>方法,在原先的返回值上直接乘以100.此时已经违背了里氏代换原则,由于<code>Math</code>类是提供计算的方法,<code>Count</code>虽然具备计算的能力<code>sum</code>,但实际功能已经被修改,无法再代替父类出现的地方,所以再重写的时候,要注意此原则.</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>里氏代换原则强调的是<code>代换</code>,单单考虑这一原则,即父类出现的地方子类必须可以代换,而不影响其功能.<br>1.在继承一个类重写其方法时,父类已经实现的功能可以扩展,尽量不要覆盖,以便不影响代换时的功能<br>2.某些方法需要子类去重写覆盖时,尽量用抽象方法来限制,如果本类也需要实现,那么可以在方法体加上注释文档,告诉子类不要完全覆盖父类的方法,(<code>Android</code>中可以使用<code>@CallSuper</code>,参考<code>Activity</code>生命周期方法)</p>
 
-
       
-
-    </section>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(四)里氏代换原则/" data-id="cj2smjf2h0007ttfyuqx8eum9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
     
-      <section class='ArticleMeta'>
-          <div>
-            发布于&nbsp;
-            <time datetime="2017-05-15T06:30:47.000Z" itemprop="datePublished">
-              2017-05-15
-            </time>
-          </div>
-          
-      </section>
-    
-    
-</article>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/05/15/设计模式(三)开闭原则/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
 
   
-</div>
+</article>
 
-            <footer>
-    <div>© 2016 - Charles </div>
-    <div>
-    Powered by Hexo
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
     </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/15/设计模式(四)里氏代换原则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/设计模式(三)开闭原则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/设计模式(五)依赖倒转原则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/设计模式(七)合成复用原则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/设计模式(八)迪米特法则/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Charles<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
 </footer>
-
-        </div>
     </div>
-</div>
-<script src="/js/pager/dist/singlepager.js"></script>
-<script>
-var sp = new Pager('data-pager-shell')
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
-</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>

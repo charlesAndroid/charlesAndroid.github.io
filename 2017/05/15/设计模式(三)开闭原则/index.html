@@ -1,94 +1,206 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="utf-8">
+  
   <title>Charles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="设计模式笔记(三)开闭原则概念开闭原则（OCP）是面向对象设计中“可复用设计”的基石，是面向对象设计中最重要的原则之一，其它很多的设计原则都是实现开闭原则的一种手段。对于扩展是开放的，对于修改是关闭的，这意味着模块的行为是可以扩展的。当应用的需求改变时，我们可以对模块进行扩展，使其具有满足那些改变的新行为。 例子生活中1.每台显示器都有电源开关,如果修改开关的位置,不应该影响开关这个功能,也不需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Charles">
+<meta property="og:url" content="http://charlesandroid.github.io/2017/05/15/设计模式(三)开闭原则/index.html">
+<meta property="og:site_name" content="Charles">
+<meta property="og:description" content="设计模式笔记(三)开闭原则概念开闭原则（OCP）是面向对象设计中“可复用设计”的基石，是面向对象设计中最重要的原则之一，其它很多的设计原则都是实现开闭原则的一种手段。对于扩展是开放的，对于修改是关闭的，这意味着模块的行为是可以扩展的。当应用的需求改变时，我们可以对模块进行扩展，使其具有满足那些改变的新行为。 例子生活中1.每台显示器都有电源开关,如果修改开关的位置,不应该影响开关这个功能,也不需要">
+<meta property="og:image" content="http://charlesandroid.github.io/2017/05/15/img/Collections.png">
+<meta property="og:image" content="http://charlesandroid.github.io/2017/05/15/img/printStudent.png">
+<meta property="og:image" content="http://charlesandroid.github.io/2017/05/15/img/printObject.png">
+<meta property="og:updated_time" content="2017-05-16T03:41:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Charles">
+<meta name="twitter:description" content="设计模式笔记(三)开闭原则概念开闭原则（OCP）是面向对象设计中“可复用设计”的基石，是面向对象设计中最重要的原则之一，其它很多的设计原则都是实现开闭原则的一种手段。对于扩展是开放的，对于修改是关闭的，这意味着模块的行为是可以扩展的。当应用的需求改变时，我们可以对模块进行扩展，使其具有满足那些改变的新行为。 例子生活中1.每台显示器都有电源开关,如果修改开关的位置,不应该影响开关这个功能,也不需要">
+<meta name="twitter:image" content="http://charlesandroid.github.io/2017/05/15/img/Collections.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml">
   
   
-  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
   <link rel="stylesheet" href="/css/style.css">
+  
+
 </head>
 
 <body>
-<div class="Shell">
-    <aside class='SideBar'>
-    <section class='avatar' style="background-image: url(undefined)">
-        <div class='av-pic' style="background-image: url(undefined)">
-        </div>
-    </section>
-    <section class='menu'>
-        <div>Charles</div>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Charles</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
-        <ul>
-          
-            <a href="/" class="Btn">
-              <li>Home</li>
-            </a>  
-          
-            <a href="/archives/" class="Btn">
-              <li>Archive</li>
-            </a>  
-          
-        </ul>
-    </section>
-    <section class="media">
+          <a class="main-nav-link" href="/">Home</a>
         
-    </section>
-</aside>
-
-    <div class="container">
-        <div data-pager-shell>
-            <div>
-  <article class='ContentView'>
-    <header class='PageTitle'>
-        <h1></h1>
-    </header>
-
-    <section>
-      <h1 id="设计模式笔记-三-开闭原则"><a href="#设计模式笔记-三-开闭原则" class="headerlink" title="设计模式笔记(三)开闭原则"></a>设计模式笔记(三)开闭原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>开闭原则（OCP）是面向对象设计中“可复用设计”的基石，是面向对象设计中最重要的原则之一，其它很多的设计原则都是实现开闭原则的一种手段。对于扩展是开放的，对于修改是关闭的，这意味着模块的行为是可以扩展的。当应用的需求改变时，我们可以对模块进行扩展，使其具有满足那些改变的新行为。</p>
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://charlesandroid.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-设计模式(三)开闭原则" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/15/设计模式(三)开闭原则/" class="article-date">
+  <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">2017-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式笔记-三-开闭原则"><a href="#设计模式笔记-三-开闭原则" class="headerlink" title="设计模式笔记(三)开闭原则"></a>设计模式笔记(三)开闭原则</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>开闭原则（OCP）是面向对象设计中“可复用设计”的基石，是面向对象设计中最重要的原则之一，其它很多的设计原则都是实现开闭原则的一种手段。对于扩展是开放的，对于修改是关闭的，这意味着模块的行为是可以扩展的。当应用的需求改变时，我们可以对模块进行扩展，使其具有满足那些改变的新行为。</p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>1.每台显示器都有电源开关,如果修改开关的位置,不应该影响开关这个功能,也不需要对内部进行改造.<br>2.每个软件,对外提供自身的功能,任何人使用,都不应该需要修改其内部实现.</p>
 <h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="../img/Collections.png" alt=""><br>只要实现List接口的集合,都可以通过<code>Conllections.sort</code>排序</p>
 <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个打印学生信息的功能<code>printStudent</code><br><img src="../img/printStudent.png" alt=""><br>如果再增加打印老师,学校信息,类必然增加重复代码,所以通过如下设计修改<br><img src="../img/printObject.png" alt=""><br>任何对象只要继承<code>Object</code>都可以实现<code>toString</code>方法,从而使用<code>Print.printObject</code>方法打印信息</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对于一个使用外部传入参数的方法,在使用参数的方法或属性的时候,尽量使传入参数具有方法内使用的共有特征,从而达到对外部提供修改的开放原则,减少或关闭对内部代码的修改.</p>
 
-
       
-
-    </section>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式(三)开闭原则/" data-id="cj2smjf280002ttfy6p4zunkx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
     
-      <section class='ArticleMeta'>
-          <div>
-            发布于&nbsp;
-            <time datetime="2017-05-15T03:33:15.000Z" itemprop="datePublished">
-              2017-05-15
-            </time>
-          </div>
-          
-      </section>
-    
-    
-</article>
+<nav id="article-nav">
+  
+    <a href="/2017/05/15/设计模式(四)里氏代换原则/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/15/设计模式(五)依赖倒转原则/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
 
   
-</div>
+</article>
 
-            <footer>
-    <div>© 2016 - Charles </div>
-    <div>
-    Powered by Hexo
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
     </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/15/设计模式(四)里氏代换原则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/设计模式(三)开闭原则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/设计模式(五)依赖倒转原则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/设计模式(七)合成复用原则/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/设计模式(八)迪米特法则/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Charles<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
 </footer>
-
-        </div>
     </div>
-</div>
-<script src="/js/pager/dist/singlepager.js"></script>
-<script>
-var sp = new Pager('data-pager-shell')
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
-</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
 </body>
 </html>
