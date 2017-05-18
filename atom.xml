@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://charlesandroid.github.io/"/>
-  <updated>2017-05-17T10:09:22.000Z</updated>
+  <updated>2017-05-18T02:30:01.000Z</updated>
   <id>http://charlesandroid.github.io/</id>
   
   <author>
@@ -14,6 +14,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式笔记(九)设计原则总结</title>
+    <link href="http://charlesandroid.github.io/2017/05/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0(%E4%B9%9D)%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%E6%80%BB%E7%BB%93/"/>
+    <id>http://charlesandroid.github.io/2017/05/19/设计模式笔记(九)设计原则总结/</id>
+    <published>2017-05-19T08:57:05.000Z</published>
+    <updated>2017-05-18T02:30:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>设计模式的根基是设计原则,设计原则的根基是高内聚,低耦合,万变不离其中,各种原则或模式在代码上的体现有可能会是一样的,但不代表任何一种原则或模式是多余的,因为一部分代码符合多种原则是正常的,对于每一种原则和模式,都应该在生活中找到对应的结构,举一反三,慢慢体会.<br>在这些原则中,个人认为最重要的是单一职责和开闭原则,因为他俩最直接的代表解决内聚和耦合的问题时的原则,是其他原则的基础.最难理解也是最难遵守的是单一职责原则,因为它的界限在有的时候很难界定.对于设计思想的提升,还是多看高质量的代码,站在巨人的肩膀上,当我们遵从这些原则,编写出高质量的代码时,那么这些代码,一定属于后面的二十三种设计模式,所以是选择根据原则去设计代码,然后代码与设计模式必然的重叠,还是多了解设计模式,运用设计模式去编写符合原则的代码,显然后者开发效率是最高的,但前者学习收获是最大的.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;设计模式的根基是设计原则,设计原则的根基是高内聚,低耦合,万变不离其中,各种原则或模式在代码上的体现有可能会是一样的,但不代表任何一种原则或模式是多余的,因为一部分代码符合多种原则是正常的,对于每一种原则和模式,都应该在生活中找到对应的结构,举一反三,慢慢体会.&lt;br&gt;在这
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>设计模式笔记(八)迪米特法则</title>
