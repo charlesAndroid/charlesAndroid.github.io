@@ -85,14 +85,24 @@
       
         <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.<br>通俗讲就是在一个系统中,某个类<code>A</code>,代码中要保证执行一次<code>A a = new A()</code>,而且只执行一次,并且句柄可以供其他类使用.</p>
 <h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>为什么系统中要保证一个类只有一个实例呢?<br>比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两个,那么一个开一个关,屋里的家电就不知道该怎么办了.单例模式就很好的解决了这一问题,对于总电源管理这个类<code>PowerManager</code>采用单例模式,提供统一的电源状态成员变量<code>powerState</code>,并且提供统一的开启和关闭电源的方法<code>open</code>,<code>close</code>,在节省内存的前提下,也统一了电源状态的管理和方法的调用.<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/powermanager.png" alt=""></p>
-<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>1.本类私有化构造方法<br>2.创建一个私有静态本类对象实例<br>3.提供静态方法,返回实例</p>
-<h4 id="SystemKeyStore"><a href="#SystemKeyStore" class="headerlink" title="SystemKeyStore"></a>SystemKeyStore</h4><pre><code>private static SystemKeyStore mInstance = new SystemKeyStore();  
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>1.私有化本类构造方法<br>2.创建一个私有静态本类对象实例<br>3.提供静态方法,返回实例</p>
+<h4 id="android-security-SystemKeyStore"><a href="#android-security-SystemKeyStore" class="headerlink" title="android.security.SystemKeyStore"></a>android.security.SystemKeyStore</h4><pre><code>private static SystemKeyStore mInstance = new SystemKeyStore();  
 private SystemKeyStore() { }  
 public static SystemKeyStore getInstance() {  
     return mInstance;  
 }    
+</code></pre><p>饿汉式另一种方式<br>1.私有化本类构造方法<br>2.创建一个私有静态内部类<br>3.在内部类中,创建一个私有静态外部类对象实例<br>4.提供静态方法,返回实例</p>
+<h4 id="MySigleton"><a href="#MySigleton" class="headerlink" title="MySigleton"></a>MySigleton</h4><pre><code>public class MySigleton{
+    private MySigleton(){}
+    private static class Holder {
+        private static MySigleton instance = new MySigleton();
+    }
+    public static MySigleton getInstance() {
+        return Holder.instance;
+    }
+}
 </code></pre><h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><p>不同于饿汉式的是使用时再去初始化本类的实例,又称延迟加载.由于考虑多线程安全问题,所以在方法体加上<code>synchronized</code>关键字.</p>
-<h4 id="LocalBluetoothManager"><a href="#LocalBluetoothManager" class="headerlink" title="LocalBluetoothManager"></a>LocalBluetoothManager</h4><pre><code>private static LocalBluetoothManager sInstance;
+<h4 id="com-android-settingslib-bluetooth-LocalBluetoothManager"><a href="#com-android-settingslib-bluetooth-LocalBluetoothManager" class="headerlink" title="com.android.settingslib.bluetooth.LocalBluetoothManager"></a>com.android.settingslib.bluetooth.LocalBluetoothManager</h4><pre><code>private static LocalBluetoothManager sInstance;
 public static synchronized LocalBluetoothManager getInstance(...) {
     if (sInstance == null) {
         ...
@@ -102,7 +112,7 @@ public static synchronized LocalBluetoothManager getInstance(...) {
     return sInstance;
 }  
 </code></pre><p>为了提高方法执行效率,同时保证线程安全,使用<code>synchronized</code>同步代码块替换方法上的同步标签.</p>
-<h4 id="SystemConfig"><a href="#SystemConfig" class="headerlink" title="SystemConfig"></a>SystemConfig</h4><pre><code>static SystemConfig sInstance;
+<h4 id="com-android-server-SystemConfig"><a href="#com-android-server-SystemConfig" class="headerlink" title="com.android.server.SystemConfig"></a>com.android.server.SystemConfig</h4><pre><code>static SystemConfig sInstance;
 public static SystemConfig getInstance() {
     synchronized (SystemConfig.class) {
         if (sInstance == null) {
@@ -115,7 +125,7 @@ public static SystemConfig getInstance() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/22/设计模式笔记(十)单例设计模式/" data-id="cj2zrmmop00073afye2h6z20j" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/22/设计模式笔记(十)单例设计模式/" data-id="cj2zrzu9h000899fy2pgds89y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,7 +162,7 @@ public static SystemConfig getInstance() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/19/设计模式笔记(九)设计原则总结/" data-id="cj2zrmmob00033afyqjwg50o2" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/19/设计模式笔记(九)设计原则总结/" data-id="cj2zrzu8x000299fye2ae9y42" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +203,7 @@ public static SystemConfig getInstance() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/18/设计模式笔记(八)迪米特法则/" data-id="cj2zrmmog00053afymyd0z5rn" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/18/设计模式笔记(八)迪米特法则/" data-id="cj2zrzu97000599fyhgdgt0eo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,7 +244,7 @@ public static SystemConfig getInstance() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/17/设计模式笔记(七)合成复用原则/" data-id="cj2zrmmo900023afygt6mt0hr" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/17/设计模式笔记(七)合成复用原则/" data-id="cj2zrzu91000399fyisj22ltv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -276,7 +286,7 @@ public static SystemConfig getInstance() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/16/设计模式笔记(六)接口隔离原则/" data-id="cj2zrmmoj00063afyg4kka2ww" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/16/设计模式笔记(六)接口隔离原则/" data-id="cj2zrzu9c000799fylqo0phb7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -317,7 +327,7 @@ public static SystemConfig getInstance() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式笔记(五)依赖倒转原则/" data-id="cj2zrmmox000a3afyh1zr6kg9" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/15/设计模式笔记(五)依赖倒转原则/" data-id="cj2zrzu9j000999fy6yexyt1y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -358,7 +368,7 @@ public static SystemConfig getInstance() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式笔记(四)里氏代换原则/" data-id="cj2zrmmou00083afye9l0j7nk" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/14/设计模式笔记(四)里氏代换原则/" data-id="cj2zrzu9l000a99fyhc4e8ewr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -399,7 +409,7 @@ public static SystemConfig getInstance() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/13/设计模式笔记(三)开闭原则/" data-id="cj2zrmmov00093afy33n4ym4a" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/13/设计模式笔记(三)开闭原则/" data-id="cj2zrzu99000699fy3oxoyhb0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -440,7 +450,7 @@ public static SystemConfig getInstance() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/12/设计模式笔记(二)单一职责原则/" data-id="cj2zrmmod00043afyesb0forj" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/12/设计模式笔记(二)单一职责原则/" data-id="cj2zrzu94000499fypkdafj13" class="article-share-link">Share</a>
       
       
     </footer>
@@ -487,7 +497,7 @@ public static SystemConfig getInstance() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://charlesandroid.github.io/2017/05/11/设计模式笔记(一)概述/" data-id="cj2zrmmo500013afyes0yrjv8" class="article-share-link">Share</a>
+      <a data-url="http://charlesandroid.github.io/2017/05/11/设计模式笔记(一)概述/" data-id="cj2zrzu8t000199fyf9j4kqeb" class="article-share-link">Share</a>
       
       
     </footer>
