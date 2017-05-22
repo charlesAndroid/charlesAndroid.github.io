@@ -1,3 +1,208 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><title>设计模式笔记(九)设计原则总结</title><link rel="stylesheet" href="/css/layout.css">
-<link rel="stylesheet" href="/css/main.css"><link rel="shortcut icon" href="/img/favicon.png"></head><body><header class="base-menu"><div class="menu-wrapper"><div class="menu-layout-bg"></div><nav class="menu-content"><ul class="menu-list"><li class="menu-item"><a href="/" class="menu-link">Charles</a></li><li class="menu-item"><a href="/blog/archives" class="menu-link">Archives</a></li><li class="menu-item"><a href="/about" class="menu-link">About</a></li></ul></nav></div></header><header class="base-mobile-menu"><div class="mobile-menu-wrapper"><div class="menu-layout-bg"></div><nav class="menu-content"><ul class="menu-list"><li class="menu-item"><a href="/" class="menu-link">Charles</a></li><li class="menu-item"><a href="/blog/archives" class="menu-link">Archives</a></li><li class="menu-item"><a href="/about" class="menu-link">About</a></li></ul></nav><div id="mobile-menu-toggle" class="toggle-menu"><span class="menu-bar"></span><span class="menu-bar"> </span><span class="menu-bar"></span></div></div></header><div class="base-content"><div class="base-content-main"><article class="article-main"><h1 class="article-title">设计模式笔记(九)设计原则总结</h1><div class="article-meta"><p class="meta-item meta-time"><span class="meta-item-title">发表于: </span>2017-05-19</p><p class="meta-item meta-category"></p></div><div class="article-content"><p>设计模式的根基是设计原则,设计原则的根基是高内聚,低耦合,万变不离其中,各种原则或模式在代码上的体现有可能会是一样的,但不代表任何一种原则或模式是多余的,因为一部分代码符合多种原则是正常的,对于每一种原则和模式,都应该在生活中找到对应的结构,举一反三,慢慢体会.<br>在这些原则中,个人认为最重要的是单一职责和开闭原则,因为他俩最直接的代表解决内聚和耦合的问题时的原则,是其他原则的基础.最难理解也是最难遵守的是单一职责原则,因为它的界限在有的时候很难界定.对于设计思想的提升,还是多看高质量的代码,站在巨人的肩膀上,当我们遵从这些原则,编写出高质量的代码时,那么这些代码,一定属于后面的二十三种设计模式,所以是选择根据原则去设计代码,然后代码与设计模式必然的重叠,还是多了解设计模式,运用设计模式去编写符合原则的代码,显然后者开发效率是最高的,但前者学习收获是最大的.<br>之后的设计模式会站在<code>Android/Java</code>的角度上去分析.<code>What</code>它没那么神奇,<code>Why</code>它为了解决一些问题,<code>Where</code>前人是如何使用.</p>
-</div></article><div id="base-discus"></div></div></div><footer class="base-footer"><div class="footer-wrapper"><span>Charles Using </span><a href="https://github.com/chuguixin/Simple"><span>Simple</span></a><span> Presents For You.</span></div></footer><div class="dom-ready"><script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script><script src="/js/base.js"></script></div></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>设计模式笔记(九)设计原则总结 | Charles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="设计模式的根基是设计原则,设计原则的根基是高内聚,低耦合,万变不离其中,各种原则或模式在代码上的体现有可能会是一样的,但不代表任何一种原则或模式是多余的,因为一部分代码符合多种原则是正常的,对于每一种原则和模式,都应该在生活中找到对应的结构,举一反三,慢慢体会.在这些原则中,个人认为最重要的是单一职责和开闭原则,因为他俩最直接的代表解决内聚和耦合的问题时的原则,是其他原则的基础.最难理解也是最难遵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式笔记(九)设计原则总结">
+<meta property="og:url" content="http://charlesandroid.github.io/2017/05/19/设计模式笔记(九)设计原则总结/index.html">
+<meta property="og:site_name" content="Charles">
+<meta property="og:description" content="设计模式的根基是设计原则,设计原则的根基是高内聚,低耦合,万变不离其中,各种原则或模式在代码上的体现有可能会是一样的,但不代表任何一种原则或模式是多余的,因为一部分代码符合多种原则是正常的,对于每一种原则和模式,都应该在生活中找到对应的结构,举一反三,慢慢体会.在这些原则中,个人认为最重要的是单一职责和开闭原则,因为他俩最直接的代表解决内聚和耦合的问题时的原则,是其他原则的基础.最难理解也是最难遵">
+<meta property="og:updated_time" content="2017-05-22T03:43:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式笔记(九)设计原则总结">
+<meta name="twitter:description" content="设计模式的根基是设计原则,设计原则的根基是高内聚,低耦合,万变不离其中,各种原则或模式在代码上的体现有可能会是一样的,但不代表任何一种原则或模式是多余的,因为一部分代码符合多种原则是正常的,对于每一种原则和模式,都应该在生活中找到对应的结构,举一反三,慢慢体会.在这些原则中,个人认为最重要的是单一职责和开闭原则,因为他俩最直接的代表解决内聚和耦合的问题时的原则,是其他原则的基础.最难理解也是最难遵">
+  
+    <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Charles</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://charlesandroid.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-设计模式笔记(九)设计原则总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/19/设计模式笔记(九)设计原则总结/" class="article-date">
+  <time datetime="2017-05-19T08:57:05.000Z" itemprop="datePublished">2017-05-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式笔记(九)设计原则总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>设计模式的根基是设计原则,设计原则的根基是高内聚,低耦合,万变不离其中,各种原则或模式在代码上的体现有可能会是一样的,但不代表任何一种原则或模式是多余的,因为一部分代码符合多种原则是正常的,对于每一种原则和模式,都应该在生活中找到对应的结构,举一反三,慢慢体会.<br>在这些原则中,个人认为最重要的是单一职责和开闭原则,因为他俩最直接的代表解决内聚和耦合的问题时的原则,是其他原则的基础.最难理解也是最难遵守的是单一职责原则,因为它的界限在有的时候很难界定.对于设计思想的提升,还是多看高质量的代码,站在巨人的肩膀上,当我们遵从这些原则,编写出高质量的代码时,那么这些代码,一定属于后面的二十三种设计模式,所以是选择根据原则去设计代码,然后代码与设计模式必然的重叠,还是多了解设计模式,运用设计模式去编写符合原则的代码,显然后者开发效率是最高的,但前者学习收获是最大的.<br>之后的设计模式会站在<code>Android/Java</code>的角度上去分析.<code>What</code>它没那么神奇,<code>Why</code>它为了解决一些问题,<code>Where</code>前人是如何使用.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://charlesandroid.github.io/2017/05/19/设计模式笔记(九)设计原则总结/" data-id="cj2zrmmob00033afyqjwg50o2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/22/设计模式笔记(十)单例设计模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          设计模式笔记(十)单例设计模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/18/设计模式笔记(八)迪米特法则/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">设计模式笔记(八)迪米特法则</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/22/设计模式笔记(十)单例设计模式/">设计模式笔记(十)单例设计模式</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/19/设计模式笔记(九)设计原则总结/">设计模式笔记(九)设计原则总结</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/18/设计模式笔记(八)迪米特法则/">设计模式笔记(八)迪米特法则</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/17/设计模式笔记(七)合成复用原则/">设计模式笔记(七)合成复用原则</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/16/设计模式笔记(六)接口隔离原则/">设计模式笔记(六)接口隔离原则</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Charles<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
