@@ -128,55 +128,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://charlesandroid.github.io/2017/05/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0(%E5%8D%81)%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://charlesandroid.github.io/2017/05/15/设计模式笔记(十)单例设计模式/</id>
-    <published>2017-05-15T03:33:15.000Z</published>
-    <updated>2017-05-22T06:19:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><link rel="stylesheet" href="http://yandex.st/highlightjs/6.1/styles/default.min.css"><script src="http://yandex.st/highlightjs/6.1/highlight.min.js"></script><script>hljs.tabReplace = ‘    ‘;hljs.initHighlightingOnLoad();</script>  </p>
-<hr>
-<p>title: 设计模式笔记(十)单例设计模式</p>
-<h2 id="date-2017-05-22-16-57-05"><a href="#date-2017-05-22-16-57-05" class="headerlink" title="date: 2017-05-22 16:57:05"></a>date: 2017-05-22 16:57:05</h2><h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.<br>通俗讲就是在一个系统中,某个类<code>A</code>,代码中要保证执行一次<code>A a = new A()</code>,而且只执行一次,并且句柄可以供其他类使用.</p>
-<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>为什么系统中要保证一个类只有一个实例呢?<br>比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两个,那么一个开一个关,屋里的家电就不知道该怎么办了.单例模式就很好的解决了这一问题,对于总电源管理这个类<code>PowerManager</code>采用单例模式,提供统一的电源状态成员变量<code>powerState</code>,并且提供统一的开启和关闭电源的方法<code>open</code>,<code>close</code>,在节省内存的前提下,也统一了电源状态的管理和方法的调用.<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/powermanager.png" alt=""></p>
-<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>1.本类私有化构造方法<br>2.创建一个私有静态本类对象实例<br>3.提供静态方法,返回实例</p>
-<h4 id="SystemKeyStore"><a href="#SystemKeyStore" class="headerlink" title="SystemKeyStore"></a>SystemKeyStore</h4><pre><code>private static SystemKeyStore mInstance = new SystemKeyStore();
-private SystemKeyStore() { }
-public static SystemKeyStore getInstance() {
-    return mInstance;
-}  
-</code></pre><h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><p>不同于饿汉式的是使用时再去初始化本类的实例,又称延迟加载.由于考虑多线程安全问题,所以在方法体加上<code>synchronized</code>关键字.</p>
-<h4 id="LocalBluetoothManager"><a href="#LocalBluetoothManager" class="headerlink" title="LocalBluetoothManager"></a>LocalBluetoothManager</h4><pre><code>private static LocalBluetoothManager sInstance;
-public static synchronized LocalBluetoothManager getInstance(...) {
-    if (sInstance == null) {
-        ...
-        sInstance = new LocalBluetoothManager(...);
-        ...
-    }
-    return sInstance;
-}  
-</code></pre><p>为了提高方法执行效率,同时保证线程安全,使用<code>synchronized</code>同步代码块替换方法上的同步标签.</p>
-<h4 id="SystemConfig"><a href="#SystemConfig" class="headerlink" title="SystemConfig"></a>SystemConfig</h4><pre><code>static SystemConfig sInstance;
-public static SystemConfig getInstance() {
-    synchronized (SystemConfig.class) {
-        if (sInstance == null) {
-            sInstance = new SystemConfig();
-        }
-        return sInstance;
-    }
-}  
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;http://yandex.st/highlightjs/6.1/styles/default.min.css&quot;&gt;&lt;script src=&quot;http://yandex.st/highlightjs/6.1/highl
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>设计模式笔记(四)里氏代换原则</title>
     <link href="http://charlesandroid.github.io/2017/05/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0(%E5%9B%9B)%E9%87%8C%E6%B0%8F%E4%BB%A3%E6%8D%A2%E5%8E%9F%E5%88%99/"/>
     <id>http://charlesandroid.github.io/2017/05/14/设计模式笔记(四)里氏代换原则/</id>
