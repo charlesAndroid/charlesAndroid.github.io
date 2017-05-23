@@ -200,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -210,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -233,6 +233,122 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/14/设计模式笔记(四)里氏代换原则/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Charles">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Charles">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/14/设计模式笔记(四)里氏代换原则/" itemprop="url">设计模式笔记(四)里氏代换原则</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-14T16:57:05+08:00">
+                2017-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>可以用哺乳动物来表示的地方,也可以用人来表示,用人来表示的地方,可以用男人或女人来表示  </p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/bufferreader.png" alt=""><br>在<code>BufferReader</code>的构造方法中需要传入<code>Reader</code>对象,这些地方可以传入<code>Reader</code>的子类,或者子类的子类.这里<code>BufferReader</code>也是<code>Reader</code>的子类,由子类继承父类,构造方法注入父类对象并提供额外的功能,这种设计模式为<code>包装设计模式</code>.</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>实现一个计算两个数字和的方法<code>sum</code><br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/math.png" alt=""><br>现在新需求,提供一个计算两个数和,并乘以100.程序员小Li发现<code>Math</code>类中已经提供了<code>sum</code>方法,所以用<code>Count</code>继承了<code>Math</code>类,重写<code>sum</code>方法,在原先的返回值上直接乘以100.此时已经违背了里氏代换原则,由于<code>Math</code>类是提供计算的方法,<code>Count</code>虽然具备计算的能力<code>sum</code>,但实际功能已经被修改,无法再代替父类出现的地方,所以再重写的时候,要注意此原则.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>里氏代换原则强调的是<code>代换</code>,单单考虑这一原则,即父类出现的地方子类必须可以代换,而不影响其功能.<br>1.在继承一个类重写其方法时,父类已经实现的功能可以扩展,尽量不要覆盖,以便不影响代换时的功能<br>2.某些方法需要子类去重写覆盖时,尽量用抽象方法来限制,如果本类也需要实现,那么可以在方法体加上注释文档,告诉子类不要完全覆盖父类的方法,(<code>Android</code>中可以使用<code>@CallSuper</code>,参考<code>Activity</code>生命周期方法)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -272,7 +388,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-13T16:57:05+08:00">
                 2017-05-13
@@ -388,7 +504,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-12T16:57:05+08:00">
                 2017-05-12
@@ -504,7 +620,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T16:57:01+08:00">
                 2017-05-11
@@ -626,7 +742,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-10T16:57:01+08:00">
                 2017-05-10
@@ -748,8 +864,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -810,7 +926,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

@@ -79,8 +79,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml" />
 
@@ -101,7 +99,7 @@
 <meta property="og:site_name" content="Charles">
 <meta property="og:description" content="What抽象工厂模式（Abstract factory pattern）是一种对象创建型设计模式。抽象工厂模式提供了一种方式，可以将一组具有同一主题的单独的工厂封装起来。在正常使用中，客户端程序需要创建抽象工厂的具体实现，然后使用抽象工厂作为接口来创建这一主题的具体对象。客户端程序不需要知道（或关心）它从这些内部的工厂方法中获得对象的具体类型，因为客户端程序仅使用这些对象的通用接口。抽象工厂模式将">
 <meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/AbstractFactory.png">
-<meta property="og:updated_time" content="2017-05-23T08:52:32.000Z">
+<meta property="og:updated_time" content="2017-05-23T09:06:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式笔记(十三)抽象工厂设计模式">
 <meta name="twitter:description" content="What抽象工厂模式（Abstract factory pattern）是一种对象创建型设计模式。抽象工厂模式提供了一种方式，可以将一组具有同一主题的单独的工厂封装起来。在正常使用中，客户端程序需要创建抽象工厂的具体实现，然后使用抽象工厂作为接口来创建这一主题的具体对象。客户端程序不需要知道（或关心）它从这些内部的工厂方法中获得对象的具体类型，因为客户端程序仅使用这些对象的通用接口。抽象工厂模式将">
@@ -206,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -216,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -276,7 +274,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-24T16:57:05+08:00">
                 2017-05-24
@@ -317,8 +315,6 @@
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>结合简单工厂和工厂方法模式,创造更多同类型不同属性,同属性不同类型的对象,同时使类的数量下降.</p>
 <h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p><code>Factory</code> :抽象工厂,每个方法提供创建同类型不同属性的产品,不同方法提供创建同属性不同类型的产品.<br><code>ConcreteFactory</code> :具体工厂实现类<br><code>Product</code> :产品基类<br><code>ConcreteProduct</code>: 产品实现类<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/AbstractFactory.png" alt=""></p>
 <h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>一个生产包装盒的工厂,现在需要生产<code>盒装</code>和<code>桶装</code>的两种包装盒,材料有<code>塑料</code>和<code>铁质</code>两种,一共有<code>4种</code>产品,而且每一个属性都有可能扩展.<br><strong>简单工厂:</strong> 实现很简单,把每一种组合标记一种类型,<code>switch</code>加上<code>4个case</code>,每增加一个属性,对应增加<code>2个case</code>.<br><strong>工厂方法:</strong> 同样把<code>4种</code>类型的对象和工厂各创建一份一共<code>8个</code>类,每增加一个属性,增加<code>4个类</code>.<br><strong>抽象工厂:</strong> <code>2个</code>工厂<code>塑料工厂,铁质工厂</code>,每个工厂<code>2个</code>方法<code>生产盒装,生产桶装</code>,对应产品<code>塑料盒装,塑料桶装,铁质盒装,铁质桶装</code>,举例:生产<code>铁质盒装</code>,调用<code>铁质工厂-&gt;生产盒装方法</code>.<br><strong>优点:</strong> 解决类型或属性不同的问题,类的数量和方法数量少.<br><strong>缺点:</strong> 局限性,如果没有<code>塑料桶装</code>,工厂仍然要实现该方法.如果扩展属性,必然需要修改<code>ConcreteFactory</code>的代码,违背<code>开闭原则</code>  </p>
-<h3 id="总-精-结-髓"><a href="#总-精-结-髓" class="headerlink" title="总(精)结(髓)"></a><strong>总(精)结(髓)</strong></h3><p>简单工厂和工厂方法解决<code>一维数组</code>问题,<strong>每增加一种属性对应只增加一种类型</strong><br>抽象工厂解决<code>二维数组</code>问题, <strong>两个属性对应一个对象时,类型为二维数组,用不同工厂来控制一个维度,用不同方法来控制第二个维度,能顺利解决二维数组问题</strong><br>控制维度的方法:类、方法、方法参数,这三种方式都可以解决单一维度,任意两个相互组合解决两层维度的问题.  </p>
-<h4 id="解决三个维度问题"><a href="#解决三个维度问题" class="headerlink" title="解决三个维度问题"></a>解决<code>三个维度</code>问题</h4><p><strong>方法1:</strong> 结合类、方法、方法参数三种方式,当确定是哪个类的哪个方法的哪种参数对应的返回值时(三维需要<code>x,y,z</code>来确定唯一),确定唯一对象.<br><strong>方法2:</strong> 一维数组嵌套二维数组,用简单工厂或工厂方法模式生产出抽象工厂解决一个维度,在用抽象工厂解决剩下两个维度.<br><strong>每种方法实际可读性不强,程序复杂度很高,在设计时,最好找到两个最重要的维度来控制对象类型,把维度控制在两个以内</strong></p>
 <h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="android-view-LayoutInflater-Factory"><a href="#android-view-LayoutInflater-Factory" class="headerlink" title="android.view.LayoutInflater$Factory"></a>android.view.LayoutInflater$Factory</h3><pre><code>public interface Factory {
     public View onCreateView(String name, Context context, AttributeSet attrs);
    }
@@ -385,8 +381,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/24/设计模式笔记(十二)工厂方法设计模式/" rel="next" title="设计模式笔记(十二)工厂方法设计模式">
-                <i class="fa fa-chevron-left"></i> 设计模式笔记(十二)工厂方法设计模式
+              <a href="/2017/05/23/设计模式笔记(十一)简单工厂设计模式/" rel="next" title="设计模式笔记(十一)简单工厂设计模式">
+                <i class="fa fa-chevron-left"></i> 设计模式笔记(十一)简单工厂设计模式
               </a>
             
           </div>
@@ -394,6 +390,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/24/设计模式笔记(十二)工厂方法设计模式/" rel="prev" title="设计模式笔记(十二)工厂方法设计模式">
+                设计模式笔记(十二)工厂方法设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -442,10 +442,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -465,8 +465,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -511,7 +511,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What"><span class="nav-number">1.</span> <span class="nav-text">What</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式成员"><span class="nav-number">1.2.</span> <span class="nav-text">模式成员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why"><span class="nav-number">2.</span> <span class="nav-text">Why</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总-精-结-髓"><span class="nav-number">2.1.</span> <span class="nav-text">总(精)结(髓)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决三个维度问题"><span class="nav-number">2.1.1.</span> <span class="nav-text">解决三个维度问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where"><span class="nav-number">3.</span> <span class="nav-text">Where</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#android-view-LayoutInflater-Factory"><span class="nav-number">3.1.</span> <span class="nav-text">android.view.LayoutInflater$Factory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#android-view-LayoutInflater-Factory2"><span class="nav-number">3.2.</span> <span class="nav-text">android.view.LayoutInflater$Factory2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现"><span class="nav-number">3.2.1.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">3.2.2.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#android-view-LayoutInflater-FactoryMerger"><span class="nav-number">3.3.</span> <span class="nav-text">android.view.LayoutInflater$FactoryMerger</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What"><span class="nav-number">1.</span> <span class="nav-text">What</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式成员"><span class="nav-number">1.2.</span> <span class="nav-text">模式成员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why"><span class="nav-number">2.</span> <span class="nav-text">Why</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where"><span class="nav-number">3.</span> <span class="nav-text">Where</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#android-view-LayoutInflater-Factory"><span class="nav-number">3.1.</span> <span class="nav-text">android.view.LayoutInflater$Factory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#android-view-LayoutInflater-Factory2"><span class="nav-number">3.2.</span> <span class="nav-text">android.view.LayoutInflater$Factory2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现"><span class="nav-number">3.2.1.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">3.2.2.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#android-view-LayoutInflater-FactoryMerger"><span class="nav-number">3.3.</span> <span class="nav-text">android.view.LayoutInflater$FactoryMerger</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -543,7 +543,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

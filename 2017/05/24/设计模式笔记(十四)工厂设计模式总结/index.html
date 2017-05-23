@@ -79,6 +79,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml" />
 
@@ -92,20 +94,16 @@
 
 
 
-<meta name="description" content="概念合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is. 例子生活中公司老板可以管理所有岗位的员工实现公司的正常运转,而没有必要去学习所有技能,这里把管理看做组合/聚合,把学习看做继承/实现 代码中System">
+<meta name="description" content="总结简单工厂和工厂方法解决一维数组问题,每增加一种属性对应只增加一种类型抽象工厂解决二维数组问题, 两个属性对应一个对象时,类型为二维数组,用不同工厂来控制一个维度,用不同方法来控制第二个维度,能顺利解决二维数组问题控制维度的方法:类、方法、方法参数,这三种方式都可以解决单一维度,任意两个相互组合解决两层维度的问题.   解决三个维度问题方法1: 结合类、方法、方法参数三种方式,当确定是哪个类的哪">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式笔记(七)合成复用原则">
-<meta property="og:url" content="http://charlesandroid.github.io/2017/05/17/设计模式笔记(七)合成复用原则/index.html">
+<meta property="og:title" content="设计模式笔记(十四)工厂设计模式总结">
+<meta property="og:url" content="http://charlesandroid.github.io/2017/05/24/设计模式笔记(十四)工厂设计模式总结/index.html">
 <meta property="og:site_name" content="Charles">
-<meta property="og:description" content="概念合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is. 例子生活中公司老板可以管理所有岗位的员工实现公司的正常运转,而没有必要去学习所有技能,这里把管理看做组合/聚合,把学习看做继承/实现 代码中System">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/system.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/tool.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/tools.png">
-<meta property="og:updated_time" content="2017-05-17T10:11:11.000Z">
+<meta property="og:description" content="总结简单工厂和工厂方法解决一维数组问题,每增加一种属性对应只增加一种类型抽象工厂解决二维数组问题, 两个属性对应一个对象时,类型为二维数组,用不同工厂来控制一个维度,用不同方法来控制第二个维度,能顺利解决二维数组问题控制维度的方法:类、方法、方法参数,这三种方式都可以解决单一维度,任意两个相互组合解决两层维度的问题.   解决三个维度问题方法1: 结合类、方法、方法参数三种方式,当确定是哪个类的哪">
+<meta property="og:updated_time" content="2017-05-23T09:08:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式笔记(七)合成复用原则">
-<meta name="twitter:description" content="概念合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is. 例子生活中公司老板可以管理所有岗位的员工实现公司的正常运转,而没有必要去学习所有技能,这里把管理看做组合/聚合,把学习看做继承/实现 代码中System">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/system.png">
+<meta name="twitter:title" content="设计模式笔记(十四)工厂设计模式总结">
+<meta name="twitter:description" content="总结简单工厂和工厂方法解决一维数组问题,每增加一种属性对应只增加一种类型抽象工厂解决二维数组问题, 两个属性对应一个对象时,类型为二维数组,用不同工厂来控制一个维度,用不同方法来控制第二个维度,能顺利解决二维数组问题控制维度的方法:类、方法、方法参数,这三种方式都可以解决单一维度,任意两个相互组合解决两层维度的问题.   解决三个维度问题方法1: 结合类、方法、方法参数三种方式,当确定是哪个类的哪">
 
 
 
@@ -133,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://charlesandroid.github.io/2017/05/17/设计模式笔记(七)合成复用原则/"/>
+  <link rel="canonical" href="http://charlesandroid.github.io/2017/05/24/设计模式笔记(十四)工厂设计模式总结/"/>
 
 
 
 
 
-  <title>设计模式笔记(七)合成复用原则 | Charles</title>
+  <title>设计模式笔记(十四)工厂设计模式总结 | Charles</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -249,7 +247,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/17/设计模式笔记(七)合成复用原则/">
+    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/24/设计模式笔记(十四)工厂设计模式总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Charles">
@@ -266,7 +264,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式笔记(七)合成复用原则</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式笔记(十四)工厂设计模式总结</h1>
         
 
         <div class="post-meta">
@@ -278,8 +276,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-17T16:57:05+08:00">
-                2017-05-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-24T16:57:05+08:00">
+                2017-05-24
               </time>
             
 
@@ -313,11 +311,8 @@
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>合成复用原则就是指在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用其已有功能的目的。简言之：要尽量使用组合/聚合关系，少用继承,多用Has,少用Is.</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>公司老板可以管理所有岗位的员工实现公司的正常运转,而没有必要去学习所有技能,这里把管理看做组合/聚合,把学习看做继承/实现</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/system.png" alt=""><br><code>System</code>类的<code>getProperty</code>方法,最终由成员变量<code>props</code>来实现</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个员工模型,要求携带办公工具<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/tool.png" alt=""><br>由于科技发展,部分员工使用原有的<code>File</code>办公,部分员工替换办公工具,使用<code>Computer</code>办公.无论修改<code>Tool</code>还是<code>Employee</code>,都违背了开闭原则,现需改如下:<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/tools.png" alt=""><br>只要在员工初始化的时候指定使用工具,对成员变量<code>tool</code>赋值就可以区分了.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这里的继承,也包括java中的实现接口,<code>JDK1.8</code>中接口可以默认实现方法,子类去继承,所以,无论单继承还是多继承语言,只要分析好子类与父类之间的关系是<code>Has</code>还是<code>Is</code>,就比较容易区分使用<code>组合/聚合</code>还是<code>继承/实现</code>.</p>
+        <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>简单工厂和工厂方法解决<code>一维数组</code>问题,<strong>每增加一种属性对应只增加一种类型</strong><br>抽象工厂解决<code>二维数组</code>问题, <strong>两个属性对应一个对象时,类型为二维数组,用不同工厂来控制一个维度,用不同方法来控制第二个维度,能顺利解决二维数组问题</strong><br>控制维度的方法:类、方法、方法参数,这三种方式都可以解决单一维度,任意两个相互组合解决两层维度的问题.  </p>
+<h4 id="解决三个维度问题"><a href="#解决三个维度问题" class="headerlink" title="解决三个维度问题"></a>解决<code>三个维度</code>问题</h4><p><strong>方法1:</strong> 结合类、方法、方法参数三种方式,当确定是哪个类的哪个方法的哪种参数对应的返回值时(三维需要<code>x,y,z</code>来确定唯一),确定唯一对象.<br><strong>方法2:</strong> 一维数组嵌套二维数组,用简单工厂或工厂方法模式生产出抽象工厂解决一个维度,在用抽象工厂解决剩下两个维度.<br><strong>每种方法实际可读性不强,程序复杂度很高,在设计时,最好找到两个最重要的维度来控制对象类型,把维度控制在两个以内</strong></p>
 
       
     </div>
@@ -354,8 +349,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/16/设计模式笔记(六)接口隔离原则/" rel="next" title="设计模式笔记(六)接口隔离原则">
-                <i class="fa fa-chevron-left"></i> 设计模式笔记(六)接口隔离原则
+              <a href="/2017/05/24/设计模式笔记(十二)工厂方法设计模式/" rel="next" title="设计模式笔记(十二)工厂方法设计模式">
+                <i class="fa fa-chevron-left"></i> 设计模式笔记(十二)工厂方法设计模式
               </a>
             
           </div>
@@ -363,10 +358,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/18/设计模式笔记(八)迪米特法则/" rel="prev" title="设计模式笔记(八)迪米特法则">
-                设计模式笔记(八)迪米特法则 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -484,7 +475,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">2.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生活中"><span class="nav-number">2.1.</span> <span class="nav-text">生活中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码中"><span class="nav-number">2.2.</span> <span class="nav-text">代码中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求"><span class="nav-number">2.3.</span> <span class="nav-text">需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决三个维度问题"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">解决三个维度问题</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
