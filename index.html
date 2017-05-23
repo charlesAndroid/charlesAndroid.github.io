@@ -200,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -210,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -243,7 +243,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)工厂方法设计模式/">
+    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/24/设计模式笔记(十二)工厂方法设计模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Charles">
@@ -262,7 +262,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/23/设计模式笔记(十一)工厂方法设计模式/" itemprop="url">设计模式笔记(十一)简单工厂设计模式</a></h1>
+                <a class="post-title-link" href="/2017/05/24/设计模式笔记(十二)工厂方法设计模式/" itemprop="url">设计模式笔记(十二)工厂方法设计模式</a></h1>
         
 
         <div class="post-meta">
@@ -272,7 +272,211 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-24T16:57:05+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>工厂方法模式（Factory method pattern）是一种实现了<code>工厂</code>概念的面向对象设计模式。就像其他创建型模式一样，它也是处理在不指定对象具体类型的情况下创建对象的问题。属于类创建型设计模式.</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在简单工厂的基础上,定义一个创建对象的<code>Factory</code>接口，通过不同实现,创建不同对象.</p>
+<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p><code>Factory</code> :工厂接口,抽象创建对象的方法<br><code>ConcreteFactory</code> :创建产品的<code>Factory</code>具体实现类<br><code>Product</code> :产品基类,可以是抽象类,可以是接口<br><code>ConcreteProduct</code> : <code>Product</code>的实现类<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/FactoryMethod.png" alt=""></p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>解决简单工厂的扩展性问题,为了增加新类型产品,不违背<code>开闭原则</code>去修改<code>Factory</code>代码.<br>简单工厂代码:</p>
+<pre><code>class Factory{
+        static final String PRODUCT_A = &quot;A&quot;;
+        static final String PRODUCT_B = &quot;B&quot;;
+        static final String PRODUCT_C = &quot;C&quot;;
+        static final String PRODUCT_D = &quot;D&quot;;
+        static final String PRODUCT_E = &quot;E&quot;;
+        static Product createProduct(String type){
+            switch (type){
+                case PRODUCT_A:
+                    return new ProductA();
+                case PRODUCT_B:
+                    return new ProductB();
+                case PRODUCT_C:
+                    return new ProductC();
+                   case PRODUCT_D:
+                    return new ProductD();
+                case PRODUCT_E:
+                    return new ProductE();
+                default:
+                    return null;
+            }            
+        }
+    }
+
+...
+Product a = Factory.createProduct(Factory.PRODUCT_A);
+</code></pre><p>使用工厂方法:  </p>
+<pre><code>interface Factory{
+    Product createProduct();
+}
+...
+class FactoryA implements Factory{
+
+    @Override
+    public Product createProduct(){
+        return new ProductA();
+    }
+}
+...
+class FactoryE implements Factory{
+
+    @Override
+    public Product createProduct(){
+        return new ProductE();
+    }
+}
+...
+public static float getProductPrice(Factory factory){
+    Product product = factory.createProduct();
+    return product.getPrice();
+}
+...
+public static void main(String args[]){
+    float price = getProductPrice(new FactoryB());
+    System.out.println(&quot;Product price:&quot; + price);
+}
+</code></pre><p>优点: 扩展性强,新增加类型只需要增加对应的工厂实现类,在调用时<code>getProductPrice</code>传入对应的工厂类.<br>缺点: 每增加一种类型就需要增加两个类,一个产品实体类,一个工厂类.</p>
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="1-android-support-v4-view-LayoutInflaterFactory"><a href="#1-android-support-v4-view-LayoutInflaterFactory" class="headerlink" title="1.android.support.v4.view.LayoutInflaterFactory"></a>1.android.support.v4.view.LayoutInflaterFactory</h3><pre><code>public interface LayoutInflaterFactory {
+    public View onCreateView(...);
+}
+</code></pre><p>工厂实现类:  </p>
+<pre><code>android.support.v4.app.FragmentManager$FragmentManagerImpl
+android.support.v7.AppCompatDelegateImplV9  
+</code></pre><h4 id="android-support-v4-view-LayoutInflaterCompat-LayoutInflaterCompatImpl"><a href="#android-support-v4-view-LayoutInflaterCompat-LayoutInflaterCompatImpl" class="headerlink" title="android.support.v4.view.LayoutInflaterCompat$LayoutInflaterCompatImpl"></a>android.support.v4.view.LayoutInflaterCompat$LayoutInflaterCompatImpl</h4><p>使用:</p>
+<pre><code>interface LayoutInflaterCompatImpl {
+    public void setFactory(..., LayoutInflaterFactory factory);
+    ...
+}
+</code></pre><h3 id="2-android-database-sqlite-SQLiteDatabase-CursorFactory"><a href="#2-android-database-sqlite-SQLiteDatabase-CursorFactory" class="headerlink" title="2.android.database.sqlite.SQLiteDatabase$CursorFactory"></a>2.android.database.sqlite.SQLiteDatabase$CursorFactory</h3><pre><code>public interface CursorFactory {
+    public Cursor newCursor(...);
+}
+</code></pre><h4 id="android-database-sqlite-SQLiteDirectCursorDriver"><a href="#android-database-sqlite-SQLiteDirectCursorDriver" class="headerlink" title="android.database.sqlite.SQLiteDirectCursorDriver"></a>android.database.sqlite.SQLiteDirectCursorDriver</h4><p>使用:</p>
+<pre><code>public Cursor query(CursorFactory factory, ...) {
+    ...        
+    final Cursor cursor;
+    try {
+        ...
+        if (factory == null) {
+            ...
+        } else {
+            cursor = factory.newCursor(...);
+        }
+    } catch (RuntimeException ex) {
+        ...
+    }
+
+    ...
+    return cursor;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)简单工厂设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Charles">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Charles">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/23/设计模式笔记(十一)简单工厂设计模式/" itemprop="url">设计模式笔记(十一)简单工厂设计模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T16:57:05+08:00">
                 2017-05-23
@@ -333,7 +537,7 @@ Product c = Factory.createProductC();
 Product d = Factory.createProductD(); 
 Product e = Factory.createProductE(); 
 </code></pre><p>优点: 代码统一,对象初始化的在同一个地方,便于查找和修改.<br>缺点: 拓展性差,添加新类型需要修改<code>Factory</code>.</p>
-<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h4 id="Product-Factory"><a href="#Product-Factory" class="headerlink" title="Product$Factory"></a>Product$Factory</h4><p>根据传入不同参数创建不同类型对象</p>
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h4 id="1-Product-Factory"><a href="#1-Product-Factory" class="headerlink" title="1.Product$Factory"></a>1.Product$Factory</h4><p>根据传入不同参数创建不同类型对象</p>
 <pre><code>interface Product{
     float getPrice();
     class Factory{
@@ -360,7 +564,7 @@ Product e = Factory.createProductE();
         }
     }
 }
-</code></pre><h4 id="com-android-documentsui-services-Job-Factory"><a href="#com-android-documentsui-services-Job-Factory" class="headerlink" title="com.android.documentsui.services.Job$Factory"></a>com.android.documentsui.services.Job$Factory</h4><p>根据不同方法名称创建不同对象</p>
+</code></pre><h4 id="2-com-android-documentsui-services-Job-Factory"><a href="#2-com-android-documentsui-services-Job-Factory" class="headerlink" title="2.com.android.documentsui.services.Job$Factory"></a>2.com.android.documentsui.services.Job$Factory</h4><p>根据不同方法名称创建不同对象</p>
 <pre><code>static class Factory {
     static final Factory instance = new Factory();
 
@@ -379,7 +583,7 @@ Product e = Factory.createProductE();
         return new DeleteJob(...);
     }
 }
-</code></pre><h4 id="android-text-Editable-Factory"><a href="#android-text-Editable-Factory" class="headerlink" title="android.text.Editable$Factory"></a>android.text.Editable$Factory</h4><p>根据传入不同参数,创建相同对象,但对象初始化属性不同,这里还结合了饿汉单例模式</p>
+</code></pre><h4 id="3-android-text-Editable-Factory"><a href="#3-android-text-Editable-Factory" class="headerlink" title="3.android.text.Editable$Factory"></a>3.android.text.Editable$Factory</h4><p>根据传入不同参数,创建相同对象,但对象初始化属性不同,这里还结合了饿汉单例模式</p>
 <pre><code>    public static class Factory {
     private static Editable.Factory sInstance = new Editable.Factory();
 
@@ -463,7 +667,7 @@ Product e = Factory.createProductE();
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-22T16:57:05+08:00">
                 2017-05-22
@@ -506,13 +710,13 @@ Product e = Factory.createProductE();
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在一个系统中,某个类<code>A</code>,代码中要保证执行一次<code>A a = new A()</code>,而且只执行一次,并且句柄可以供其他类使用.</p>
 <h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>为什么系统中要保证一个类只有一个实例呢?<br>比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两个,那么一个开一个关,屋里的家电就不知道该怎么办了.单例模式就很好的解决了这一问题,对于总电源管理这个类<code>PowerManager</code>采用单例模式,提供统一的电源状态成员变量<code>powerState</code>,并且提供统一的开启和关闭电源的方法<code>open</code>,<code>close</code>,在节省内存的前提下,也统一了电源状态的管理和方法的调用.<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/powermanager.png" alt=""></p>
 <h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>1.私有化本类构造方法<br>2.创建一个私有静态本类对象实例<br>3.提供静态方法,返回实例</p>
-<h4 id="android-security-SystemKeyStore"><a href="#android-security-SystemKeyStore" class="headerlink" title="android.security.SystemKeyStore"></a>android.security.SystemKeyStore</h4><pre><code>private static SystemKeyStore mInstance = new SystemKeyStore();  
+<h4 id="1-android-security-SystemKeyStore"><a href="#1-android-security-SystemKeyStore" class="headerlink" title="1.android.security.SystemKeyStore"></a>1.android.security.SystemKeyStore</h4><pre><code>private static SystemKeyStore mInstance = new SystemKeyStore();  
 private SystemKeyStore() { }  
 public static SystemKeyStore getInstance() {  
     return mInstance;  
 }    
 </code></pre><p>饿汉式另一种方式<br>1.私有化本类构造方法<br>2.创建一个私有静态内部类<br>3.在内部类中,创建一个私有静态外部类对象实例<br>4.提供静态方法,返回实例</p>
-<h4 id="MySigleton"><a href="#MySigleton" class="headerlink" title="MySigleton"></a>MySigleton</h4><pre><code>public class MySigleton{
+<h4 id="2-MySigleton"><a href="#2-MySigleton" class="headerlink" title="2.MySigleton"></a>2.MySigleton</h4><pre><code>public class MySigleton{
     private MySigleton(){}
     private static class Holder {
         private static MySigleton instance = new MySigleton();
@@ -522,7 +726,7 @@ public static SystemKeyStore getInstance() {
     }
 }
 </code></pre><h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><p>不同于饿汉式的是使用时再去初始化本类的实例,又称延迟加载.由于考虑多线程安全问题,所以在方法体加上<code>synchronized</code>关键字.</p>
-<h4 id="com-android-settingslib-bluetooth-LocalBluetoothManager"><a href="#com-android-settingslib-bluetooth-LocalBluetoothManager" class="headerlink" title="com.android.settingslib.bluetooth.LocalBluetoothManager"></a>com.android.settingslib.bluetooth.LocalBluetoothManager</h4><pre><code>private static LocalBluetoothManager sInstance;
+<h4 id="3-com-android-settingslib-bluetooth-LocalBluetoothManager"><a href="#3-com-android-settingslib-bluetooth-LocalBluetoothManager" class="headerlink" title="3.com.android.settingslib.bluetooth.LocalBluetoothManager"></a>3.com.android.settingslib.bluetooth.LocalBluetoothManager</h4><pre><code>private static LocalBluetoothManager sInstance;
 public static synchronized LocalBluetoothManager getInstance(...) {
     if (sInstance == null) {
         ...
@@ -532,7 +736,7 @@ public static synchronized LocalBluetoothManager getInstance(...) {
     return sInstance;
 }  
 </code></pre><p>为了提高方法执行效率,同时保证线程安全,使用<code>synchronized</code>同步代码块替换方法上的同步标签.</p>
-<h4 id="com-android-server-SystemConfig"><a href="#com-android-server-SystemConfig" class="headerlink" title="com.android.server.SystemConfig"></a>com.android.server.SystemConfig</h4><pre><code>static SystemConfig sInstance;
+<h4 id="4-com-android-server-SystemConfig"><a href="#4-com-android-server-SystemConfig" class="headerlink" title="4.com.android.server.SystemConfig"></a>4.com.android.server.SystemConfig</h4><pre><code>static SystemConfig sInstance;
 public static SystemConfig getInstance() {
     synchronized (SystemConfig.class) {
         if (sInstance == null) {
@@ -613,7 +817,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-19T16:57:05+08:00">
                 2017-05-19
@@ -725,7 +929,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-18T17:02:05+08:00">
                 2017-05-18
@@ -841,7 +1045,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-17T16:57:05+08:00">
                 2017-05-17
@@ -957,7 +1161,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-16T16:57:05+08:00">
                 2017-05-16
@@ -1074,7 +1278,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-15T16:57:05+08:00">
                 2017-05-15
@@ -1190,7 +1394,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-14T16:57:05+08:00">
                 2017-05-14
@@ -1306,7 +1510,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-13T16:57:05+08:00">
                 2017-05-13
@@ -1350,122 +1554,6 @@ public static SystemConfig getInstance() {
 <h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/Collections.png" alt=""><br>只要实现List接口的集合,都可以通过<code>Conllections.sort</code>排序</p>
 <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个打印学生信息的功能<code>printStudent</code><br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/printStudent.png" alt=""><br>如果再增加打印老师,学校信息,类必然增加重复代码,所以通过如下设计修改<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/printObject.png" alt=""><br>任何对象只要继承<code>Object</code>都可以实现<code>toString</code>方法,从而使用<code>Print.printObject</code>方法打印信息</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对于一个使用外部传入参数的方法,在使用参数的方法或属性的时候,尽量使传入参数具有方法内使用的共有特征,从而达到对外部提供修改的开放原则,减少或关闭对内部代码的修改.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/12/设计模式笔记(二)单一职责原则/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Charles">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Charles">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/12/设计模式笔记(二)单一职责原则/" itemprop="url">设计模式笔记(二)单一职责原则</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-12T16:57:05+08:00">
-                2017-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>单一职责原则（SRP：Single responsibility principle）又称单一功能原则,所谓职责是指类变化的原因,如果一个类有多于一个的动机被改变，那么这个类就具有多于一个的职责。而单一职责原则就是指一个类或者模块应该有且只有一个改变的原因。  </p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>我每天只能去到一家公司上班,负责本职工作领域</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/FileUtil.png" alt=""><br>只负责操作File对象</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>作为操作File的工具类,只负责操作File对象,但有没有可能违背单一职责原则呢?答案是可能的.<br>如果现在需要提供方法,拷贝一个文件,并在目标文件末尾插入指定字符串.<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/FileUtil1.png" alt=""><br>如果再增加方法,拷贝一个文件,并在目标文件头部插入指定字符串.因此,FileUtil会增加更多不必要的方法,或者把<code>copyFileInsert</code>方法修改的过于庞大.应该重新把需求拆分.提供一个拷贝文件的方法<code>copyFile</code>,提供一个在文件插入字符串的方法<code>insertFile</code>,具体修改哪个文件,应该在头部添加还是尾部添加,由调用者决定,修改后结构如下:<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/FileUtil2.png" alt=""><br><code>insertFile</code>方法用<code>int</code>型变量来控制插入位置</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>无论设计方法,类还是模块,无论代码体积大小,都要遵循单一职责原则,尽可能的避免多因素导致的代码修改.</p>
 
           
         
@@ -1549,8 +1637,8 @@ public static SystemConfig getInstance() {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -1611,7 +1699,7 @@ public static SystemConfig getInstance() {
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

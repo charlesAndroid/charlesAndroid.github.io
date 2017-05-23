@@ -92,20 +92,18 @@
 
 
 
-<meta name="description" content="概念接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口. 例子生活中音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训 代码中图中每一个接口都包含自己本类应该具备的职能,ArrayList实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则 需求设">
+<meta name="description" content="What简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。   总结提供一个根据传入参数来分别创建、返回不同对象的方法,这些对象通常继承/实现同一个父类/接口,或是类型相">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式笔记(六)接口隔离原则">
-<meta property="og:url" content="http://charlesandroid.github.io/2017/05/16/设计模式笔记(六)接口隔离原则/index.html">
+<meta property="og:title" content="设计模式笔记(十一)简单工厂设计模式">
+<meta property="og:url" content="http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)简单工厂设计模式/index.html">
 <meta property="og:site_name" content="Charles">
-<meta property="og:description" content="概念接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口. 例子生活中音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训 代码中图中每一个接口都包含自己本类应该具备的职能,ArrayList实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则 需求设">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/arraylist.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/Login.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img//modify.png">
-<meta property="og:updated_time" content="2017-05-17T10:10:50.000Z">
+<meta property="og:description" content="What简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。   总结提供一个根据传入参数来分别创建、返回不同对象的方法,这些对象通常继承/实现同一个父类/接口,或是类型相">
+<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png">
+<meta property="og:updated_time" content="2017-05-23T06:12:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式笔记(六)接口隔离原则">
-<meta name="twitter:description" content="概念接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口. 例子生活中音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训 代码中图中每一个接口都包含自己本类应该具备的职能,ArrayList实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则 需求设">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/arraylist.png">
+<meta name="twitter:title" content="设计模式笔记(十一)简单工厂设计模式">
+<meta name="twitter:description" content="What简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。   总结提供一个根据传入参数来分别创建、返回不同对象的方法,这些对象通常继承/实现同一个父类/接口,或是类型相">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png">
 
 
 
@@ -133,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://charlesandroid.github.io/2017/05/16/设计模式笔记(六)接口隔离原则/"/>
+  <link rel="canonical" href="http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)简单工厂设计模式/"/>
 
 
 
 
 
-  <title>设计模式笔记(六)接口隔离原则 | Charles</title>
+  <title>设计模式笔记(十一)简单工厂设计模式 | Charles</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -249,7 +247,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/16/设计模式笔记(六)接口隔离原则/">
+    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)简单工厂设计模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Charles">
@@ -266,7 +264,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式笔记(六)接口隔离原则</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式笔记(十一)简单工厂设计模式</h1>
         
 
         <div class="post-meta">
@@ -278,8 +276,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-16T16:57:05+08:00">
-                2017-05-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T16:57:05+08:00">
+                2017-05-23
               </time>
             
 
@@ -313,13 +311,87 @@
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口.</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/arraylist.png" alt=""><br>图中每一个接口都包含自己本类应该具备的职能,<code>ArrayList</code>实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个登录页面,实现登录成功后展示动画效果<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/Login.png" alt=""><br>产品上线后发现在修改密码页面,修改密码成功后也需要展示动画效果,那么如果新建一个<code>ModifyPage</code>,实现<code>ILogin</code>接口,必然要实现<code>login</code>方法,违背了接口隔离原则,现修改如下:  </p>
-<p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img//modify.png" alt="">  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最小接口的定义要遵从单一职责原则,也不能过分拆分,导致后期维护成本上升</p>
+        <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。  </p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>提供一个根据传入参数来分别创建、返回不同对象的方法,这些对象通常继承/实现同一个父类/接口,或是类型相同,属性不同.</p>
+<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p><code>Factory</code> :工厂类,负责创建所需产品对象<br><code>Product</code> :产品基类,可以是抽象类,可以是接口<br><code>ConcreteProduct</code> : <code>Product</code>的实现类<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png" alt=""></p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>把同一类型的类创建<code>new Product()</code>,封装到同一个类当中,简化代码.<br>原代码:</p>
+<pre><code>Product a = new ProductA();
+Product b = new ProductB();
+Product c = new ProductC();
+Product d = new ProductD();
+Product e = new ProductE();
+</code></pre><p>使用简单工厂:  </p>
+<pre><code>Product a = Factory.createProduct(0); 
+Product b = Factory.createProduct(1); 
+Product c = Factory.createProduct(2); 
+Product d = Factory.createProduct(3); 
+Product e = Factory.createProduct(4); 
+</code></pre><p>参数也可以是<code>String</code>类型,另一种方式是使用不同的方法名称来创建不同的对象</p>
+<pre><code>Product a = Factory.createProductA(); 
+Product b = Factory.createProductB(); 
+Product c = Factory.createProductC(); 
+Product d = Factory.createProductD(); 
+Product e = Factory.createProductE(); 
+</code></pre><p>优点: 代码统一,对象初始化的在同一个地方,便于查找和修改.<br>缺点: 拓展性差,添加新类型需要修改<code>Factory</code>.</p>
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h4 id="1-Product-Factory"><a href="#1-Product-Factory" class="headerlink" title="1.Product$Factory"></a>1.Product$Factory</h4><p>根据传入不同参数创建不同类型对象</p>
+<pre><code>interface Product{
+    float getPrice();
+    class Factory{
+        static final String PRODUCT_A = &quot;A&quot;;
+        static final String PRODUCT_B = &quot;B&quot;;
+        static final String PRODUCT_C = &quot;C&quot;;
+        static final String PRODUCT_D = &quot;D&quot;;
+        static final String PRODUCT_E = &quot;E&quot;;
+        static Product createProduct(String type){
+            switch (type){
+                case PRODUCT_A:
+                    return new ProductA();
+                case PRODUCT_B:
+                    return new ProductB();
+                case PRODUCT_C:
+                    return new ProductC();
+                   case PRODUCT_D:
+                    return new ProductD();
+                case PRODUCT_E:
+                    return new ProductE();
+                default:
+                    return null;
+            }            
+        }
+    }
+}
+</code></pre><h4 id="2-com-android-documentsui-services-Job-Factory"><a href="#2-com-android-documentsui-services-Job-Factory" class="headerlink" title="2.com.android.documentsui.services.Job$Factory"></a>2.com.android.documentsui.services.Job$Factory</h4><p>根据不同方法名称创建不同对象</p>
+<pre><code>static class Factory {
+    static final Factory instance = new Factory();
 
+    Job createCopy(...) {
+        ...            
+        return new CopyJob(...);
+    }
+
+    Job createMove(...) {
+        ...
+        return new MoveJob(...);
+    }
+
+    Job createDelete(...) {
+        ...
+        return new DeleteJob(...);
+    }
+}
+</code></pre><h4 id="3-android-text-Editable-Factory"><a href="#3-android-text-Editable-Factory" class="headerlink" title="3.android.text.Editable$Factory"></a>3.android.text.Editable$Factory</h4><p>根据传入不同参数,创建相同对象,但对象初始化属性不同,这里还结合了饿汉单例模式</p>
+<pre><code>    public static class Factory {
+    private static Editable.Factory sInstance = new Editable.Factory();
+
+    public static Editable.Factory getInstance() {
+        return sInstance;
+    }
+
+    public Editable newEditable(CharSequence source) {
+        return new SpannableStringBuilder(source);
+    }
+}
+</code></pre>
       
     </div>
 
@@ -355,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/15/设计模式笔记(五)依赖倒转原则/" rel="next" title="设计模式笔记(五)依赖倒转原则">
-                <i class="fa fa-chevron-left"></i> 设计模式笔记(五)依赖倒转原则
+              <a href="/2017/05/22/设计模式笔记(十)单例设计模式/" rel="next" title="设计模式笔记(十)单例设计模式">
+                <i class="fa fa-chevron-left"></i> 设计模式笔记(十)单例设计模式
               </a>
             
           </div>
@@ -365,8 +437,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/17/设计模式笔记(七)合成复用原则/" rel="prev" title="设计模式笔记(七)合成复用原则">
-                设计模式笔记(七)合成复用原则 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/24/设计模式笔记(十二)工厂方法设计模式/" rel="prev" title="设计模式笔记(十二)工厂方法设计模式">
+                设计模式笔记(十二)工厂方法设计模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -485,7 +557,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">2.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生活中"><span class="nav-number">2.1.</span> <span class="nav-text">生活中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码中"><span class="nav-number">2.2.</span> <span class="nav-text">代码中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求"><span class="nav-number">2.3.</span> <span class="nav-text">需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What"><span class="nav-number">1.</span> <span class="nav-text">What</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式成员"><span class="nav-number">1.2.</span> <span class="nav-text">模式成员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why"><span class="nav-number">2.</span> <span class="nav-text">Why</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where"><span class="nav-number">3.</span> <span class="nav-text">Where</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Product-Factory"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.Product$Factory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-com-android-documentsui-services-Job-Factory"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.com.android.documentsui.services.Job$Factory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-android-text-Editable-Factory"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.android.text.Editable$Factory</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

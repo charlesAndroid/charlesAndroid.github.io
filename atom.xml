@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://charlesandroid.github.io/"/>
-  <updated>2017-05-23T03:28:19.000Z</updated>
+  <updated>2017-05-23T06:14:31.000Z</updated>
   <id>http://charlesandroid.github.io/</id>
   
   <author>
@@ -16,11 +16,122 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>设计模式笔记(十二)工厂方法设计模式</title>
+    <link href="http://charlesandroid.github.io/2017/05/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0(%E5%8D%81%E4%BA%8C)%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://charlesandroid.github.io/2017/05/24/设计模式笔记(十二)工厂方法设计模式/</id>
+    <published>2017-05-24T08:57:05.000Z</published>
+    <updated>2017-05-23T06:14:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>工厂方法模式（Factory method pattern）是一种实现了<code>工厂</code>概念的面向对象设计模式。就像其他创建型模式一样，它也是处理在不指定对象具体类型的情况下创建对象的问题。属于类创建型设计模式.</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在简单工厂的基础上,定义一个创建对象的<code>Factory</code>接口，通过不同实现,创建不同对象.</p>
+<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p><code>Factory</code> :工厂接口,抽象创建对象的方法<br><code>ConcreteFactory</code> :创建产品的<code>Factory</code>具体实现类<br><code>Product</code> :产品基类,可以是抽象类,可以是接口<br><code>ConcreteProduct</code> : <code>Product</code>的实现类<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/FactoryMethod.png" alt=""></p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>解决简单工厂的扩展性问题,为了增加新类型产品,不违背<code>开闭原则</code>去修改<code>Factory</code>代码.<br>简单工厂代码:</p>
+<pre><code>class Factory{
+        static final String PRODUCT_A = &quot;A&quot;;
+        static final String PRODUCT_B = &quot;B&quot;;
+        static final String PRODUCT_C = &quot;C&quot;;
+        static final String PRODUCT_D = &quot;D&quot;;
+        static final String PRODUCT_E = &quot;E&quot;;
+        static Product createProduct(String type){
+            switch (type){
+                case PRODUCT_A:
+                    return new ProductA();
+                case PRODUCT_B:
+                    return new ProductB();
+                case PRODUCT_C:
+                    return new ProductC();
+                   case PRODUCT_D:
+                    return new ProductD();
+                case PRODUCT_E:
+                    return new ProductE();
+                default:
+                    return null;
+            }            
+        }
+    }
+
+...
+Product a = Factory.createProduct(Factory.PRODUCT_A);
+</code></pre><p>使用工厂方法:  </p>
+<pre><code>interface Factory{
+    Product createProduct();
+}
+...
+class FactoryA implements Factory{
+
+    @Override
+    public Product createProduct(){
+        return new ProductA();
+    }
+}
+...
+class FactoryE implements Factory{
+
+    @Override
+    public Product createProduct(){
+        return new ProductE();
+    }
+}
+...
+public static float getProductPrice(Factory factory){
+    Product product = factory.createProduct();
+    return product.getPrice();
+}
+...
+public static void main(String args[]){
+    float price = getProductPrice(new FactoryB());
+    System.out.println(&quot;Product price:&quot; + price);
+}
+</code></pre><p>优点: 扩展性强,新增加类型只需要增加对应的工厂实现类,在调用时<code>getProductPrice</code>传入对应的工厂类.<br>缺点: 每增加一种类型就需要增加两个类,一个产品实体类,一个工厂类.</p>
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="1-android-support-v4-view-LayoutInflaterFactory"><a href="#1-android-support-v4-view-LayoutInflaterFactory" class="headerlink" title="1.android.support.v4.view.LayoutInflaterFactory"></a>1.android.support.v4.view.LayoutInflaterFactory</h3><pre><code>public interface LayoutInflaterFactory {
+    public View onCreateView(...);
+}
+</code></pre><p>工厂实现类:  </p>
+<pre><code>android.support.v4.app.FragmentManager$FragmentManagerImpl
+android.support.v7.AppCompatDelegateImplV9  
+</code></pre><h4 id="android-support-v4-view-LayoutInflaterCompat-LayoutInflaterCompatImpl"><a href="#android-support-v4-view-LayoutInflaterCompat-LayoutInflaterCompatImpl" class="headerlink" title="android.support.v4.view.LayoutInflaterCompat$LayoutInflaterCompatImpl"></a>android.support.v4.view.LayoutInflaterCompat$LayoutInflaterCompatImpl</h4><p>使用:</p>
+<pre><code>interface LayoutInflaterCompatImpl {
+    public void setFactory(..., LayoutInflaterFactory factory);
+    ...
+}
+</code></pre><h3 id="2-android-database-sqlite-SQLiteDatabase-CursorFactory"><a href="#2-android-database-sqlite-SQLiteDatabase-CursorFactory" class="headerlink" title="2.android.database.sqlite.SQLiteDatabase$CursorFactory"></a>2.android.database.sqlite.SQLiteDatabase$CursorFactory</h3><pre><code>public interface CursorFactory {
+    public Cursor newCursor(...);
+}
+</code></pre><h4 id="android-database-sqlite-SQLiteDirectCursorDriver"><a href="#android-database-sqlite-SQLiteDirectCursorDriver" class="headerlink" title="android.database.sqlite.SQLiteDirectCursorDriver"></a>android.database.sqlite.SQLiteDirectCursorDriver</h4><p>使用:</p>
+<pre><code>public Cursor query(CursorFactory factory, ...) {
+    ...        
+    final Cursor cursor;
+    try {
+        ...
+        if (factory == null) {
+            ...
+        } else {
+            cursor = factory.newCursor(...);
+        }
+    } catch (RuntimeException ex) {
+        ...
+    }
+
+    ...
+    return cursor;
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;What&quot;&gt;&lt;a href=&quot;#What&quot; class=&quot;headerlink&quot; title=&quot;What&quot;&gt;&lt;/a&gt;What&lt;/h2&gt;&lt;p&gt;工厂方法模式（Factory method pattern）是一种实现了&lt;code&gt;工厂&lt;/code&gt;概念的面向对象设计模式
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>设计模式笔记(十一)简单工厂设计模式</title>
-    <link href="http://charlesandroid.github.io/2017/05/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0(%E5%8D%81%E4%B8%80)%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)工厂方法设计模式/</id>
+    <link href="http://charlesandroid.github.io/2017/05/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0(%E5%8D%81%E4%B8%80)%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)简单工厂设计模式/</id>
     <published>2017-05-23T08:57:05.000Z</published>
-    <updated>2017-05-23T03:28:19.000Z</updated>
+    <updated>2017-05-23T06:12:39.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。  </p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>提供一个根据传入参数来分别创建、返回不同对象的方法,这些对象通常继承/实现同一个父类/接口,或是类型相同,属性不同.</p>
@@ -44,7 +155,7 @@ Product c = Factory.createProductC();
 Product d = Factory.createProductD(); 
 Product e = Factory.createProductE(); 
 </code></pre><p>优点: 代码统一,对象初始化的在同一个地方,便于查找和修改.<br>缺点: 拓展性差,添加新类型需要修改<code>Factory</code>.</p>
-<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h4 id="Product-Factory"><a href="#Product-Factory" class="headerlink" title="Product$Factory"></a>Product$Factory</h4><p>根据传入不同参数创建不同类型对象</p>
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h4 id="1-Product-Factory"><a href="#1-Product-Factory" class="headerlink" title="1.Product$Factory"></a>1.Product$Factory</h4><p>根据传入不同参数创建不同类型对象</p>
 <pre><code>interface Product{
     float getPrice();
     class Factory{
@@ -71,7 +182,7 @@ Product e = Factory.createProductE();
         }
     }
 }
-</code></pre><h4 id="com-android-documentsui-services-Job-Factory"><a href="#com-android-documentsui-services-Job-Factory" class="headerlink" title="com.android.documentsui.services.Job$Factory"></a>com.android.documentsui.services.Job$Factory</h4><p>根据不同方法名称创建不同对象</p>
+</code></pre><h4 id="2-com-android-documentsui-services-Job-Factory"><a href="#2-com-android-documentsui-services-Job-Factory" class="headerlink" title="2.com.android.documentsui.services.Job$Factory"></a>2.com.android.documentsui.services.Job$Factory</h4><p>根据不同方法名称创建不同对象</p>
 <pre><code>static class Factory {
     static final Factory instance = new Factory();
 
@@ -90,7 +201,7 @@ Product e = Factory.createProductE();
         return new DeleteJob(...);
     }
 }
-</code></pre><h4 id="android-text-Editable-Factory"><a href="#android-text-Editable-Factory" class="headerlink" title="android.text.Editable$Factory"></a>android.text.Editable$Factory</h4><p>根据传入不同参数,创建相同对象,但对象初始化属性不同,这里还结合了饿汉单例模式</p>
+</code></pre><h4 id="3-android-text-Editable-Factory"><a href="#3-android-text-Editable-Factory" class="headerlink" title="3.android.text.Editable$Factory"></a>3.android.text.Editable$Factory</h4><p>根据传入不同参数,创建相同对象,但对象初始化属性不同,这里还结合了饿汉单例模式</p>
 <pre><code>    public static class Factory {
     private static Editable.Factory sInstance = new Editable.Factory();
 
@@ -118,19 +229,19 @@ Product e = Factory.createProductE();
     <link href="http://charlesandroid.github.io/2017/05/22/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0(%E5%8D%81)%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     <id>http://charlesandroid.github.io/2017/05/22/设计模式笔记(十)单例设计模式/</id>
     <published>2017-05-22T08:57:05.000Z</published>
-    <updated>2017-05-22T09:29:19.000Z</updated>
+    <updated>2017-05-23T06:13:13.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.   </p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在一个系统中,某个类<code>A</code>,代码中要保证执行一次<code>A a = new A()</code>,而且只执行一次,并且句柄可以供其他类使用.</p>
 <h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>为什么系统中要保证一个类只有一个实例呢?<br>比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两个,那么一个开一个关,屋里的家电就不知道该怎么办了.单例模式就很好的解决了这一问题,对于总电源管理这个类<code>PowerManager</code>采用单例模式,提供统一的电源状态成员变量<code>powerState</code>,并且提供统一的开启和关闭电源的方法<code>open</code>,<code>close</code>,在节省内存的前提下,也统一了电源状态的管理和方法的调用.<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/powermanager.png" alt=""></p>
 <h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>1.私有化本类构造方法<br>2.创建一个私有静态本类对象实例<br>3.提供静态方法,返回实例</p>
-<h4 id="android-security-SystemKeyStore"><a href="#android-security-SystemKeyStore" class="headerlink" title="android.security.SystemKeyStore"></a>android.security.SystemKeyStore</h4><pre><code>private static SystemKeyStore mInstance = new SystemKeyStore();  
+<h4 id="1-android-security-SystemKeyStore"><a href="#1-android-security-SystemKeyStore" class="headerlink" title="1.android.security.SystemKeyStore"></a>1.android.security.SystemKeyStore</h4><pre><code>private static SystemKeyStore mInstance = new SystemKeyStore();  
 private SystemKeyStore() { }  
 public static SystemKeyStore getInstance() {  
     return mInstance;  
 }    
 </code></pre><p>饿汉式另一种方式<br>1.私有化本类构造方法<br>2.创建一个私有静态内部类<br>3.在内部类中,创建一个私有静态外部类对象实例<br>4.提供静态方法,返回实例</p>
-<h4 id="MySigleton"><a href="#MySigleton" class="headerlink" title="MySigleton"></a>MySigleton</h4><pre><code>public class MySigleton{
+<h4 id="2-MySigleton"><a href="#2-MySigleton" class="headerlink" title="2.MySigleton"></a>2.MySigleton</h4><pre><code>public class MySigleton{
     private MySigleton(){}
     private static class Holder {
         private static MySigleton instance = new MySigleton();
@@ -140,7 +251,7 @@ public static SystemKeyStore getInstance() {
     }
 }
 </code></pre><h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><p>不同于饿汉式的是使用时再去初始化本类的实例,又称延迟加载.由于考虑多线程安全问题,所以在方法体加上<code>synchronized</code>关键字.</p>
-<h4 id="com-android-settingslib-bluetooth-LocalBluetoothManager"><a href="#com-android-settingslib-bluetooth-LocalBluetoothManager" class="headerlink" title="com.android.settingslib.bluetooth.LocalBluetoothManager"></a>com.android.settingslib.bluetooth.LocalBluetoothManager</h4><pre><code>private static LocalBluetoothManager sInstance;
+<h4 id="3-com-android-settingslib-bluetooth-LocalBluetoothManager"><a href="#3-com-android-settingslib-bluetooth-LocalBluetoothManager" class="headerlink" title="3.com.android.settingslib.bluetooth.LocalBluetoothManager"></a>3.com.android.settingslib.bluetooth.LocalBluetoothManager</h4><pre><code>private static LocalBluetoothManager sInstance;
 public static synchronized LocalBluetoothManager getInstance(...) {
     if (sInstance == null) {
         ...
@@ -150,7 +261,7 @@ public static synchronized LocalBluetoothManager getInstance(...) {
     return sInstance;
 }  
 </code></pre><p>为了提高方法执行效率,同时保证线程安全,使用<code>synchronized</code>同步代码块替换方法上的同步标签.</p>
-<h4 id="com-android-server-SystemConfig"><a href="#com-android-server-SystemConfig" class="headerlink" title="com.android.server.SystemConfig"></a>com.android.server.SystemConfig</h4><pre><code>static SystemConfig sInstance;
+<h4 id="4-com-android-server-SystemConfig"><a href="#4-com-android-server-SystemConfig" class="headerlink" title="4.com.android.server.SystemConfig"></a>4.com.android.server.SystemConfig</h4><pre><code>static SystemConfig sInstance;
 public static SystemConfig getInstance() {
     synchronized (SystemConfig.class) {
         if (sInstance == null) {
