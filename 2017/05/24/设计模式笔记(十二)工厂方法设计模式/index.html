@@ -79,8 +79,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml" />
 
@@ -101,7 +99,7 @@
 <meta property="og:site_name" content="Charles">
 <meta property="og:description" content="What工厂方法模式（Factory method pattern）是一种实现了工厂概念的面向对象设计模式。就像其他创建型模式一样，它也是处理在不指定对象具体类型的情况下创建对象的问题。属于类创建型设计模式. 总结在简单工厂的基础上,定义一个创建对象的Factory接口，通过不同实现,创建不同对象. 模式成员Factory :工厂接口,抽象创建对象的方法ConcreteFactory :创建产品的">
 <meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/FactoryMethod.png">
-<meta property="og:updated_time" content="2017-05-23T06:14:31.000Z">
+<meta property="og:updated_time" content="2017-05-23T07:27:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式笔记(十二)工厂方法设计模式">
 <meta name="twitter:description" content="What工厂方法模式（Factory method pattern）是一种实现了工厂概念的面向对象设计模式。就像其他创建型模式一样，它也是处理在不指定对象具体类型的情况下创建对象的问题。属于类创建型设计模式. 总结在简单工厂的基础上,定义一个创建对象的Factory接口，通过不同实现,创建不同对象. 模式成员Factory :工厂接口,抽象创建对象的方法ConcreteFactory :创建产品的">
@@ -373,7 +371,7 @@ public static void main(String args[]){
     float price = getProductPrice(new FactoryB());
     System.out.println(&quot;Product price:&quot; + price);
 }
-</code></pre><p>优点: 扩展性强,新增加类型只需要增加对应的工厂实现类,在调用时<code>getProductPrice</code>传入对应的工厂类.<br>缺点: 每增加一种类型就需要增加两个类,一个产品实体类,一个工厂类.</p>
+</code></pre><p><strong>优点:</strong> 扩展性强,新增加类型只需要增加对应的工厂实现类,在调用时<code>getProductPrice</code>传入对应的工厂类.<br><strong>缺点:</strong> 每增加一种类型就需要增加两个类,一个产品实体类,一个工厂类.</p>
 <h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="1-android-support-v4-view-LayoutInflaterFactory"><a href="#1-android-support-v4-view-LayoutInflaterFactory" class="headerlink" title="1.android.support.v4.view.LayoutInflaterFactory"></a>1.android.support.v4.view.LayoutInflaterFactory</h3><pre><code>public interface LayoutInflaterFactory {
     public View onCreateView(...);
 }
@@ -452,6 +450,10 @@ android.support.v7.AppCompatDelegateImplV9
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/05/24/设计模式笔记(十三)抽象工厂设计模式/" rel="prev" title="设计模式笔记(十三)抽象工厂设计模式">
+                设计模式笔记(十三)抽象工厂设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -522,7 +524,7 @@ android.support.v7.AppCompatDelegateImplV9
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="What单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.    总结在一个系统中,某个类A,代码中要保证执行一次A a = new A(),而且只执行一次,并且句柄可以供其他类使用. Why为什么系统中要保证一个类只有一个实例呢?比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两">
+<meta name="description" content="What单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例,即一个类只有一个对象实例,属于类创建型设计模式    总结在一个系统中,某个类A,代码中要保证执行一次A a = new A(),而且只执行一次,并且句柄可以供其他类使用. Why为什么系统中要保证一个类只有一个实例呢?比如一个房间的总电源只有一个,为了保证开关同步">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式笔记(十)单例设计模式">
 <meta property="og:url" content="http://charlesandroid.github.io/2017/05/22/设计模式笔记(十)单例设计模式/index.html">
 <meta property="og:site_name" content="Charles">
-<meta property="og:description" content="What单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.    总结在一个系统中,某个类A,代码中要保证执行一次A a = new A(),而且只执行一次,并且句柄可以供其他类使用. Why为什么系统中要保证一个类只有一个实例呢?比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两">
+<meta property="og:description" content="What单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例,即一个类只有一个对象实例,属于类创建型设计模式    总结在一个系统中,某个类A,代码中要保证执行一次A a = new A(),而且只执行一次,并且句柄可以供其他类使用. Why为什么系统中要保证一个类只有一个实例呢?比如一个房间的总电源只有一个,为了保证开关同步">
 <meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/powermanager.png">
-<meta property="og:updated_time" content="2017-05-23T06:13:13.000Z">
+<meta property="og:updated_time" content="2017-05-23T07:56:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式笔记(十)单例设计模式">
-<meta name="twitter:description" content="What单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.    总结在一个系统中,某个类A,代码中要保证执行一次A a = new A(),而且只执行一次,并且句柄可以供其他类使用. Why为什么系统中要保证一个类只有一个实例呢?比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两">
+<meta name="twitter:description" content="What单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例,即一个类只有一个对象实例,属于类创建型设计模式    总结在一个系统中,某个类A,代码中要保证执行一次A a = new A(),而且只执行一次,并且句柄可以供其他类使用. Why为什么系统中要保证一个类只有一个实例呢?比如一个房间的总电源只有一个,为了保证开关同步">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/powermanager.png">
 
 
@@ -311,7 +311,7 @@
       
 
       
-        <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.   </p>
+        <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例,即一个类只有一个对象实例,属于类创建型设计模式   </p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在一个系统中,某个类<code>A</code>,代码中要保证执行一次<code>A a = new A()</code>,而且只执行一次,并且句柄可以供其他类使用.</p>
 <h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>为什么系统中要保证一个类只有一个实例呢?<br>比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两个,那么一个开一个关,屋里的家电就不知道该怎么办了.单例模式就很好的解决了这一问题,对于总电源管理这个类<code>PowerManager</code>采用单例模式,提供统一的电源状态成员变量<code>powerState</code>,并且提供统一的开启和关闭电源的方法<code>open</code>,<code>close</code>,在节省内存的前提下,也统一了电源状态的管理和方法的调用.<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/powermanager.png" alt=""></p>
 <h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>1.私有化本类构造方法<br>2.创建一个私有静态本类对象实例<br>3.提供静态方法,返回实例</p>
@@ -470,7 +470,7 @@ public static SystemConfig getInstance() {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
