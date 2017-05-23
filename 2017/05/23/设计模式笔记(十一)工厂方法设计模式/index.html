@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Charles">
 <meta property="og:description" content="What简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。   总结提供一个根据传入参数来分别创建、返回不同类型对象的方法,这些对象通常继承/实现同一个父类/接口. 模式">
 <meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png">
-<meta property="og:updated_time" content="2017-05-23T03:20:00.000Z">
+<meta property="og:updated_time" content="2017-05-23T03:25:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式笔记(十一)简单工厂设计模式">
 <meta name="twitter:description" content="What简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。   总结提供一个根据传入参数来分别创建、返回不同类型对象的方法,这些对象通常继承/实现同一个父类/接口. 模式">
@@ -334,28 +334,28 @@ Product b = Factory.createProductB();
 Product c = Factory.createProductC(); 
 Product d = Factory.createProductD(); 
 Product e = Factory.createProductE(); 
-</code></pre><p>优点: 代码统一,对象初始化的在同一个地方,便于查找和修改<br>缺点: 没有拓展性,创建类型固定</p>
+</code></pre><p>优点: 代码统一,对象初始化的在同一个地方,便于查找和修改.<br>缺点: 拓展性差,添加新类型需要修改<code>Factory</code>.</p>
 <h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h4 id="Product-Factory"><a href="#Product-Factory" class="headerlink" title="Product$Factory"></a>Product$Factory</h4><p>根据传入不同参数创建不同类型对象</p>
-<pre><code>public interface Product{
+<pre><code>interface Product{
     float getPrice();
-    public static Factory{
-        public static final String PRODUCT_A = &quot;A&quot;;
-        public static final String PRODUCT_B = &quot;B&quot;;
-        public static final String PRODUCT_C = &quot;C&quot;;
-        public static final String PRODUCT_D = &quot;D&quot;;
-        public static final String PRODUCT_E = &quot;E&quot;;
-        public static Product createProduct(String type){
+    class Factory{
+        static final String PRODUCT_A = &quot;A&quot;;
+        static final String PRODUCT_B = &quot;B&quot;;
+        static final String PRODUCT_C = &quot;C&quot;;
+        static final String PRODUCT_D = &quot;D&quot;;
+        static final String PRODUCT_E = &quot;E&quot;;
+        static Product createProduct(String type){
             switch (type){
                 case PRODUCT_A:
                     return new ProductA();
                 case PRODUCT_B:
-                    return new ProductA();
+                    return new ProductB();
                 case PRODUCT_C:
-                    return new ProductA();
+                    return new ProductC();
                    case PRODUCT_D:
-                    return new ProductA();
+                    return new ProductD();
                 case PRODUCT_E:
-                    return new ProductA();
+                    return new ProductE();
                 default:
                     return null;
             }            

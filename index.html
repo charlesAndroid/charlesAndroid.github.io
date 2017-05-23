@@ -332,28 +332,28 @@ Product b = Factory.createProductB();
 Product c = Factory.createProductC(); 
 Product d = Factory.createProductD(); 
 Product e = Factory.createProductE(); 
-</code></pre><p>优点: 代码统一,对象初始化的在同一个地方,便于查找和修改<br>缺点: 没有拓展性,创建类型固定</p>
+</code></pre><p>优点: 代码统一,对象初始化的在同一个地方,便于查找和修改.<br>缺点: 拓展性差,添加新类型需要修改<code>Factory</code>.</p>
 <h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h4 id="Product-Factory"><a href="#Product-Factory" class="headerlink" title="Product$Factory"></a>Product$Factory</h4><p>根据传入不同参数创建不同类型对象</p>
-<pre><code>public interface Product{
+<pre><code>interface Product{
     float getPrice();
-    public static Factory{
-        public static final String PRODUCT_A = &quot;A&quot;;
-        public static final String PRODUCT_B = &quot;B&quot;;
-        public static final String PRODUCT_C = &quot;C&quot;;
-        public static final String PRODUCT_D = &quot;D&quot;;
-        public static final String PRODUCT_E = &quot;E&quot;;
-        public static Product createProduct(String type){
+    class Factory{
+        static final String PRODUCT_A = &quot;A&quot;;
+        static final String PRODUCT_B = &quot;B&quot;;
+        static final String PRODUCT_C = &quot;C&quot;;
+        static final String PRODUCT_D = &quot;D&quot;;
+        static final String PRODUCT_E = &quot;E&quot;;
+        static Product createProduct(String type){
             switch (type){
                 case PRODUCT_A:
                     return new ProductA();
                 case PRODUCT_B:
-                    return new ProductA();
+                    return new ProductB();
                 case PRODUCT_C:
-                    return new ProductA();
+                    return new ProductC();
                    case PRODUCT_D:
-                    return new ProductA();
+                    return new ProductD();
                 case PRODUCT_E:
-                    return new ProductA();
+                    return new ProductE();
                 default:
                     return null;
             }            
