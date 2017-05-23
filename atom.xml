@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://charlesandroid.github.io/"/>
-  <updated>2017-05-22T06:53:33.000Z</updated>
+  <updated>2017-05-23T03:20:00.000Z</updated>
   <id>http://charlesandroid.github.io/</id>
   
   <author>
@@ -16,13 +16,112 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>设计模式笔记(十一)简单工厂设计模式</title>
+    <link href="http://charlesandroid.github.io/2017/05/23/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0(%E5%8D%81%E4%B8%80)%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)工厂方法设计模式/</id>
+    <published>2017-05-23T08:57:05.000Z</published>
+    <updated>2017-05-23T03:20:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。  </p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>提供一个根据传入参数来分别创建、返回不同类型对象的方法,这些对象通常继承/实现同一个父类/接口.</p>
+<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p>Factory :工厂类,负责创建所需产品对象<br>Product :产品基类,可以是抽象类,可以是接口<br>ConcreteProduct : <code>Product</code>的实现类<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png" alt=""></p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>把同一类型的类创建<code>new Product()</code>,封装到同一个类当中,简化代码.<br>原代码:</p>
+<pre><code>Product a = new ProductA();
+Product b = new ProductB();
+Product c = new ProductC();
+Product d = new ProductD();
+Product e = new ProductE();
+</code></pre><p>使用简单工厂:  </p>
+<pre><code>Product a = Factory.createProduct(0); 
+Product b = Factory.createProduct(1); 
+Product c = Factory.createProduct(2); 
+Product d = Factory.createProduct(3); 
+Product e = Factory.createProduct(4); 
+</code></pre><p>参数也可以是<code>String</code>类型,另一种方式是使用不同的方法名称来创建不同的对象</p>
+<pre><code>Product a = Factory.createProductA(); 
+Product b = Factory.createProductB(); 
+Product c = Factory.createProductC(); 
+Product d = Factory.createProductD(); 
+Product e = Factory.createProductE(); 
+</code></pre><p>优点: 代码统一,对象初始化的在同一个地方,便于查找和修改<br>缺点: 没有拓展性,创建类型固定</p>
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h4 id="Product-Factory"><a href="#Product-Factory" class="headerlink" title="Product$Factory"></a>Product$Factory</h4><p>根据传入不同参数创建不同类型对象</p>
+<pre><code>public interface Product{
+    float getPrice();
+    public static Factory{
+        public static final String PRODUCT_A = &quot;A&quot;;
+        public static final String PRODUCT_B = &quot;B&quot;;
+        public static final String PRODUCT_C = &quot;C&quot;;
+        public static final String PRODUCT_D = &quot;D&quot;;
+        public static final String PRODUCT_E = &quot;E&quot;;
+        public static Product createProduct(String type){
+            switch (type){
+                case PRODUCT_A:
+                    return new ProductA();
+                case PRODUCT_B:
+                    return new ProductA();
+                case PRODUCT_C:
+                    return new ProductA();
+                   case PRODUCT_D:
+                    return new ProductA();
+                case PRODUCT_E:
+                    return new ProductA();
+                default:
+                    return null;
+            }            
+        }
+    }
+}
+</code></pre><h4 id="com-android-documentsui-services-Job-Factory"><a href="#com-android-documentsui-services-Job-Factory" class="headerlink" title="com.android.documentsui.services.Job$Factory"></a>com.android.documentsui.services.Job$Factory</h4><p>根据不同方法名称创建不同对象</p>
+<pre><code>static class Factory {
+    static final Factory instance = new Factory();
+
+    Job createCopy(...) {
+        ...            
+        return new CopyJob(...);
+    }
+
+    Job createMove(...) {
+        ...
+        return new MoveJob(...);
+    }
+
+    Job createDelete(...) {
+        ...
+        return new DeleteJob(...);
+    }
+}
+</code></pre><h4 id="android-text-Editable-Factory"><a href="#android-text-Editable-Factory" class="headerlink" title="android.text.Editable$Factory"></a>android.text.Editable$Factory</h4><p>根据传入不同参数,创建相同对象,但对象初始化属性不同,这里还结合了饿汉单例模式</p>
+<pre><code>    public static class Factory {
+    private static Editable.Factory sInstance = new Editable.Factory();
+
+    public static Editable.Factory getInstance() {
+        return sInstance;
+    }
+
+    public Editable newEditable(CharSequence source) {
+        return new SpannableStringBuilder(source);
+    }
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;What&quot;&gt;&lt;a href=&quot;#What&quot; class=&quot;headerlink&quot; title=&quot;What&quot;&gt;&lt;/a&gt;What&lt;/h2&gt;&lt;p&gt;简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>设计模式笔记(十)单例设计模式</title>
     <link href="http://charlesandroid.github.io/2017/05/22/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0(%E5%8D%81)%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     <id>http://charlesandroid.github.io/2017/05/22/设计模式笔记(十)单例设计模式/</id>
     <published>2017-05-22T08:57:05.000Z</published>
-    <updated>2017-05-22T06:53:33.000Z</updated>
+    <updated>2017-05-22T09:29:19.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.<br>通俗讲就是在一个系统中,某个类<code>A</code>,代码中要保证执行一次<code>A a = new A()</code>,而且只执行一次,并且句柄可以供其他类使用.</p>
+    <content type="html"><![CDATA[<h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.   </p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在一个系统中,某个类<code>A</code>,代码中要保证执行一次<code>A a = new A()</code>,而且只执行一次,并且句柄可以供其他类使用.</p>
 <h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>为什么系统中要保证一个类只有一个实例呢?<br>比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两个,那么一个开一个关,屋里的家电就不知道该怎么办了.单例模式就很好的解决了这一问题,对于总电源管理这个类<code>PowerManager</code>采用单例模式,提供统一的电源状态成员变量<code>powerState</code>,并且提供统一的开启和关闭电源的方法<code>open</code>,<code>close</code>,在节省内存的前提下,也统一了电源状态的管理和方法的调用.<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/powermanager.png" alt=""></p>
 <h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>1.私有化本类构造方法<br>2.创建一个私有静态本类对象实例<br>3.提供静态方法,返回实例</p>
 <h4 id="android-security-SystemKeyStore"><a href="#android-security-SystemKeyStore" class="headerlink" title="android.security.SystemKeyStore"></a>android.security.SystemKeyStore</h4><pre><code>private static SystemKeyStore mInstance = new SystemKeyStore();  

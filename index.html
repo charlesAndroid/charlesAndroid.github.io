@@ -243,6 +243,197 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)工厂方法设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Charles">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Charles">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/23/设计模式笔记(十一)工厂方法设计模式/" itemprop="url">设计模式笔记(十一)简单工厂设计模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T16:57:05+08:00">
+                2017-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。  </p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>提供一个根据传入参数来分别创建、返回不同类型对象的方法,这些对象通常继承/实现同一个父类/接口.</p>
+<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p>Factory :工厂类,负责创建所需产品对象<br>Product :产品基类,可以是抽象类,可以是接口<br>ConcreteProduct : <code>Product</code>的实现类<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png" alt=""></p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>把同一类型的类创建<code>new Product()</code>,封装到同一个类当中,简化代码.<br>原代码:</p>
+<pre><code>Product a = new ProductA();
+Product b = new ProductB();
+Product c = new ProductC();
+Product d = new ProductD();
+Product e = new ProductE();
+</code></pre><p>使用简单工厂:  </p>
+<pre><code>Product a = Factory.createProduct(0); 
+Product b = Factory.createProduct(1); 
+Product c = Factory.createProduct(2); 
+Product d = Factory.createProduct(3); 
+Product e = Factory.createProduct(4); 
+</code></pre><p>参数也可以是<code>String</code>类型,另一种方式是使用不同的方法名称来创建不同的对象</p>
+<pre><code>Product a = Factory.createProductA(); 
+Product b = Factory.createProductB(); 
+Product c = Factory.createProductC(); 
+Product d = Factory.createProductD(); 
+Product e = Factory.createProductE(); 
+</code></pre><p>优点: 代码统一,对象初始化的在同一个地方,便于查找和修改<br>缺点: 没有拓展性,创建类型固定</p>
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h4 id="Product-Factory"><a href="#Product-Factory" class="headerlink" title="Product$Factory"></a>Product$Factory</h4><p>根据传入不同参数创建不同类型对象</p>
+<pre><code>public interface Product{
+    float getPrice();
+    public static Factory{
+        public static final String PRODUCT_A = &quot;A&quot;;
+        public static final String PRODUCT_B = &quot;B&quot;;
+        public static final String PRODUCT_C = &quot;C&quot;;
+        public static final String PRODUCT_D = &quot;D&quot;;
+        public static final String PRODUCT_E = &quot;E&quot;;
+        public static Product createProduct(String type){
+            switch (type){
+                case PRODUCT_A:
+                    return new ProductA();
+                case PRODUCT_B:
+                    return new ProductA();
+                case PRODUCT_C:
+                    return new ProductA();
+                   case PRODUCT_D:
+                    return new ProductA();
+                case PRODUCT_E:
+                    return new ProductA();
+                default:
+                    return null;
+            }            
+        }
+    }
+}
+</code></pre><h4 id="com-android-documentsui-services-Job-Factory"><a href="#com-android-documentsui-services-Job-Factory" class="headerlink" title="com.android.documentsui.services.Job$Factory"></a>com.android.documentsui.services.Job$Factory</h4><p>根据不同方法名称创建不同对象</p>
+<pre><code>static class Factory {
+    static final Factory instance = new Factory();
+
+    Job createCopy(...) {
+        ...            
+        return new CopyJob(...);
+    }
+
+    Job createMove(...) {
+        ...
+        return new MoveJob(...);
+    }
+
+    Job createDelete(...) {
+        ...
+        return new DeleteJob(...);
+    }
+}
+</code></pre><h4 id="android-text-Editable-Factory"><a href="#android-text-Editable-Factory" class="headerlink" title="android.text.Editable$Factory"></a>android.text.Editable$Factory</h4><p>根据传入不同参数,创建相同对象,但对象初始化属性不同,这里还结合了饿汉单例模式</p>
+<pre><code>    public static class Factory {
+    private static Editable.Factory sInstance = new Editable.Factory();
+
+    public static Editable.Factory getInstance() {
+        return sInstance;
+    }
+
+    public Editable newEditable(CharSequence source) {
+        return new SpannableStringBuilder(source);
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/22/设计模式笔记(十)单例设计模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -311,7 +502,8 @@
       
         
           
-            <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.<br>通俗讲就是在一个系统中,某个类<code>A</code>,代码中要保证执行一次<code>A a = new A()</code>,而且只执行一次,并且句柄可以供其他类使用.</p>
+            <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.   </p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在一个系统中,某个类<code>A</code>,代码中要保证执行一次<code>A a = new A()</code>,而且只执行一次,并且句柄可以供其他类使用.</p>
 <h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>为什么系统中要保证一个类只有一个实例呢?<br>比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两个,那么一个开一个关,屋里的家电就不知道该怎么办了.单例模式就很好的解决了这一问题,对于总电源管理这个类<code>PowerManager</code>采用单例模式,提供统一的电源状态成员变量<code>powerState</code>,并且提供统一的开启和关闭电源的方法<code>open</code>,<code>close</code>,在节省内存的前提下,也统一了电源状态的管理和方法的调用.<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/powermanager.png" alt=""></p>
 <h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>1.私有化本类构造方法<br>2.创建一个私有静态本类对象实例<br>3.提供静态方法,返回实例</p>
 <h4 id="android-security-SystemKeyStore"><a href="#android-security-SystemKeyStore" class="headerlink" title="android.security.SystemKeyStore"></a>android.security.SystemKeyStore</h4><pre><code>private static SystemKeyStore mInstance = new SystemKeyStore();  
@@ -1308,128 +1500,6 @@ public static SystemConfig getInstance() {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/11/设计模式笔记(一)概述/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Charles">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Charles">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/11/设计模式笔记(一)概述/" itemprop="url">设计模式笔记(一)概述</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T16:57:01+08:00">
-                2017-05-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><p>20世纪70年代,Christophr Alexander研究为了解决同一个问题而设计出不同的建筑结构.发现那些高质量设计中的<code>相似性</code>.用模式语言来指这种<code>相似性</code>.<br>    -A Pattern Language:Towns,Buildings,Construction(牛津大学出版社,1977年)<br>    -永久的建筑风格(牛津大学出版社,1979年)<br>由Alexander发现并记录的这些模式仅仅是涉及诸如建筑物,花园和道路之类的建筑学方面的模式.20世纪90年代逐渐的被软件工程所整合使用,由GoF归纳发表了23种在软件开发中使用频率较高的设计模式.</p>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>设计模式是指,<code>在某种特定的情况下,采取已经实践证明的最佳解决方案来实现需求.</code><br>程序的设计和实现来源于生活,而在特定的情况下,采取已知、最佳的方案,能更高效的实现需求.在GoF总结的23种设计模式中,包含5种创建型设计模式,7种结构型设计模式和11种行为型设计模式,根据某种设计模式的作用,又可分为类模式和对象模式<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/设计模式.png" alt=""><br>设计模式是前人总结的经验,要想设计出高内聚、低耦合的程序,就要好好学习设计模式,并翻阅遵从这些设计模式设计的程序案例</p>
-<h2 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h2><p>设计模式的总结,是按照一定的原则,主要分为以下7个原则  </p>
-<h4 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h4><p>一段代码,一个类,一个模块只负责自己领域的工作,尽可能不参与其他领域的工作</p>
-<h4 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h4><p>对外提供可修改的方法,对内避免代码修改,简称对外开放,对内关闭</p>
-<h4 id="里氏代换原则"><a href="#里氏代换原则" class="headerlink" title="里氏代换原则"></a>里氏代换原则</h4><p>一个可以用基类(父类)表示的地方,一定可以用衍生类(子类)来表示,并且替换后原程序不受到影响</p>
-<h4 id="依赖倒转原则"><a href="#依赖倒转原则" class="headerlink" title="依赖倒转原则"></a>依赖倒转原则</h4><p>基类(父类)不应该依赖衍生类(子类),抽象模块不应依赖具体实现</p>
-<h4 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h4><p>一系列多个方法的定义,不应该定义在同一接口中,针对不同功能,编写不同接口</p>
-<h4 id="合成复用原则"><a href="#合成复用原则" class="headerlink" title="合成复用原则"></a>合成复用原则</h4><p>使用组合,对象包含对象的关系,尽可能的少使用继承关系</p>
-<h4 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h4><p>又叫最少知道原则,意为一个对象对另一个对象尽可能少的了解  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>之所以每一种设计原则的概念解释,都用了尽可能和应该这样的词来描述,是因为设计模式虽然是建立在这些原则的基础之上总结出来的,但不代表每一种设计模式都绝对遵循这些设计原则,因此设计模式是在设计原则之上,合理的取舍总结出来的</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1479,7 +1549,7 @@ public static SystemConfig getInstance() {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>

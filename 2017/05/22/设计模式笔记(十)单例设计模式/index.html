@@ -79,8 +79,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml" />
 
@@ -94,17 +92,17 @@
 
 
 
-<meta name="description" content="What单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.通俗讲就是在一个系统中,某个类A,代码中要保证执行一次A a = new A(),而且只执行一次,并且句柄可以供其他类使用. Why为什么系统中要保证一个类只有一个实例呢?比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两个">
+<meta name="description" content="What单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.    总结在一个系统中,某个类A,代码中要保证执行一次A a = new A(),而且只执行一次,并且句柄可以供其他类使用. Why为什么系统中要保证一个类只有一个实例呢?比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式笔记(十)单例设计模式">
 <meta property="og:url" content="http://charlesandroid.github.io/2017/05/22/设计模式笔记(十)单例设计模式/index.html">
 <meta property="og:site_name" content="Charles">
-<meta property="og:description" content="What单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.通俗讲就是在一个系统中,某个类A,代码中要保证执行一次A a = new A(),而且只执行一次,并且句柄可以供其他类使用. Why为什么系统中要保证一个类只有一个实例呢?比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两个">
+<meta property="og:description" content="What单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.    总结在一个系统中,某个类A,代码中要保证执行一次A a = new A(),而且只执行一次,并且句柄可以供其他类使用. Why为什么系统中要保证一个类只有一个实例呢?比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两">
 <meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/powermanager.png">
-<meta property="og:updated_time" content="2017-05-22T06:53:33.000Z">
+<meta property="og:updated_time" content="2017-05-22T09:29:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式笔记(十)单例设计模式">
-<meta name="twitter:description" content="What单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.通俗讲就是在一个系统中,某个类A,代码中要保证执行一次A a = new A(),而且只执行一次,并且句柄可以供其他类使用. Why为什么系统中要保证一个类只有一个实例呢?比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两个">
+<meta name="twitter:description" content="What单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.    总结在一个系统中,某个类A,代码中要保证执行一次A a = new A(),而且只执行一次,并且句柄可以供其他类使用. Why为什么系统中要保证一个类只有一个实例呢?比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/powermanager.png">
 
 
@@ -313,7 +311,8 @@
       
 
       
-        <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.<br>通俗讲就是在一个系统中,某个类<code>A</code>,代码中要保证执行一次<code>A a = new A()</code>,而且只执行一次,并且句柄可以供其他类使用.</p>
+        <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>单例模式是一种常用的软件设计模式。在它的核心结构中只包含一个被称为单例的特殊类。通过单例模式可以保证系统中一个类只有一个实例。即一个类只有一个对象实例.   </p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在一个系统中,某个类<code>A</code>,代码中要保证执行一次<code>A a = new A()</code>,而且只执行一次,并且句柄可以供其他类使用.</p>
 <h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>为什么系统中要保证一个类只有一个实例呢?<br>比如一个房间的总电源只有一个,为了保证开关同步,方便管理,如果有两个,那么一个开一个关,屋里的家电就不知道该怎么办了.单例模式就很好的解决了这一问题,对于总电源管理这个类<code>PowerManager</code>采用单例模式,提供统一的电源状态成员变量<code>powerState</code>,并且提供统一的开启和关闭电源的方法<code>open</code>,<code>close</code>,在节省内存的前提下,也统一了电源状态的管理和方法的调用.<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/powermanager.png" alt=""></p>
 <h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>1.私有化本类构造方法<br>2.创建一个私有静态本类对象实例<br>3.提供静态方法,返回实例</p>
 <h4 id="android-security-SystemKeyStore"><a href="#android-security-SystemKeyStore" class="headerlink" title="android.security.SystemKeyStore"></a>android.security.SystemKeyStore</h4><pre><code>private static SystemKeyStore mInstance = new SystemKeyStore();  
@@ -397,6 +396,10 @@ public static SystemConfig getInstance() {
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/05/23/设计模式笔记(十一)工厂方法设计模式/" rel="prev" title="设计模式笔记(十一)简单工厂设计模式">
+                设计模式笔记(十一)简单工厂设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -467,7 +470,7 @@ public static SystemConfig getInstance() {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
@@ -513,7 +516,7 @@ public static SystemConfig getInstance() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What"><span class="nav-number">1.</span> <span class="nav-text">What</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why"><span class="nav-number">2.</span> <span class="nav-text">Why</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where"><span class="nav-number">3.</span> <span class="nav-text">Where</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#饿汉式"><span class="nav-number">3.1.</span> <span class="nav-text">饿汉式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#android-security-SystemKeyStore"><span class="nav-number">3.1.1.</span> <span class="nav-text">android.security.SystemKeyStore</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySigleton"><span class="nav-number">3.1.2.</span> <span class="nav-text">MySigleton</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#懒汉式"><span class="nav-number">3.2.</span> <span class="nav-text">懒汉式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#com-android-settingslib-bluetooth-LocalBluetoothManager"><span class="nav-number">3.2.1.</span> <span class="nav-text">com.android.settingslib.bluetooth.LocalBluetoothManager</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#com-android-server-SystemConfig"><span class="nav-number">3.2.2.</span> <span class="nav-text">com.android.server.SystemConfig</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What"><span class="nav-number">1.</span> <span class="nav-text">What</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why"><span class="nav-number">2.</span> <span class="nav-text">Why</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where"><span class="nav-number">3.</span> <span class="nav-text">Where</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#饿汉式"><span class="nav-number">3.1.</span> <span class="nav-text">饿汉式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#android-security-SystemKeyStore"><span class="nav-number">3.1.1.</span> <span class="nav-text">android.security.SystemKeyStore</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySigleton"><span class="nav-number">3.1.2.</span> <span class="nav-text">MySigleton</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#懒汉式"><span class="nav-number">3.2.</span> <span class="nav-text">懒汉式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#com-android-settingslib-bluetooth-LocalBluetoothManager"><span class="nav-number">3.2.1.</span> <span class="nav-text">com.android.settingslib.bluetooth.LocalBluetoothManager</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#com-android-server-SystemConfig"><span class="nav-number">3.2.2.</span> <span class="nav-text">com.android.server.SystemConfig</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

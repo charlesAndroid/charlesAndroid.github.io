@@ -79,6 +79,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml" />
 
@@ -92,20 +94,18 @@
 
 
 
-<meta name="description" content="概念依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程。 例子生活中部门里的所有人,都具备完成一件工作的能力(实现方法ganHuo()),那么即便负责这件事的那个人离职了,也将有人可以去代替. 代码中对按钮设置点击事件,传入的是处理点击事件的接口对象,在方法中把传入对象赋值给成员">
+<meta name="description" content="What简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。   总结提供一个根据传入参数来分别创建、返回不同类型对象的方法,这些对象通常继承/实现同一个父类/接口. 模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式笔记(五)依赖倒转原则">
-<meta property="og:url" content="http://charlesandroid.github.io/2017/05/15/设计模式笔记(五)依赖倒转原则/index.html">
+<meta property="og:title" content="设计模式笔记(十一)简单工厂设计模式">
+<meta property="og:url" content="http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)工厂方法设计模式/index.html">
 <meta property="og:site_name" content="Charles">
-<meta property="og:description" content="概念依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程。 例子生活中部门里的所有人,都具备完成一件工作的能力(实现方法ganHuo()),那么即便负责这件事的那个人离职了,也将有人可以去代替. 代码中对按钮设置点击事件,传入的是处理点击事件的接口对象,在方法中把传入对象赋值给成员">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/button.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/FileConvertor.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/convertor.png">
-<meta property="og:updated_time" content="2017-05-17T10:12:04.000Z">
+<meta property="og:description" content="What简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。   总结提供一个根据传入参数来分别创建、返回不同类型对象的方法,这些对象通常继承/实现同一个父类/接口. 模式">
+<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png">
+<meta property="og:updated_time" content="2017-05-23T03:20:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式笔记(五)依赖倒转原则">
-<meta name="twitter:description" content="概念依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程。 例子生活中部门里的所有人,都具备完成一件工作的能力(实现方法ganHuo()),那么即便负责这件事的那个人离职了,也将有人可以去代替. 代码中对按钮设置点击事件,传入的是处理点击事件的接口对象,在方法中把传入对象赋值给成员">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/button.png">
+<meta name="twitter:title" content="设计模式笔记(十一)简单工厂设计模式">
+<meta name="twitter:description" content="What简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。   总结提供一个根据传入参数来分别创建、返回不同类型对象的方法,这些对象通常继承/实现同一个父类/接口. 模式">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://charlesandroid.github.io/2017/05/15/设计模式笔记(五)依赖倒转原则/"/>
+  <link rel="canonical" href="http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)工厂方法设计模式/"/>
 
 
 
 
 
-  <title>设计模式笔记(五)依赖倒转原则 | Charles</title>
+  <title>设计模式笔记(十一)简单工厂设计模式 | Charles</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -249,7 +249,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/15/设计模式笔记(五)依赖倒转原则/">
+    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)工厂方法设计模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Charles">
@@ -266,7 +266,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式笔记(五)依赖倒转原则</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式笔记(十一)简单工厂设计模式</h1>
         
 
         <div class="post-meta">
@@ -278,8 +278,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-15T16:57:05+08:00">
-                2017-05-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T16:57:05+08:00">
+                2017-05-23
               </time>
             
 
@@ -313,12 +313,87 @@
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程。</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>部门里的所有人,都具备完成一件工作的能力(实现方法<code>ganHuo()</code>),那么即便负责这件事的那个人离职了,也将有人可以去代替.</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/button.png" alt=""><br>对按钮设置点击事件,传入的是处理点击事件的接口对象,在方法中把传入对象赋值给成员变量<code>mOnClickListener</code>,在使用的时候只调用<code>mOnClickListener.onClick</code>方法来执行,具体执行的结果,依赖子类的实现.</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个可以从配置文件中读取配置信息字符串的转换类<code>FileConvertor</code><br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/FileConvertor.png" alt=""><br>现在由于调整,之前读取<code>File</code>改成读取<code>XML</code>格式的配置文件,不光要增加一个<code>XMLConvertor</code>的类,还要修改<code>Main</code>的<code>getConfig</code>方法,所以修改如下<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/convertor.png" alt=""><br><code>Main</code>不在关心是谁来读取配置文件,只要需要传入具备读取配置文件功能的<code>Convertor</code>,调用<code>readSource</code>方法,拿到返回的<code>String</code>信息即可.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果一个类要用通过外部的对象来实现方法,那么这个时候方法传入的对象尽可能是抽象的.</p>
+        <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。  </p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>提供一个根据传入参数来分别创建、返回不同类型对象的方法,这些对象通常继承/实现同一个父类/接口.</p>
+<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p>Factory :工厂类,负责创建所需产品对象<br>Product :产品基类,可以是抽象类,可以是接口<br>ConcreteProduct : <code>Product</code>的实现类<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png" alt=""></p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>把同一类型的类创建<code>new Product()</code>,封装到同一个类当中,简化代码.<br>原代码:</p>
+<pre><code>Product a = new ProductA();
+Product b = new ProductB();
+Product c = new ProductC();
+Product d = new ProductD();
+Product e = new ProductE();
+</code></pre><p>使用简单工厂:  </p>
+<pre><code>Product a = Factory.createProduct(0); 
+Product b = Factory.createProduct(1); 
+Product c = Factory.createProduct(2); 
+Product d = Factory.createProduct(3); 
+Product e = Factory.createProduct(4); 
+</code></pre><p>参数也可以是<code>String</code>类型,另一种方式是使用不同的方法名称来创建不同的对象</p>
+<pre><code>Product a = Factory.createProductA(); 
+Product b = Factory.createProductB(); 
+Product c = Factory.createProductC(); 
+Product d = Factory.createProductD(); 
+Product e = Factory.createProductE(); 
+</code></pre><p>优点: 代码统一,对象初始化的在同一个地方,便于查找和修改<br>缺点: 没有拓展性,创建类型固定</p>
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h4 id="Product-Factory"><a href="#Product-Factory" class="headerlink" title="Product$Factory"></a>Product$Factory</h4><p>根据传入不同参数创建不同类型对象</p>
+<pre><code>public interface Product{
+    float getPrice();
+    public static Factory{
+        public static final String PRODUCT_A = &quot;A&quot;;
+        public static final String PRODUCT_B = &quot;B&quot;;
+        public static final String PRODUCT_C = &quot;C&quot;;
+        public static final String PRODUCT_D = &quot;D&quot;;
+        public static final String PRODUCT_E = &quot;E&quot;;
+        public static Product createProduct(String type){
+            switch (type){
+                case PRODUCT_A:
+                    return new ProductA();
+                case PRODUCT_B:
+                    return new ProductA();
+                case PRODUCT_C:
+                    return new ProductA();
+                   case PRODUCT_D:
+                    return new ProductA();
+                case PRODUCT_E:
+                    return new ProductA();
+                default:
+                    return null;
+            }            
+        }
+    }
+}
+</code></pre><h4 id="com-android-documentsui-services-Job-Factory"><a href="#com-android-documentsui-services-Job-Factory" class="headerlink" title="com.android.documentsui.services.Job$Factory"></a>com.android.documentsui.services.Job$Factory</h4><p>根据不同方法名称创建不同对象</p>
+<pre><code>static class Factory {
+    static final Factory instance = new Factory();
 
+    Job createCopy(...) {
+        ...            
+        return new CopyJob(...);
+    }
+
+    Job createMove(...) {
+        ...
+        return new MoveJob(...);
+    }
+
+    Job createDelete(...) {
+        ...
+        return new DeleteJob(...);
+    }
+}
+</code></pre><h4 id="android-text-Editable-Factory"><a href="#android-text-Editable-Factory" class="headerlink" title="android.text.Editable$Factory"></a>android.text.Editable$Factory</h4><p>根据传入不同参数,创建相同对象,但对象初始化属性不同,这里还结合了饿汉单例模式</p>
+<pre><code>    public static class Factory {
+    private static Editable.Factory sInstance = new Editable.Factory();
+
+    public static Editable.Factory getInstance() {
+        return sInstance;
+    }
+
+    public Editable newEditable(CharSequence source) {
+        return new SpannableStringBuilder(source);
+    }
+}
+</code></pre>
       
     </div>
 
@@ -354,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/14/设计模式笔记(四)里氏代换原则/" rel="next" title="设计模式笔记(四)里氏代换原则">
-                <i class="fa fa-chevron-left"></i> 设计模式笔记(四)里氏代换原则
+              <a href="/2017/05/22/设计模式笔记(十)单例设计模式/" rel="next" title="设计模式笔记(十)单例设计模式">
+                <i class="fa fa-chevron-left"></i> 设计模式笔记(十)单例设计模式
               </a>
             
           </div>
@@ -363,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/16/设计模式笔记(六)接口隔离原则/" rel="prev" title="设计模式笔记(六)接口隔离原则">
-                设计模式笔记(六)接口隔离原则 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -484,7 +555,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">2.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生活中"><span class="nav-number">2.1.</span> <span class="nav-text">生活中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码中"><span class="nav-number">2.2.</span> <span class="nav-text">代码中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求"><span class="nav-number">2.3.</span> <span class="nav-text">需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What"><span class="nav-number">1.</span> <span class="nav-text">What</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式成员"><span class="nav-number">1.2.</span> <span class="nav-text">模式成员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why"><span class="nav-number">2.</span> <span class="nav-text">Why</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where"><span class="nav-number">3.</span> <span class="nav-text">Where</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Product-Factory"><span class="nav-number">3.0.1.</span> <span class="nav-text">Product$Factory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#com-android-documentsui-services-Job-Factory"><span class="nav-number">3.0.2.</span> <span class="nav-text">com.android.documentsui.services.Job$Factory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#android-text-Editable-Factory"><span class="nav-number">3.0.3.</span> <span class="nav-text">android.text.Editable$Factory</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
