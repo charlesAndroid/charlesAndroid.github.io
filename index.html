@@ -313,7 +313,7 @@
           
             <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>简单工厂模式是属于类创建型模式，又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。  </p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>提供一个根据传入参数来分别创建、返回不同对象的方法,这些对象通常继承/实现同一个父类/接口,或是类型相同,属性不同.</p>
-<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p>Factory :工厂类,负责创建所需产品对象<br>Product :产品基类,可以是抽象类,可以是接口<br>ConcreteProduct : <code>Product</code>的实现类<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png" alt=""></p>
+<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p><code>Factory</code> :工厂类,负责创建所需产品对象<br><code>Product</code> :产品基类,可以是抽象类,可以是接口<br><code>ConcreteProduct</code> : <code>Product</code>的实现类<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png" alt=""></p>
 <h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>把同一类型的类创建<code>new Product()</code>,封装到同一个类当中,简化代码.<br>原代码:</p>
 <pre><code>Product a = new ProductA();
 Product b = new ProductB();
