@@ -79,6 +79,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml" />
 
@@ -92,18 +94,16 @@
 
 
 
-<meta name="description" content="What简单工厂模式又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。   总结提供一个根据传入参数来分别创建、返回不同对象的方法,这些对象通常继承/实现同一个父类/接口,或是类型相同,属性不同. 模式">
+<meta name="description" content="总结简单工厂和工厂方法解决一维数组问题,每增加一种属性对应只增加一种类型抽象工厂解决二维数组问题, 两个属性对应一个对象时,类型为二维数组,用不同工厂来控制一个维度,用不同方法来控制第二个维度,能顺利解决二维数组问题控制维度的方法:类、方法、方法参数,这三种方式都可以解决单一维度,任意两个相互组合解决两层维度的问题.   解决三个维度问题方法1: 结合类、方法、方法参数三种方式,当确定是哪个类的哪">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式笔记(十一)简单工厂设计模式">
-<meta property="og:url" content="http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)简单工厂设计模式/index.html">
+<meta property="og:title" content="设计模式笔记(十四)工厂设计模式总结">
+<meta property="og:url" content="http://charlesandroid.github.io/2017/05/26/设计模式笔记(十四)工厂设计模式总结/index.html">
 <meta property="og:site_name" content="Charles">
-<meta property="og:description" content="What简单工厂模式又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。   总结提供一个根据传入参数来分别创建、返回不同对象的方法,这些对象通常继承/实现同一个父类/接口,或是类型相同,属性不同. 模式">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png">
-<meta property="og:updated_time" content="2017-05-23T07:57:03.000Z">
+<meta property="og:description" content="总结简单工厂和工厂方法解决一维数组问题,每增加一种属性对应只增加一种类型抽象工厂解决二维数组问题, 两个属性对应一个对象时,类型为二维数组,用不同工厂来控制一个维度,用不同方法来控制第二个维度,能顺利解决二维数组问题控制维度的方法:类、方法、方法参数,这三种方式都可以解决单一维度,任意两个相互组合解决两层维度的问题.   解决三个维度问题方法1: 结合类、方法、方法参数三种方式,当确定是哪个类的哪">
+<meta property="og:updated_time" content="2017-05-24T01:47:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式笔记(十一)简单工厂设计模式">
-<meta name="twitter:description" content="What简单工厂模式又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。   总结提供一个根据传入参数来分别创建、返回不同对象的方法,这些对象通常继承/实现同一个父类/接口,或是类型相同,属性不同. 模式">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png">
+<meta name="twitter:title" content="设计模式笔记(十四)工厂设计模式总结">
+<meta name="twitter:description" content="总结简单工厂和工厂方法解决一维数组问题,每增加一种属性对应只增加一种类型抽象工厂解决二维数组问题, 两个属性对应一个对象时,类型为二维数组,用不同工厂来控制一个维度,用不同方法来控制第二个维度,能顺利解决二维数组问题控制维度的方法:类、方法、方法参数,这三种方式都可以解决单一维度,任意两个相互组合解决两层维度的问题.   解决三个维度问题方法1: 结合类、方法、方法参数三种方式,当确定是哪个类的哪">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)简单工厂设计模式/"/>
+  <link rel="canonical" href="http://charlesandroid.github.io/2017/05/26/设计模式笔记(十四)工厂设计模式总结/"/>
 
 
 
 
 
-  <title>设计模式笔记(十一)简单工厂设计模式 | Charles</title>
+  <title>设计模式笔记(十四)工厂设计模式总结 | Charles</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -247,7 +247,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/23/设计模式笔记(十一)简单工厂设计模式/">
+    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/26/设计模式笔记(十四)工厂设计模式总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Charles">
@@ -264,7 +264,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式笔记(十一)简单工厂设计模式</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式笔记(十四)工厂设计模式总结</h1>
         
 
         <div class="post-meta">
@@ -276,8 +276,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T16:57:05+08:00">
-                2017-05-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-26T16:57:05+08:00">
+                2017-05-26
               </time>
             
 
@@ -311,87 +311,9 @@
       
 
       
-        <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>简单工厂模式又叫做静态工厂方法（Static Factory Method）模式，但不属于23种GOF设计模式之一。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。  </p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>提供一个根据传入参数来分别创建、返回不同对象的方法,这些对象通常继承/实现同一个父类/接口,或是类型相同,属性不同.</p>
-<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p><code>Factory</code> :工厂类,负责创建所需产品对象<br><code>Product</code> :产品基类,可以是抽象类,可以是接口<br><code>ConcreteProduct</code> : <code>Product</code>的实现类<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/StaticFactory.png" alt=""></p>
-<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>把同一类型的类创建<code>new Product()</code>,封装到同一个类当中,简化代码.<br>原代码:</p>
-<pre><code>Product a = new ProductA();
-Product b = new ProductB();
-Product c = new ProductC();
-Product d = new ProductD();
-Product e = new ProductE();
-</code></pre><p>使用简单工厂:  </p>
-<pre><code>Product a = Factory.createProduct(0); 
-Product b = Factory.createProduct(1); 
-Product c = Factory.createProduct(2); 
-Product d = Factory.createProduct(3); 
-Product e = Factory.createProduct(4); 
-</code></pre><p>参数也可以是<code>String</code>类型,另一种方式是使用不同的方法名称来创建不同的对象</p>
-<pre><code>Product a = Factory.createProductA(); 
-Product b = Factory.createProductB(); 
-Product c = Factory.createProductC(); 
-Product d = Factory.createProductD(); 
-Product e = Factory.createProductE(); 
-</code></pre><p><strong>优点:</strong> 代码统一,对象初始化的在同一个地方,便于查找和修改.<br><strong>缺点:</strong> 拓展性差,添加新类型需要修改<code>Factory</code>.</p>
-<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h4 id="1-Product-Factory"><a href="#1-Product-Factory" class="headerlink" title="1.Product$Factory"></a>1.Product$Factory</h4><p>根据传入不同参数创建不同类型对象</p>
-<pre><code>interface Product{
-    float getPrice();
-    class Factory{
-        static final String PRODUCT_A = &quot;A&quot;;
-        static final String PRODUCT_B = &quot;B&quot;;
-        static final String PRODUCT_C = &quot;C&quot;;
-        static final String PRODUCT_D = &quot;D&quot;;
-        static final String PRODUCT_E = &quot;E&quot;;
-        static Product createProduct(String type){
-            switch (type){
-                case PRODUCT_A:
-                    return new ProductA();
-                case PRODUCT_B:
-                    return new ProductB();
-                case PRODUCT_C:
-                    return new ProductC();
-                   case PRODUCT_D:
-                    return new ProductD();
-                case PRODUCT_E:
-                    return new ProductE();
-                default:
-                    return null;
-            }            
-        }
-    }
-}
-</code></pre><h4 id="2-com-android-documentsui-services-Job-Factory"><a href="#2-com-android-documentsui-services-Job-Factory" class="headerlink" title="2.com.android.documentsui.services.Job$Factory"></a>2.com.android.documentsui.services.Job$Factory</h4><p>根据不同方法名称创建不同对象</p>
-<pre><code>static class Factory {
-    static final Factory instance = new Factory();
+        <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>简单工厂和工厂方法解决<code>一维数组</code>问题,<strong>每增加一种属性对应只增加一种类型</strong><br>抽象工厂解决<code>二维数组</code>问题, <strong>两个属性对应一个对象时,类型为二维数组,用不同工厂来控制一个维度,用不同方法来控制第二个维度,能顺利解决二维数组问题</strong><br>控制维度的方法:类、方法、方法参数,这三种方式都可以解决单一维度,任意两个相互组合解决两层维度的问题.  </p>
+<h4 id="解决三个维度问题"><a href="#解决三个维度问题" class="headerlink" title="解决三个维度问题"></a>解决<code>三个维度</code>问题</h4><p><strong>方法1:</strong> 结合类、方法、方法参数三种方式,当确定是哪个类的哪个方法的哪种参数对应的返回值时(三维需要<code>x,y,z</code>来确定唯一),确定唯一对象.<br><strong>方法2:</strong> 一维数组嵌套二维数组,用简单工厂或工厂方法模式生产出抽象工厂解决一个维度,在用抽象工厂解决剩下两个维度.<br><strong>每种方法实际可读性不强,程序复杂度很高,在设计时,最好找到两个最重要的维度来控制对象类型,把维度控制在两个以内</strong></p>
 
-    Job createCopy(...) {
-        ...            
-        return new CopyJob(...);
-    }
-
-    Job createMove(...) {
-        ...
-        return new MoveJob(...);
-    }
-
-    Job createDelete(...) {
-        ...
-        return new DeleteJob(...);
-    }
-}
-</code></pre><h4 id="3-android-text-Editable-Factory"><a href="#3-android-text-Editable-Factory" class="headerlink" title="3.android.text.Editable$Factory"></a>3.android.text.Editable$Factory</h4><p>根据传入不同参数,创建相同对象,但对象初始化属性不同,这里还结合了饿汉单例模式</p>
-<pre><code>    public static class Factory {
-    private static Editable.Factory sInstance = new Editable.Factory();
-
-    public static Editable.Factory getInstance() {
-        return sInstance;
-    }
-
-    public Editable newEditable(CharSequence source) {
-        return new SpannableStringBuilder(source);
-    }
-}
-</code></pre>
       
     </div>
 
@@ -427,8 +349,8 @@ Product e = Factory.createProductE();
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/22/设计模式笔记(十)单例设计模式/" rel="next" title="设计模式笔记(十)单例设计模式">
-                <i class="fa fa-chevron-left"></i> 设计模式笔记(十)单例设计模式
+              <a href="/2017/05/25/设计模式笔记(十三)抽象工厂设计模式/" rel="next" title="设计模式笔记(十三)抽象工厂设计模式">
+                <i class="fa fa-chevron-left"></i> 设计模式笔记(十三)抽象工厂设计模式
               </a>
             
           </div>
@@ -436,10 +358,6 @@ Product e = Factory.createProductE();
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/24/设计模式笔记(十二)工厂方法设计模式/" rel="prev" title="设计模式笔记(十二)工厂方法设计模式">
-                设计模式笔记(十二)工厂方法设计模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -557,7 +475,7 @@ Product e = Factory.createProductE();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What"><span class="nav-number">1.</span> <span class="nav-text">What</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式成员"><span class="nav-number">1.2.</span> <span class="nav-text">模式成员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why"><span class="nav-number">2.</span> <span class="nav-text">Why</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where"><span class="nav-number">3.</span> <span class="nav-text">Where</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Product-Factory"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.Product$Factory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-com-android-documentsui-services-Job-Factory"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.com.android.documentsui.services.Job$Factory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-android-text-Editable-Factory"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.android.text.Editable$Factory</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决三个维度问题"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">解决三个维度问题</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
