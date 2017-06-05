@@ -200,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -210,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -233,6 +233,172 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/31/设计模式笔记(十五)原型设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Charles">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Charles">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/31/设计模式笔记(十五)原型设计模式/" itemprop="url">设计模式笔记(十五)原型设计模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-31T16:57:05+08:00">
+                2017-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>原型模式是创建型模式的一种,其特点在于通过“复制”一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称的“原型”，这个原型是可定制的。</p>
+<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p><code>Prototype</code> :抽象原型类,克隆方法的定义接口/类<br><code>ConcretePrototype</code> :具体原型类,实现<code>Prototype</code>   </p>
+<p> <img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/Prototype.png" alt=""></p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>原型模式多用于创建复杂的或者耗时的实例，因为这种情况下，复制一个已经存在的实例使程序运行更高效；或者创建值相等，只是命名不一样的同类数据。<br><strong>优点</strong>:效率高,减少重新创建一个复杂对象的耗时<br><strong>缺点</strong>:扩展性差,<code>clone</code>方法扩展时必须修改原代码,多层对象嵌套,每个类都要实现<code>Prototype</code></p>
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="java-lang-Object"><a href="#java-lang-Object" class="headerlink" title="java.lang.Object"></a>java.lang.Object</h3><pre><code>protected Object clone() throws CloneNotSupportedException {
+    if (!(this instanceof Cloneable)) {
+        throw new CloneNotSupportedException(...);       
+    }
+
+    return internalClone();
+}
+private native Object internalClone();
+</code></pre><p>虽然<code>Object</code>为超类,但要使用<code>clone</code>方法,需要实现<code>Cloneable</code>接口,否则抛出异常.<code>Cloneable</code>为空接口,做标记用.</p>
+<h4 id="java-lang-Cloneable"><a href="#java-lang-Cloneable" class="headerlink" title="java.lang.Cloneable"></a>java.lang.Cloneable</h4><pre><code>public interface Cloneable {
+}
+</code></pre><h4 id="android-util-IntArray"><a href="#android-util-IntArray" class="headerlink" title="android.util.IntArray"></a>android.util.IntArray</h4><pre><code>public class IntArray implements Cloneable {
+    private int[] mValues;
+    ...
+    @Override
+    public IntArray clone() throws CloneNotSupportedException {
+        final IntArray clone = (IntArray) super.clone();
+        clone.mValues = mValues.clone();
+        return clone;
+    }
+}
+</code></pre><p><code>IntArray</code>的<code>clone</code>方法实现克隆本身,并且克隆成员<code>mValues</code>.</p>
+<h4 id="android-content-Intent"><a href="#android-content-Intent" class="headerlink" title="android.content.Intent"></a>android.content.Intent</h4><pre><code>@Override
+public Object clone() {
+    return new Intent(this);
+}
+</code></pre><p><code>Intent</code>的<code>clone</code>方法没有调用父类的克隆,而是通过<code>new</code>关键字来创建的,并把自己作为参数传入新创建的<code>Intent</code></p>
+<pre><code>public Intent(Intent o) {
+    this.mAction = o.mAction;
+    this.mData = o.mData;
+    this.mType = o.mType;
+    this.mPackage = o.mPackage;
+    this.mComponent = o.mComponent;
+    this.mFlags = o.mFlags;
+    this.mContentUserHint = o.mContentUserHint;
+    if (o.mCategories != null) {
+        this.mCategories = new ArraySet&lt;String&gt;(o.mCategories);
+    }
+    if (o.mExtras != null) {
+        this.mExtras = new Bundle(o.mExtras);
+    }
+    if (o.mSourceBounds != null) {
+        this.mSourceBounds = new Rect(o.mSourceBounds);
+    }
+    if (o.mSelector != null) {
+        this.mSelector = new Intent(o.mSelector);
+    }
+    if (o.mClipData != null) {
+        this.mClipData = new ClipData(o.mClipData);
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -272,7 +438,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-26T16:57:05+08:00">
                 2017-05-26
@@ -385,7 +551,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-25T16:57:05+08:00">
                 2017-05-25
@@ -530,7 +696,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-24T16:57:05+08:00">
                 2017-05-24
@@ -734,7 +900,7 @@ android.support.v7.AppCompatDelegateImplV9
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T16:57:05+08:00">
                 2017-05-23
@@ -925,7 +1091,7 @@ Product e = Factory.createProductE();
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-22T16:57:05+08:00">
                 2017-05-22
@@ -1075,7 +1241,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-19T16:57:05+08:00">
                 2017-05-19
@@ -1187,7 +1353,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-18T17:02:05+08:00">
                 2017-05-18
@@ -1303,7 +1469,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-17T16:57:05+08:00">
                 2017-05-17
@@ -1419,7 +1585,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-16T16:57:05+08:00">
                 2017-05-16
@@ -1464,122 +1630,6 @@ public static SystemConfig getInstance() {
 <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个登录页面,实现登录成功后展示动画效果<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/Login.png" alt=""><br>产品上线后发现在修改密码页面,修改密码成功后也需要展示动画效果,那么如果新建一个<code>ModifyPage</code>,实现<code>ILogin</code>接口,必然要实现<code>login</code>方法,违背了接口隔离原则,现修改如下:  </p>
 <p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img//modify.png" alt="">  </p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最小接口的定义要遵从单一职责原则,也不能过分拆分,导致后期维护成本上升</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/15/设计模式笔记(五)依赖倒转原则/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Charles">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Charles">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/15/设计模式笔记(五)依赖倒转原则/" itemprop="url">设计模式笔记(五)依赖倒转原则</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-15T16:57:05+08:00">
-                2017-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程。</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>部门里的所有人,都具备完成一件工作的能力(实现方法<code>ganHuo()</code>),那么即便负责这件事的那个人离职了,也将有人可以去代替.</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/button.png" alt=""><br>对按钮设置点击事件,传入的是处理点击事件的接口对象,在方法中把传入对象赋值给成员变量<code>mOnClickListener</code>,在使用的时候只调用<code>mOnClickListener.onClick</code>方法来执行,具体执行的结果,依赖子类的实现.</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>提供一个可以从配置文件中读取配置信息字符串的转换类<code>FileConvertor</code><br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/FileConvertor.png" alt=""><br>现在由于调整,之前读取<code>File</code>改成读取<code>XML</code>格式的配置文件,不光要增加一个<code>XMLConvertor</code>的类,还要修改<code>Main</code>的<code>getConfig</code>方法,所以修改如下<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/convertor.png" alt=""><br><code>Main</code>不在关心是谁来读取配置文件,只要需要传入具备读取配置文件功能的<code>Convertor</code>,调用<code>readSource</code>方法,拿到返回的<code>String</code>信息即可.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果一个类要用通过外部的对象来实现方法,那么这个时候方法传入的对象尽可能是抽象的.</p>
 
           
         
@@ -1663,8 +1713,8 @@ public static SystemConfig getInstance() {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -1725,7 +1775,7 @@ public static SystemConfig getInstance() {
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

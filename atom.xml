@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://charlesandroid.github.io/"/>
-  <updated>2017-05-24T01:47:05.000Z</updated>
+  <updated>2017-06-05T06:41:41.000Z</updated>
   <id>http://charlesandroid.github.io/</id>
   
   <author>
@@ -14,6 +14,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式笔记(十五)原型设计模式</title>
+    <link href="http://charlesandroid.github.io/2017/05/31/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0(%E5%8D%81%E4%BA%94)%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://charlesandroid.github.io/2017/05/31/设计模式笔记(十五)原型设计模式/</id>
+    <published>2017-05-31T08:57:05.000Z</published>
+    <updated>2017-06-05T06:41:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>原型模式是创建型模式的一种,其特点在于通过“复制”一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称的“原型”，这个原型是可定制的。</p>
+<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p><code>Prototype</code> :抽象原型类,克隆方法的定义接口/类<br><code>ConcretePrototype</code> :具体原型类,实现<code>Prototype</code>   </p>
+<p> <img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/Prototype.png" alt=""></p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>原型模式多用于创建复杂的或者耗时的实例，因为这种情况下，复制一个已经存在的实例使程序运行更高效；或者创建值相等，只是命名不一样的同类数据。<br><strong>优点</strong>:效率高,减少重新创建一个复杂对象的耗时<br><strong>缺点</strong>:扩展性差,<code>clone</code>方法扩展时必须修改原代码,多层对象嵌套,每个类都要实现<code>Prototype</code></p>
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="java-lang-Object"><a href="#java-lang-Object" class="headerlink" title="java.lang.Object"></a>java.lang.Object</h3><pre><code>protected Object clone() throws CloneNotSupportedException {
+    if (!(this instanceof Cloneable)) {
+        throw new CloneNotSupportedException(...);       
+    }
+
+    return internalClone();
+}
+private native Object internalClone();
+</code></pre><p>虽然<code>Object</code>为超类,但要使用<code>clone</code>方法,需要实现<code>Cloneable</code>接口,否则抛出异常.<code>Cloneable</code>为空接口,做标记用.</p>
+<h4 id="java-lang-Cloneable"><a href="#java-lang-Cloneable" class="headerlink" title="java.lang.Cloneable"></a>java.lang.Cloneable</h4><pre><code>public interface Cloneable {
+}
+</code></pre><h4 id="android-util-IntArray"><a href="#android-util-IntArray" class="headerlink" title="android.util.IntArray"></a>android.util.IntArray</h4><pre><code>public class IntArray implements Cloneable {
+    private int[] mValues;
+    ...
+    @Override
+    public IntArray clone() throws CloneNotSupportedException {
+        final IntArray clone = (IntArray) super.clone();
+        clone.mValues = mValues.clone();
+        return clone;
+    }
+}
+</code></pre><p><code>IntArray</code>的<code>clone</code>方法实现克隆本身,并且克隆成员<code>mValues</code>.</p>
+<h4 id="android-content-Intent"><a href="#android-content-Intent" class="headerlink" title="android.content.Intent"></a>android.content.Intent</h4><pre><code>@Override
+public Object clone() {
+    return new Intent(this);
+}
+</code></pre><p><code>Intent</code>的<code>clone</code>方法没有调用父类的克隆,而是通过<code>new</code>关键字来创建的,并把自己作为参数传入新创建的<code>Intent</code></p>
+<pre><code>public Intent(Intent o) {
+    this.mAction = o.mAction;
+    this.mData = o.mData;
+    this.mType = o.mType;
+    this.mPackage = o.mPackage;
+    this.mComponent = o.mComponent;
+    this.mFlags = o.mFlags;
+    this.mContentUserHint = o.mContentUserHint;
+    if (o.mCategories != null) {
+        this.mCategories = new ArraySet&lt;String&gt;(o.mCategories);
+    }
+    if (o.mExtras != null) {
+        this.mExtras = new Bundle(o.mExtras);
+    }
+    if (o.mSourceBounds != null) {
+        this.mSourceBounds = new Rect(o.mSourceBounds);
+    }
+    if (o.mSelector != null) {
+        this.mSelector = new Intent(o.mSelector);
+    }
+    if (o.mClipData != null) {
+        this.mClipData = new ClipData(o.mClipData);
+    }
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;What&quot;&gt;&lt;a href=&quot;#What&quot; class=&quot;headerlink&quot; title=&quot;What&quot;&gt;&lt;/a&gt;What&lt;/h2&gt;&lt;p&gt;原型模式是创建型模式的一种,其特点在于通过“复制”一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>设计模式笔记(十四)工厂设计模式总结</title>
