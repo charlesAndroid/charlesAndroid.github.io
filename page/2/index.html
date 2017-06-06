@@ -200,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            ホーム
           </a>
         </li>
       
@@ -210,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            アーカイブ
           </a>
         </li>
       
@@ -233,6 +233,123 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/16/设计模式笔记(六)接口隔离原则/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Charles">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Charles">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/16/设计模式笔记(六)接口隔离原则/" itemprop="url">设计模式笔记(六)接口隔离原则</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-16T16:57:05+08:00">
+                2017-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口.</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训</p>
+<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/arraylist.png" alt=""><br>图中每一个接口都包含自己本类应该具备的职能,<code>ArrayList</code>实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个登录页面,实现登录成功后展示动画效果<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/Login.png" alt=""><br>产品上线后发现在修改密码页面,修改密码成功后也需要展示动画效果,那么如果新建一个<code>ModifyPage</code>,实现<code>ILogin</code>接口,必然要实现<code>login</code>方法,违背了接口隔离原则,现修改如下:  </p>
+<p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img//modify.png" alt="">  </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最小接口的定义要遵从单一职责原则,也不能过分拆分,导致后期维护成本上升</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -272,7 +389,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-15T16:57:05+08:00">
                 2017-05-15
@@ -388,7 +505,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-14T16:57:05+08:00">
                 2017-05-14
@@ -504,7 +621,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-13T16:57:05+08:00">
                 2017-05-13
@@ -620,7 +737,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-12T16:57:05+08:00">
                 2017-05-12
@@ -736,7 +853,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T16:57:01+08:00">
                 2017-05-11
@@ -858,7 +975,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-10T16:57:01+08:00">
                 2017-05-10
@@ -980,8 +1097,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
           
@@ -1042,7 +1159,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

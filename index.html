@@ -200,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            ホーム
           </a>
         </li>
       
@@ -210,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            アーカイブ
           </a>
         </li>
       
@@ -233,6 +233,207 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/06/01/设计模式笔记(十六)建造者设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Charles">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Charles">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/01/设计模式笔记(十六)建造者设计模式/" itemprop="url">设计模式笔记(十六)建造者设计模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-01T16:57:05+08:00">
+                2017-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>建造者设计模式(Builder Pattern),将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示,是一种对象创建型设计模式.</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>类实例化过程的封装,包括构造方法和初始化参数的封装.</p>
+<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p><code>Builder</code>:抽象建造者,提供若干初始化抽象方法和构造方法的封装方法<br><code>ConcreteBuilder</code>:<code>Builder</code>实现类,具体的建造者<br><code>Product</code>:产品类,被建造的类<br><code>Director</code>:建造过程管理类,依次控制<code>Builder</code>各初始化方法调用和最终返回<code>Product</code><br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/builder.png" alt=""></p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>提供一个窗口类.</p>
+<pre><code>public class Window{
+
+    public Window(){
+        initShape();
+        initTheme();
+    }
+    //初始化形状
+    private void initShape(){
+        ...
+    }
+    //初始化样式
+    private void initTheme(){
+        ...
+    }
+}
+</code></pre><p>初始化方法无法扩展,修改形状或样式初始化过程,必然需要修改<code>Window</code>原代码</p>
+<pre><code>public class Window{
+    private float width;
+    private float height;
+    private int color;
+    private String title;
+    private int icon;
+    ...
+
+    //setter and getter
+    ...
+}
+public class Director{
+    public static Window createWindow(WindowBuilder builder){
+        builder.buildShape();
+        builder.buildTheme();
+        return builder.build();
+    }
+}
+public interface WindowBuilder{
+    Window build();
+    void buildShape();
+    void buildTheme();
+}
+public class Builder implements WindowBuilder{
+    private Window window = new Window();
+    public Window build(){
+        return window;
+    }
+    public void buildShape(){
+        ...
+    }
+    public void buildTheme(){
+        ...
+    }
+}
+</code></pre><p>一般对于<code>Builder</code>的做法是,省略<code>Builder</code>抽象和<code>Director</code>类,私有化<code>Product</code>的构造方法,把<code>ConcreteBuilder</code>作为<code>Product</code>内部类,提供构造过程返回<code>Product</code>的方法,并且对每一步的构造过程提供返回本对象实例,有利于<code>流式编程</code>.<br><strong>优点</strong>: 不暴露构造过程,具体细节支持扩展,一旦构造者属性配置完毕,产品对外是不允许修改的<br><strong>缺点</strong>: 每改变一次产品细节,对应增加一个构造者或修改构造者代码,只适用于构造过程统一,构造细节不统一的类</p>
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="android-app-AlertDialog"><a href="#android-app-AlertDialog" class="headerlink" title="android.app.AlertDialog"></a>android.app.AlertDialog</h3><pre><code>public class AlertDialog extends Dialog implements DialogInterface {
+    ...
+    public static class Builder {
+        ...
+        public AlertDialog create() {
+            final AlertDialog dialog = new AlertDialog(...);
+            //具体构造过程
+            ...
+            return dialog;
+        }
+    }
+}
+</code></pre><h3 id="java-lang-AbstractStringBuilder"><a href="#java-lang-AbstractStringBuilder" class="headerlink" title="java.lang.AbstractStringBuilder"></a>java.lang.AbstractStringBuilder</h3><pre><code>abstract class AbstractStringBuilder{
+    public String toString() {
+        //具体初始化构造参数的过程
+        ...
+        if (...) {
+            return new String(value, 0, count);
+        }
+        return new String(0, count, value);
+    }
+}
+</code></pre><h3 id="android-app-Notification"><a href="#android-app-Notification" class="headerlink" title="android.app.Notification"></a>android.app.Notification</h3><pre><code>public class Notification implements Parcelable{
+    ...
+    public static class Builder {
+        private Notification mN;
+        ...
+        public Notification build() {
+            //具体构造过程
+            ...            
+            return mN;
+        }
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -272,7 +473,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-31T16:57:05+08:00">
                 2017-05-31
@@ -438,7 +639,7 @@ public Object clone() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-26T16:57:05+08:00">
                 2017-05-26
@@ -551,7 +752,7 @@ public Object clone() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-25T16:57:05+08:00">
                 2017-05-25
@@ -696,7 +897,7 @@ public Object clone() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-24T16:57:05+08:00">
                 2017-05-24
@@ -900,7 +1101,7 @@ android.support.v7.AppCompatDelegateImplV9
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T16:57:05+08:00">
                 2017-05-23
@@ -1091,7 +1292,7 @@ Product e = Factory.createProductE();
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-22T16:57:05+08:00">
                 2017-05-22
@@ -1241,7 +1442,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-19T16:57:05+08:00">
                 2017-05-19
@@ -1353,7 +1554,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-18T17:02:05+08:00">
                 2017-05-18
@@ -1469,7 +1670,7 @@ public static SystemConfig getInstance() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">投稿日</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-17T16:57:05+08:00">
                 2017-05-17
@@ -1513,123 +1714,6 @@ public static SystemConfig getInstance() {
 <h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/system.png" alt=""><br><code>System</code>类的<code>getProperty</code>方法,最终由成员变量<code>props</code>来实现</p>
 <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个员工模型,要求携带办公工具<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/tool.png" alt=""><br>由于科技发展,部分员工使用原有的<code>File</code>办公,部分员工替换办公工具,使用<code>Computer</code>办公.无论修改<code>Tool</code>还是<code>Employee</code>,都违背了开闭原则,现需改如下:<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/tools.png" alt=""><br>只要在员工初始化的时候指定使用工具,对成员变量<code>tool</code>赋值就可以区分了.</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这里的继承,也包括java中的实现接口,<code>JDK1.8</code>中接口可以默认实现方法,子类去继承,所以,无论单继承还是多继承语言,只要分析好子类与父类之间的关系是<code>Has</code>还是<code>Is</code>,就比较容易区分使用<code>组合/聚合</code>还是<code>继承/实现</code>.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/16/设计模式笔记(六)接口隔离原则/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Charles">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Charles">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/16/设计模式笔记(六)接口隔离原则/" itemprop="url">设计模式笔记(六)接口隔离原则</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-16T16:57:05+08:00">
-                2017-05-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口.</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/arraylist.png" alt=""><br>图中每一个接口都包含自己本类应该具备的职能,<code>ArrayList</code>实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个登录页面,实现登录成功后展示动画效果<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/Login.png" alt=""><br>产品上线后发现在修改密码页面,修改密码成功后也需要展示动画效果,那么如果新建一个<code>ModifyPage</code>,实现<code>ILogin</code>接口,必然要实现<code>login</code>方法,违背了接口隔离原则,现修改如下:  </p>
-<p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img//modify.png" alt="">  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最小接口的定义要遵从单一职责原则,也不能过分拆分,导致后期维护成本上升</p>
 
           
         
@@ -1713,8 +1797,8 @@ public static SystemConfig getInstance() {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
           
@@ -1775,7 +1859,7 @@ public static SystemConfig getInstance() {
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

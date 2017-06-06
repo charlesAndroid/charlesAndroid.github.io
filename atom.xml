@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://charlesandroid.github.io/"/>
-  <updated>2017-06-05T06:41:41.000Z</updated>
+  <updated>2017-06-06T03:26:55.000Z</updated>
   <id>http://charlesandroid.github.io/</id>
   
   <author>
@@ -16,11 +16,119 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>设计模式笔记(十六)建造者设计模式</title>
+    <link href="http://charlesandroid.github.io/2017/06/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0(%E5%8D%81%E5%85%AD)%E5%BB%BA%E9%80%A0%E8%80%85%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://charlesandroid.github.io/2017/06/01/设计模式笔记(十六)建造者设计模式/</id>
+    <published>2017-06-01T08:57:05.000Z</published>
+    <updated>2017-06-06T03:26:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>建造者设计模式(Builder Pattern),将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示,是一种对象创建型设计模式.</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>类实例化过程的封装,包括构造方法和初始化参数的封装.</p>
+<h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p><code>Builder</code>:抽象建造者,提供若干初始化抽象方法和构造方法的封装方法<br><code>ConcreteBuilder</code>:<code>Builder</code>实现类,具体的建造者<br><code>Product</code>:产品类,被建造的类<br><code>Director</code>:建造过程管理类,依次控制<code>Builder</code>各初始化方法调用和最终返回<code>Product</code><br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/builder.png" alt=""></p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>提供一个窗口类.</p>
+<pre><code>public class Window{
+
+    public Window(){
+        initShape();
+        initTheme();
+    }
+    //初始化形状
+    private void initShape(){
+        ...
+    }
+    //初始化样式
+    private void initTheme(){
+        ...
+    }
+}
+</code></pre><p>初始化方法无法扩展,修改形状或样式初始化过程,必然需要修改<code>Window</code>原代码</p>
+<pre><code>public class Window{
+    private float width;
+    private float height;
+    private int color;
+    private String title;
+    private int icon;
+    ...
+
+    //setter and getter
+    ...
+}
+public class Director{
+    public static Window createWindow(WindowBuilder builder){
+        builder.buildShape();
+        builder.buildTheme();
+        return builder.build();
+    }
+}
+public interface WindowBuilder{
+    Window build();
+    void buildShape();
+    void buildTheme();
+}
+public class Builder implements WindowBuilder{
+    private Window window = new Window();
+    public Window build(){
+        return window;
+    }
+    public void buildShape(){
+        ...
+    }
+    public void buildTheme(){
+        ...
+    }
+}
+</code></pre><p>一般对于<code>Builder</code>的做法是,省略<code>Builder</code>抽象和<code>Director</code>类,私有化<code>Product</code>的构造方法,把<code>ConcreteBuilder</code>作为<code>Product</code>内部类,提供构造过程返回<code>Product</code>的方法,并且对每一步的构造过程提供返回本对象实例,有利于<code>流式编程</code>.<br><strong>优点</strong>: 不暴露构造过程,具体细节支持扩展,一旦构造者属性配置完毕,产品对外是不允许修改的<br><strong>缺点</strong>: 每改变一次产品细节,对应增加一个构造者或修改构造者代码,只适用于构造过程统一,构造细节不统一的类</p>
+<h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><h3 id="android-app-AlertDialog"><a href="#android-app-AlertDialog" class="headerlink" title="android.app.AlertDialog"></a>android.app.AlertDialog</h3><pre><code>public class AlertDialog extends Dialog implements DialogInterface {
+    ...
+    public static class Builder {
+        ...
+        public AlertDialog create() {
+            final AlertDialog dialog = new AlertDialog(...);
+            //具体构造过程
+            ...
+            return dialog;
+        }
+    }
+}
+</code></pre><h3 id="java-lang-AbstractStringBuilder"><a href="#java-lang-AbstractStringBuilder" class="headerlink" title="java.lang.AbstractStringBuilder"></a>java.lang.AbstractStringBuilder</h3><pre><code>abstract class AbstractStringBuilder{
+    public String toString() {
+        //具体初始化构造参数的过程
+        ...
+        if (...) {
+            return new String(value, 0, count);
+        }
+        return new String(0, count, value);
+    }
+}
+</code></pre><h3 id="android-app-Notification"><a href="#android-app-Notification" class="headerlink" title="android.app.Notification"></a>android.app.Notification</h3><pre><code>public class Notification implements Parcelable{
+    ...
+    public static class Builder {
+        private Notification mN;
+        ...
+        public Notification build() {
+            //具体构造过程
+            ...            
+            return mN;
+        }
+    }
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;What&quot;&gt;&lt;a href=&quot;#What&quot; class=&quot;headerlink&quot; title=&quot;What&quot;&gt;&lt;/a&gt;What&lt;/h2&gt;&lt;p&gt;建造者设计模式(Builder Pattern),将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示,
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>设计模式笔记(十五)原型设计模式</title>
     <link href="http://charlesandroid.github.io/2017/05/31/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0(%E5%8D%81%E4%BA%94)%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     <id>http://charlesandroid.github.io/2017/05/31/设计模式笔记(十五)原型设计模式/</id>
     <published>2017-05-31T08:57:05.000Z</published>
-    <updated>2017-06-05T06:41:41.000Z</updated>
+    <updated>2017-06-05T06:45:21.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>原型模式是创建型模式的一种,其特点在于通过“复制”一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称的“原型”，这个原型是可定制的。</p>
 <h3 id="模式成员"><a href="#模式成员" class="headerlink" title="模式成员"></a>模式成员</h3><p><code>Prototype</code> :抽象原型类,克隆方法的定义接口/类<br><code>ConcretePrototype</code> :具体原型类,实现<code>Prototype</code>   </p>
