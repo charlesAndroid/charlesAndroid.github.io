@@ -79,6 +79,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="Charles" type="application/atom+xml" />
 
@@ -92,20 +94,16 @@
 
 
 
-<meta name="description" content="概念接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口. 例子生活中音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训 代码中图中每一个接口都包含自己本类应该具备的职能,ArrayList实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则 需求设">
+<meta name="description" content="总结创建型设计模式,用来解决new关键字出现的地方和Constructor过程问题,常用的有单例设计模式,工厂方法设计模式,抽象工厂设计模式.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式笔记(六)接口隔离原则">
-<meta property="og:url" content="http://charlesandroid.github.io/2017/05/16/设计模式笔记(六)接口隔离原则/index.html">
+<meta property="og:title" content="设计模式笔记(十七)创建型设计模式总结">
+<meta property="og:url" content="http://charlesandroid.github.io/2017/06/02/设计模式笔记(十七)创建型设计模式总结/index.html">
 <meta property="og:site_name" content="Charles">
-<meta property="og:description" content="概念接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口. 例子生活中音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训 代码中图中每一个接口都包含自己本类应该具备的职能,ArrayList实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则 需求设">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/arraylist.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/Login.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img//modify.png">
-<meta property="og:updated_time" content="2017-05-17T10:10:50.000Z">
+<meta property="og:description" content="总结创建型设计模式,用来解决new关键字出现的地方和Constructor过程问题,常用的有单例设计模式,工厂方法设计模式,抽象工厂设计模式.">
+<meta property="og:updated_time" content="2017-06-06T03:41:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式笔记(六)接口隔离原则">
-<meta name="twitter:description" content="概念接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口. 例子生活中音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训 代码中图中每一个接口都包含自己本类应该具备的职能,ArrayList实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则 需求设">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/arraylist.png">
+<meta name="twitter:title" content="设计模式笔记(十七)创建型设计模式总结">
+<meta name="twitter:description" content="总结创建型设计模式,用来解决new关键字出现的地方和Constructor过程问题,常用的有单例设计模式,工厂方法设计模式,抽象工厂设计模式.">
 
 
 
@@ -133,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://charlesandroid.github.io/2017/05/16/设计模式笔记(六)接口隔离原则/"/>
+  <link rel="canonical" href="http://charlesandroid.github.io/2017/06/02/设计模式笔记(十七)创建型设计模式总结/"/>
 
 
 
 
 
-  <title>设计模式笔记(六)接口隔离原则 | Charles</title>
+  <title>设计模式笔记(十七)创建型设计模式总结 | Charles</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -249,7 +247,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/05/16/设计模式笔记(六)接口隔离原则/">
+    <link itemprop="mainEntityOfPage" href="http://charlesandroid.github.io/2017/06/02/设计模式笔记(十七)创建型设计模式总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Charles">
@@ -266,7 +264,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式笔记(六)接口隔离原则</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式笔记(十七)创建型设计模式总结</h1>
         
 
         <div class="post-meta">
@@ -278,8 +276,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-16T16:57:05+08:00">
-                2017-05-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-02T16:57:05+08:00">
+                2017-06-02
               </time>
             
 
@@ -313,12 +311,7 @@
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>接口隔离原则(ISP–Interface Segregation Principle),一个类对另一个类的依赖应该建立在最小的接口上,不应依赖其不需要的接口.</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="生活中"><a href="#生活中" class="headerlink" title="生活中"></a>生活中</h3><p>音乐学院应该实现音乐培训接口,而不应该实现庞大的培训接口,包含不需要厨艺培训和挖掘机培训</p>
-<h3 id="代码中"><a href="#代码中" class="headerlink" title="代码中"></a>代码中</h3><p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/arraylist.png" alt=""><br>图中每一个接口都包含自己本类应该具备的职能,<code>ArrayList</code>实现了图中的4个接口,而不是统一的一个接口,符合接口隔离原则</p>
-<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>设计一个登录页面,实现登录成功后展示动画效果<br><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img/Login.png" alt=""><br>产品上线后发现在修改密码页面,修改密码成功后也需要展示动画效果,那么如果新建一个<code>ModifyPage</code>,实现<code>ILogin</code>接口,必然要实现<code>login</code>方法,违背了接口隔离原则,现修改如下:  </p>
-<p><img src="https://raw.githubusercontent.com/charlesandroid/charlesandroid.github.io/master/img//modify.png" alt="">  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最小接口的定义要遵从单一职责原则,也不能过分拆分,导致后期维护成本上升</p>
+        <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>创建型设计模式,用来解决<code>new</code>关键字出现的地方和<code>Constructor</code>过程问题,常用的有<code>单例设计模式</code>,<code>工厂方法设计模式</code>,<code>抽象工厂设计模式</code>.</p>
 
       
     </div>
@@ -355,8 +348,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/15/设计模式笔记(五)依赖倒转原则/" rel="next" title="设计模式笔记(五)依赖倒转原则">
-                <i class="fa fa-chevron-left"></i> 设计模式笔记(五)依赖倒转原则
+              <a href="/2017/06/01/设计模式笔记(十六)建造者设计模式/" rel="next" title="设计模式笔记(十六)建造者设计模式">
+                <i class="fa fa-chevron-left"></i> 设计模式笔记(十六)建造者设计模式
               </a>
             
           </div>
@@ -364,10 +357,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/17/设计模式笔记(七)合成复用原则/" rel="prev" title="设计模式笔记(七)合成复用原则">
-                设计模式笔记(七)合成复用原则 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -485,7 +474,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">2.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生活中"><span class="nav-number">2.1.</span> <span class="nav-text">生活中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码中"><span class="nav-number">2.2.</span> <span class="nav-text">代码中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求"><span class="nav-number">2.3.</span> <span class="nav-text">需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
